@@ -7,12 +7,13 @@ export class Footer extends React.Component {
         return (
             <div className="footer">
             	<table className="footer-copyright">
-              <tbody>
+              <tbody width="100%">
               <tr>
-              		<td>Atlas Agropecuário Brasileiro</td>
+              		<td>IMAFLORA</td>
+                    <td>Atlas: a geografia da agropecuária brasileira</td>
               		<td className="footer-right">
                           Desenvolvido por:
-                          <ul>
+                          <ul style={{listStyleType: 'none'}}>
                               <li>Caio Hamamura</li>
                               <li>Felipe José Cerignoni</li>
                           </ul>

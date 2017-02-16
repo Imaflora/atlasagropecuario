@@ -1,6 +1,5 @@
 import {createStore, applyMiddleware, combineReducers} from 'redux';
 import thunkMiddleware from 'redux-thunk';
-import { scripts } from '../sqlscripts/scripts';
 
 // Handlers for reducers
 const handlers = {
@@ -11,7 +10,6 @@ const handlers = {
           loading: false,
           [state.transition === false || (data.geo && data.geo.length > 0) ? 'data' : 'tempdata']: data,
           isError: state.transition ? state.isError : typeof(data) === 'string',
-          activeTab: (data.geo ? data.geo.features.length : 0) > 0 ? 2 : 1,
         }
         ),
 
@@ -21,7 +19,6 @@ const handlers = {
       {
         loading: true,
         tempdata: '',
-        transition: state.activeTab === 1 ? !state.transition : false,
       });
     return newState},
 
@@ -50,9 +47,6 @@ export var store = createStoreWithMiddleware(reducers,
   data: '',
   tempdata: '',
   isError: false,
-  ascsv: false,
   transition: true,
-  selScript: '',
-  activeTab: 1,
   loading: false,
 });

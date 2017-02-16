@@ -1,4 +1,3 @@
-import { LeftPanel } from '../containers/LeftPanel';
 import { Footer } from '../containers/Footer.js'
 import Body from './Body'
 
