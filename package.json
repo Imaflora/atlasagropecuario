@@ -11,14 +11,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/caiohamamura/getlidar.git"
+    "url": "git+https://github.com/caiohamamura/atlas.git"
   },
-  "author": "",
+  "author": "Caio Hamamura",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/caiohamamura/getlidar/issues"
+    "url": "https://github.com/caiohamamura/atlas/issues"
   },
-  "homepage": "https://github.com/caiohamamura/getlidar#readme",
+  "homepage": "https://github.com/caiohamamura/atlas#readme",
   "dependencies": {
     "axios": "^0.14.0",
     "classnames": "^2.2.5",

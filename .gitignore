@@ -1,16 +1,13 @@
 #
 *.conf.php
-.*.php
 dist/*
-/php/vendor/*
-!/php/vendor/composer
-!php/vendor/autoload.php
 *.lock
 
 
 #linux
 *.swn
 *.swp
+
 
 # Logs
 logs

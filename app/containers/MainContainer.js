@@ -13,7 +13,6 @@ export class MainContainer extends React.Component {
 		return (
 			// Main div block with gray background				
 			<div>
-				    <LeftPanel/>
 			    	<Body />
 			    	<Footer />
 			</div>
