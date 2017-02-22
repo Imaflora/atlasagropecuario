@@ -1,4 +1,4 @@
-import { Footer } from '../containers/Footer.js'
+import { Footer } from './Footer.js'
 import Body from './Body'
 
 

@@ -2,7 +2,9 @@ import React, { Component } from 'react';
 import { connect, Provider } from 'react-redux';
 import { asCsvChanged, setQuery } from '../redux/actions'
 import { store } from '../redux/reducers.js'
-import { MapContainer } from './MapContainer'
+import MapContainer from './MapContainer'
+import LayersSelectorContainer from './LayersSelectorContainer'
+import LocationSelectorContainer from './LocationSelectorContainer'
 
 class Body extends Component {
 	constructor(props) {
@@ -11,7 +13,10 @@ class Body extends Component {
 
 	render() {
 		return (
-			<div className="col-sm-10 body">
+			<div>
+				<LocationSelectorContainer />
+				<LayersSelectorContainer />
+				<MapContainer />
 			</div>
 		);
 	}
