@@ -1,11 +1,25 @@
-import React from 'react'
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
 
-const LocationSelector = (props) => {
-    return(
-        <div>
-
-        </div>
-    )
+class LocationSelector extends Component {
+    render() {
+        return (
+            <div>
+                
+            </div>
+        );
+    }
 }
 
-export default LocationSelector
+const mapStateToProps = (state, ownProps) => {
+    return {
+        
+    }
+}
+
+const mapDispatchToProps = (dispatch, ownProps) => {
+    return {
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(LocationSelector)
