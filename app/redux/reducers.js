@@ -44,6 +44,10 @@ var createStoreWithMiddleware = applyMiddleware(thunkMiddleware)(createStore);
 export var store = createStoreWithMiddleware(reducers, 
 // initial state
 {
+  map: {
+    object: Object(),
+    zoom: 4,
+  },
   data: '',
   tempdata: '',
   isError: false,

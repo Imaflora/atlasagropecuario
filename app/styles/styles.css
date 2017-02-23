@@ -40,6 +40,7 @@ th {
 	bottom: 0;
 	width: 100%;
 	z-index: 1000;
+	text-align: center;
 }
 
 .footer-copyright {
@@ -73,6 +74,12 @@ th {
 
 .table-striped {
 	text-align: center;
+}
+
+.map {
+	height: calc(100% - 34px);
+	width: 100%;
+	position: fixed
 }
 
 @media screen and (max-width: 767px) {
