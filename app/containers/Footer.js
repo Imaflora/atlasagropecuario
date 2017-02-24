@@ -1,4 +1,5 @@
-import { Collapse, Button } from 'react-bootstrap'
+import { Button } from 'react-bootstrap'
+import Collapse from '../components/Collapse'
 
 export class Footer extends React.Component {
     constructor(props) {
@@ -12,14 +13,14 @@ export class Footer extends React.Component {
         return (
             <div className="footer">
                 <Button onClick={ ()=> this.setState({ open: !this.state.open })} style={{float:"none", marginLeft: "auto"}}>Show footer</Button>
-                <Collapse in={this.state.open}>
+                <Collapse show={this.state.open}>
                     <div>
                         <table className="footer-copyright">
                     <tbody width="100%">
                     <tr>
-                            <td>IMAFLORA</td>
-                            <td>Atlas: a geografia da agropecuária brasileira</td>
-                            <td className="footer-right">
+                            <td className="align-left">IMAFLORA</td>
+                            <td className="align-center">Atlas: a geografia da agropecuária brasileira</td>
+                            <td className="align-right footer-right">
                                 Desenvolvido por:
                                 <ul style={{listStyleType: 'none'}}>
                                     <li>Caio Hamamura</li>

@@ -14,10 +14,6 @@ th {
 	text-align: center;
 }
 
-#app {
-	height: 100%;
-}
-
 .modal-dialog {
 	width: 150px;
 	padding-left: 30px;
@@ -45,7 +41,6 @@ th {
 
 .footer-copyright {
 	table-layout: fixed;
-    float: left;
     margin-top: 10px;
     margin-bottom: 10px;
     list-style-type: none;
@@ -81,6 +76,26 @@ th {
 	width: 100%;
 	position: fixed
 }
+
+.align-center {
+	text-align: center;
+}
+
+.align-left {
+	text-align: left;
+}
+
+.align-right {
+	text-align: right;
+}
+
+#app {
+	height: 100%;
+}
+
+#location-selector {
+}
+
 
 @media screen and (max-width: 767px) {
 	.navbar-nav {
