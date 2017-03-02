@@ -8,6 +8,7 @@ const mapStateToProps = function(store) {
         data: store.data.data,
         fields: store.data.fields,
         zoom: store.map.zoom,
+        layers: store.map.layers,
     };
 }
 

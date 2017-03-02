@@ -13,13 +13,20 @@ export default class Map extends React.Component {
         var map = new ol.Map({
             layers: [
               new ol.layer.Tile({
-                source: new ol.source.OSM()
+                source: new ol.source.OSM(),
+              }),
+              new ol.layer.Tile({
+                source: new ol.source.TileWMS({
+                  url: 'http://geonode/geoserver/geonode/wms?service=WMS',
+                  params: {'LAYERS': 'geonode:bi_amz_amazleg_limite', 'TILED': true},
+                  serverType: 'geoserver'
+                })
               }),
             ],
             target: this.refs.map,
             view: new ol.View({
               projection: 'EPSG:3857',
-              center: [0, 0],
+              center: [-6007208.067874676, -1647062.4922446532],
               zoom: this.props.zoom
             })
           }); 
@@ -27,20 +34,16 @@ export default class Map extends React.Component {
           map: map
         });
 
-        var select = new ol.interaction.Select();
-        map.addInteraction(select);
-        window.select = select;
-        select.getFeatures().on('change:length', function(e) {
-        if (e.target.getArray().length > 0) {
-            var feature = e.target.item(0);
-        }
-    }.bind(this));
+        map.on('click', function(evt) {
+          var coordinates = evt.coordinate;
+          console.log(coordinates);
+        });
+
     }
 
     componentDidUpdate(prevProps, prevState) {
       var view = this.state.map.getView();
       view.setZoom(this.props.zoom);
-      view.setCenter([0,0]);
     }
 
     render() {      
@@ -55,4 +58,5 @@ export default class Map extends React.Component {
 Map.propTypes = {
   zoom: PropTypes.number,
   center: PropTypes.number,
+  layers: PropTypes.arrayOf(String),
 };

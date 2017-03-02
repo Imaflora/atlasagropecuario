@@ -45,8 +45,8 @@ export var store = createStoreWithMiddleware(reducers,
 // initial state
 {
   map: {
-    object: Object(),
     zoom: 4,
+    layers: [''],
   },
   data: '',
   tempdata: '',

@@ -74,7 +74,8 @@ th {
 .map {
 	height: calc(100% - 34px);
 	width: 100%;
-	position: fixed
+	position: fixed;
+	background-color: #CCC;
 }
 
 .align-center {
