@@ -6,7 +6,7 @@ import Option from './Option'
 class LocationSelector extends Component {
     render() {
         return (
-            <div id="location-selector" className="align-center row-fluid">
+            <div id="location-selector" className="align-center row-fluid">                    
                 <select className="cool" is data-show-subtext="true" is data-live-search={true}>
                     <optgroup label="picnic">
                     <Option dataSubtext="Rep California">Tom Foolery</Option>

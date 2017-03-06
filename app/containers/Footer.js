@@ -1,5 +1,6 @@
 import { Button } from 'react-bootstrap'
 import Collapse from '../components/Collapse'
+import MyModal from '../components/MyModal'
 
 export class Footer extends React.Component {
     constructor(props) {
@@ -21,11 +22,10 @@ export class Footer extends React.Component {
                             <td className="align-left">IMAFLORA</td>
                             <td className="align-center">Atlas: a geografia da agropecuária brasileira</td>
                             <td className="align-right footer-right">
-                                Desenvolvido por:
-                                <ul style={{listStyleType: 'none'}}>
-                                    <li>Caio Hamamura</li>
-                                    <li>Felipe José Cerignoni</li>
-                                </ul>
+                                <MyModal show={this.state.showModal} onHide={() => this.setState({showModal: false})} title="Example title">
+                                    Contents
+                                </MyModal>
+                                <Button id="botao" onClick={() => this.setState({showModal: true})}> Teste </ Button>
                             </td>
                     </tr>
                     </tbody>
