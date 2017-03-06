@@ -13,13 +13,30 @@ export default class Map extends React.Component {
         var map = new ol.Map({
             layers: [
               new ol.layer.Tile({
-                source: new ol.source.OSM(),
+                source: new ol.source.XYZ({
+                  attributions: [new ol.Attribution({
+                     html: '© <a href="http://cartodb.com/attributions">CartoDB</a> ' +
+                      '© <a href="http://www.openstreetmap.org/copyright">' +
+                      'OpenStreetMap contributors</a>'
+                   })],
+                  url:'https://cartodb-basemaps-c.global.ssl.fastly.net/light_nolabels/{z}/{x}/{y}.png'
+                })
               }),
               new ol.layer.Tile({
                 source: new ol.source.TileWMS({
                   url: 'http://geonode/geoserver/geonode/wms?service=WMS',
-                  params: {'LAYERS': 'geonode:bi_amz_amazleg_limite', 'TILED': true},
+                  params: {'LAYERS': 'geonode:land_ownership255', 'TILED': true},
                   serverType: 'geoserver'
+                })
+              }),
+              new ol.layer.Tile({
+                source: new ol.source.XYZ({
+                  attributions: [new ol.Attribution({
+                     html: '© <a href="http://cartodb.com/attributions">CartoDB</a> ' +
+                      '© <a href="http://www.openstreetmap.org/copyright">' +
+                      'OpenStreetMap contributors</a>'
+                   })],
+                  url:'https://stamen-tiles-d.a.ssl.fastly.net/toner-hybrid/{z}/{x}/{y}.png'
                 })
               }),
             ],
