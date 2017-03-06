@@ -63,6 +63,6 @@ module.exports = {
 
 if (process.env.NODE_ENV !== 'production') {
   module.exports.plugins.push(new webpack.HotModuleReplacementPlugin());
-  var a = ['webpack-dev-server/client?http://golfinho:8080','webpack/hot/only-dev-server'];
+  var a = ['webpack-dev-server/client?http://localhost:8080','webpack/hot/only-dev-server'];
   module.exports.entry = a.concat(module.exports.entry);
 }

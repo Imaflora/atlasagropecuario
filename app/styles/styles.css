@@ -59,6 +59,11 @@ th {
  	text-align: right;
  }
 
+.modal-lg {
+	width: 80%;
+	padding-left: 0px !important;
+}
+
 .outer {
 	overflow: hidden;
 }
