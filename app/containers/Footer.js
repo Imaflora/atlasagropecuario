@@ -1,15 +1,8 @@
 import { Button, FormGroup, FormControl, ControlLabel  } from 'react-bootstrap'
 import Collapse from '../components/Collapse'
-import MyModal from '../components/MyModal'
+import BaseForm from '../components/BaseForm'
 
-function FieldGroup({ id, label, ...props }) {
-          return (
-            <FormGroup controlId={id}>
-              <ControlLabel>{label}</ControlLabel>
-              <FormControl {...props} />
-            </FormGroup>
-          );
-        }
+
 
 export class Footer extends React.Component {
     constructor(props) {
@@ -35,46 +28,7 @@ export class Footer extends React.Component {
                             <td className="align-left">IMAFLORA</td>
                             <td className="align-center">Atlas: a geografia da agropecuária brasileira</td>
                             <td className="align-right footer-right">
-                                <MyModal show={this.state.showModal} onHide={() => this.setState({showModal: false})} title="Example title">
-                                    <form>
-                                        <FieldGroup 
-                                            id="email"
-                                            type="email"
-                                            label="Endereço de E-mail"
-                                            placeholder="exemplo@exemplo.com"    
-                                        />
-                                        <FieldGroup 
-                                            id="name"
-                                            type="text"
-                                            label="Nome do usuário"
-                                            placeholder="Insira o nome"    
-                                        />
-                                        <FieldGroup 
-                                            id="inst"
-                                            type="text"
-                                            label="Instituição"
-                                            placeholder="Insira a instituição"    
-                                        />
-                                        <FieldGroup 
-                                            id="dep"
-                                            type="text"
-                                            label="Departamento"
-                                            placeholder="Insira o departamento"    
-                                        />
-                                        <FieldGroup 
-                                            id="tel"
-                                            type="tel"
-                                            label="Telefone para contato"
-                                            placeholder="ex. 55(00)90000-0000"    
-                                        />
-                                        <FormGroup controlId="finalidade">
-                                            <ControlLabel>Finalidade de Uso</ControlLabel>
-                                            <FormControl componentClass="textarea" placeholder="Área do texto" />
-                                        </FormGroup>
-
-                                    </form>
-                                </MyModal>
-                                <Button id="botao" onClick={() => this.setState({showModal: true})}> Teste </ Button>
+                                <BaseForm title="Dê o seu feedback" buttonText="Feedback" textAreaPlaceholder="Área" textAreaLabel="Comentário" />
                             </td>
                     </tr>
                     </tbody>

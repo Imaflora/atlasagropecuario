@@ -21,7 +21,7 @@ module.exports = {
   module: {
   	loaders: [
   		{
-        test: /\.js$/, exclude: /node_modules/, loaders: ['react-hot', 'babel']
+        test: /\.js$/, exclude: /node_modules/, loaders: ['babel']
       },
       {
         test: /.*\.(gif|png|jpe?g|svg)$/i,
