@@ -14,7 +14,6 @@ class Body extends Component {
 	render() {
 		return (
 			<div>
-				<LocationSelectorContainer />
 				<LayersSelectorContainer />
 				<MapContainer />
 			</div>

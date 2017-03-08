@@ -1,6 +1,7 @@
 import { Button, FormGroup, FormControl, ControlLabel  } from 'react-bootstrap'
 import Collapse from '../components/Collapse'
-import MyModal from '../components/MyModal'
+import BaseForm from '../components/BaseForm'
+
 
 function FieldGroup({ id, label, props }) {
           return (
@@ -86,10 +87,7 @@ export class Footer extends React.Component {
                             <td className="align-left">IMAFLORA</td>
                             <td className="align-center">Atlas: a geografia da agropecuária brasileira</td>
                             <td className="align-right footer-right">
-                                <MyModal show={this.state.showModal} onHide={() => this.setState({showModal: false})} title="Fale conosco">
-                                    {formFeedback}
-                                </MyModal>
-                                <Button id="botao" onClick={() => this.setState({showModal: true})}> Teste </ Button>
+                                <BaseForm title="Dê o seu feedback" buttonText="Feedback" textAreaPlaceholder="Área" textAreaLabel="Comentário" />
                             </td>
                     </tr>
                     </tbody>

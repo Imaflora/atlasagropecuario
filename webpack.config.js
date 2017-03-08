@@ -21,7 +21,7 @@ module.exports = {
   module: {
   	loaders: [
   		{
-        test: /\.js$/, exclude: /node_modules/, loaders: ['react-hot', 'babel']
+        test: /\.js$/, exclude: /node_modules/, loaders: ['babel']
       },
       {
         test: /.*\.(gif|png|jpe?g|svg)$/i,
@@ -64,5 +64,8 @@ module.exports = {
 if (process.env.NODE_ENV !== 'production') {
   module.exports.plugins.push(new webpack.HotModuleReplacementPlugin());
   var a = ['webpack-dev-server/client?http://localhost:8080','webpack/hot/only-dev-server'];
+  if (process.env.NODE_ENV === 'network') {
+    a = ['webpack-dev-server/client?http://golfinho:8080','webpack/hot/only-dev-server'];
+  }
   module.exports.entry = a.concat(module.exports.entry);
 }
