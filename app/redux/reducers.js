@@ -53,7 +53,6 @@ class ActionHandler {
 
     getNewState(state, action) {
       var modifyStateObject = this.handlers[action.type](action);
-      console.log(modifyStateObject);
       return this.modifyState(state, modifyStateObject);
     }
   }

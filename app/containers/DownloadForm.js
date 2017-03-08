@@ -11,7 +11,14 @@ class DownloadForm extends Component {
 
     render() {
         return (
-            <BaseForm handleHide={this.props.hideDownload} show={this.props.show} title="Formulário de download" buttonText="Download" textAreaPlaceholder="Finalidade de uso da camada..." textAreaLabel="Finalidade">
+            <BaseForm 
+                handleSubmit={this.props.submitDownload} 
+                handleHide={this.props.hideDownload} 
+                show={this.props.show} 
+                title="Formulário de download" 
+                buttonText="Download" 
+                textAreaPlaceholder="Finalidade de uso da camada..." 
+                textAreaLabel="Finalidade">
             </BaseForm>
         );
     }
@@ -32,7 +39,10 @@ const mapDispatchToProps = (dispatch, ownProps) => {
     return {
         hideDownload: () => {
             dispatch(actions.hideDownload())
-        }
+        },
+        submitDownload: (data) => {
+            dispatch(actions.submitDownload(data, ownProps.layer))
+        },
     }
 }
 

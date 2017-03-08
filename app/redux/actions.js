@@ -47,8 +47,17 @@ export function openDownloadForm(layer) {
 }
 
 export function hideDownload() {
-	console.log('hide');
 	return {
 		type: 'HIDE_DOWNLOAD'
 	}
 }
+
+export function submitDownload(data, layer) {
+	console.log('handleSubmit');
+	console.log(data);
+	console.log(layer);
+	return {
+		type: 'HIDE_DOWNLOAD'
+	}
+}
+

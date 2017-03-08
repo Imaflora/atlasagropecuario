@@ -13,7 +13,8 @@ export default class MyModal extends Component {
             {this.props.children}
             </Modal.Body>
             <Modal.Footer>
-            <Button onClick={this.props.onHide}>Close</Button>
+            <Button type="submit" onClick={this.props.handleSubmit}>OK</Button>
+            <Button onClick={this.props.onHide}>Fechar</Button>
             </Modal.Footer>
         </Modal>
         );
