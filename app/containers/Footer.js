@@ -28,7 +28,9 @@ export class Footer extends React.Component {
                             <td className="align-left">IMAFLORA</td>
                             <td className="align-center">Atlas: a geografia da agropecuária brasileira</td>
                             <td className="align-right footer-right">
-                                <BaseForm title="Dê o seu feedback" buttonText="Feedback" textAreaPlaceholder="Área" textAreaLabel="Comentário" />
+                                <BaseForm title="Dê o seu feedback" buttonText="Feedback" textAreaPlaceholder="Área" textAreaLabel="Comentário">
+
+                                </BaseForm>
                             </td>
                     </tr>
                     </tbody>
