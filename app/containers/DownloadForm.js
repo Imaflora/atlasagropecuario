@@ -20,7 +20,7 @@ class DownloadForm extends Component {
 }
 
 DownloadForm.propTypes = {
-  topics: PropTypes.objectOf(PropTypes.string).isRequired,
+  
 };
 
 const mapStateToProps = (state, ownProps) => {
