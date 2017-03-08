@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import LayerControl from './LayerControl'
+import LayerControlContainer from '../containers/LayerControlContainer'
 import DownloadForm from '../containers/DownloadForm'
 
 class LayersSelector extends Component {
     render() {
         return (
-            <div style={{position: "fixed", zIndex: 10000, backgroundColor: "#000", color: "#FFF"}}>
-                <LayerControl />
+            <div style={{position: "fixed", zIndex: 10000, backgroundColor: "#FFF"}}>
+                <LayerControlContainer />
                 <DownloadForm />
             </div>
         );

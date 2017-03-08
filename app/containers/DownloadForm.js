@@ -2,18 +2,16 @@ import React, { Component, PropTypes } from 'react'
 import BaseForm from '../components/BaseForm'
 import FieldGroup from '../components/FieldGroup'
 import { connect } from 'react-redux'
+import * as actions from '../redux/actions'
 
 class DownloadForm extends Component {
     constructor(props) {
         super(props);
-        this.state = {
-            show: false
-        }
     }
 
     render() {
         return (
-            <BaseForm show={this.state.show} title="Formulário de download" buttonText="Download" textAreaPlaceholder="Finalidade de uso da camada..." textAreaLabel="Finalidade">
+            <BaseForm handleHide={this.props.hideDownload} show={this.props.show} title="Formulário de download" buttonText="Download" textAreaPlaceholder="Finalidade de uso da camada..." textAreaLabel="Finalidade">
             </BaseForm>
         );
     }
@@ -25,10 +23,19 @@ DownloadForm.propTypes = {
 
 const mapStateToProps = (state, ownProps) => {
     return {
-        layer: state.metadata.layer
+        layer: state.metadata.layer,
+        show: state.download.show,
     }
 }
 
-export default connect(mapStateToProps)(DownloadForm)
+const mapDispatchToProps = (dispatch, ownProps) => {
+    return {
+        hideDownload: () => {
+            dispatch(actions.hideDownload())
+        }
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(DownloadForm)
 
 

@@ -1,5 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 
+
+
 class LayerControl extends Component {
     constructor(props) {
         super(props);
@@ -37,10 +39,22 @@ class LayerControl extends Component {
     render() {
         return (
             <div>
-                test
+                <span>{this.props.name}</span>
+                <img
+                    src={require('../img/download.png')}
+                    alt="Download" onClick={this.props.handleClick}
+                    style={{
+                        height: 20,
+                        width: 20,
+                    }}
+                />
             </div>
         );
     }
 }
+
+LayerControl.propTypes = {
+    handleClick: PropTypes.func,
+};
 
 export default LayerControl;

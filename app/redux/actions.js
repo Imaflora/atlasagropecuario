@@ -38,3 +38,17 @@ export function fetchQuery() {
 		});
 	}
 }
+
+export function openDownloadForm(layer) {
+	return {
+		type: 'DOWNLOAD_LAYER',
+		layer: layer
+	}
+}
+
+export function hideDownload() {
+	console.log('hide');
+	return {
+		type: 'HIDE_DOWNLOAD'
+	}
+}

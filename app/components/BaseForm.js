@@ -21,7 +21,6 @@ export default class BaseForm extends Component {
     }
 
     handleChange(e) {
-        console.log("handling");
         var state = {};
         state[e.target.id] = e.target.value;
         this.setState(state);
@@ -34,9 +33,13 @@ export default class BaseForm extends Component {
             : <Button id="botao" onClick={() => this.setState({ showModal: true })}> {this.props.buttonText} </ Button>;
 
 
+        var handleHide = this.props.handleHide 
+            ? this.props.handleHide 
+            : handleHide = () => this.setState({ showModal: false });
+
         return (
             <div>
-                <MyModal show={this.props.show ? this.props.show : this.state.showModal} onHide={() => this.setState({ showModal: false })} title={this.props.title}>
+                <MyModal show={this.props.show ? this.props.show : this.state.showModal} onHide={handleHide} title={this.props.title}>
                     <form>
                         <FieldGroup
                             id="email"
