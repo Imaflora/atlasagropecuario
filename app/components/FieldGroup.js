@@ -8,33 +8,40 @@ export default class FieldGroup extends Component {
             value: ''
         }
         this.onChange = this.onChange.bind(this);
+        this.getValidationState = this.getValidationState.bind(this);
+        this.getResult = this.getResult.bind(this);
     }
 
     onChange(e) {
-        console.log(e.target.value);
         this.setState({ value: e.target.value });
     }
 
-    render() {
+    getValidationState(validationPattern) {
         var validation;
+        var value = this.props.value ? this.props.value : this.state.value;
         if (this.props.required) {
             validation = "success"
-                    if (this.state.value.length === 0)
+                    if (value.length === 0)
                         validation = "error"
-                    else if (this.props.validationPattern)
-                        if (!this.state.value.match(new RegExp(this.props.validationPattern)))
+                    else if (typeof(validationPattern) !== 'undefined')
+                        if (!value.match(new RegExp(validationPattern)))
                             validation = "error"
         }
+        return validation;
+    }
 
-        
-
+    getResult({id, label, children, required, validationPattern, handleChange, value, ...props}) {
         var label = this.props.label;
-        if (this.props.required) label += "*";
+        var labelControl = label ? <ReactBootstrap.ControlLabel>{label}</ReactBootstrap.ControlLabel> : null;
         return (
-            <ReactBootstrap.FormGroup controlId={this.props.id} validationState={validation}>
-                <ReactBootstrap.ControlLabel>{label}</ReactBootstrap.ControlLabel>
-                <ReactBootstrap.FormControl {...this.props} onChange={this.onChange} />
+            <ReactBootstrap.FormGroup controlId={id} validationState={this.getValidationState(validationPattern)}>
+                {labelControl}
+                <ReactBootstrap.FormControl {...props} onChange={handleChange ? handleChange : this.onChange} value={value}>{children}</ReactBootstrap.FormControl>
             </ReactBootstrap.FormGroup>
         );
+    }
+
+    render() {
+        return this.getResult({...this.props})
     }
 }

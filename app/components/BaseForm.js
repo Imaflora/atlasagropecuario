@@ -1,21 +1,42 @@
 import { Button, FormGroup, ControlLabel, FormControl } from 'react-bootstrap'
-import React, { Component } from 'react'
+import React, { Component, PropTypes } from 'react'
 import MyModal from './MyModal'
 import FieldGroup from './FieldGroup'
 
 
 
 export default class BaseForm extends Component {
-     constructor(props) {
+    constructor(props) {
         super(props);
-        this.state = {showModal: false};
+        this.state = {
+            showModal: false,
+            email: '',
+            name: '',
+            institution: '',
+            dept: '',
+            tel: '',
+            textfield: '',
+        };
+        this.handleChange = this.handleChange.bind(this);
+    }
+
+    handleChange(e) {
+        console.log("handling");
+        var state = {};
+        state[e.target.id] = e.target.value;
+        this.setState(state);
     }
 
 
     render() {
+        var btn = this.props.show !== undefined
+            ? null
+            : <Button id="botao" onClick={() => this.setState({ showModal: true })}> {this.props.buttonText} </ Button>;
+
+
         return (
             <div>
-                <MyModal show={this.state.showModal} onHide={() => this.setState({ showModal: false })} title={this.props.title}>
+                <MyModal show={this.props.show ? this.props.show : this.state.showModal} onHide={() => this.setState({ showModal: false })} title={this.props.title}>
                     <form>
                         <FieldGroup
                             id="email"
@@ -24,23 +45,25 @@ export default class BaseForm extends Component {
                             placeholder="exemplo@exemplo.com"
                             required={true}
                             validationPattern=".+\@.+\..+"
+                            value={this.state.email}
+                            handleChange={this.handleChange}
                         />
                         <FieldGroup
                             id="name"
                             type="text"
-                            label="Nome do usuário"
+                            label="Nome"
                             placeholder="Insira o nome"
                             required
                         />
                         <FieldGroup
-                            id="inst"
+                            id="institution"
                             type="text"
                             label="Instituição"
                             placeholder="Insira a instituição"
                             required
                         />
                         <FieldGroup
-                            id="dep"
+                            id="dept"
                             type="text"
                             label="Departamento"
                             placeholder="Insira o departamento"
@@ -59,11 +82,18 @@ export default class BaseForm extends Component {
                             placeholder={this.props.textAreaPlaceholder}
                             required
                         />
-
                     </form>
                 </MyModal>
-                <Button id="botao" onClick={() => this.setState({ showModal: true })}> {this.props.buttonText} </ Button>
+                {btn}
             </div>
         );
     }
 }
+
+BaseForm.propTypes = {
+    title: PropTypes.string.isRequired,
+    textAreaLabel: PropTypes.string.isRequired,
+    textAreaPlaceholder: PropTypes.string.isRequired,
+    buttonText: PropTypes.string,
+    show: PropTypes.bool,
+};

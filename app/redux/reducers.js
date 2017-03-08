@@ -53,4 +53,13 @@ export var store = createStoreWithMiddleware(reducers,
   isError: false,
   transition: true,
   loading: false,
+  topics: {
+    comentario: "Comentário",
+    sugestao: "Sugestão",
+    duvida: "Dúvida",
+    outro: "Outro"
+  },
+  metadata: {
+    layer: ''
+  }
 });

@@ -63,6 +63,8 @@ module.exports = {
     new webpack.ProvidePlugin({
         "axios": "axios"}),
     new webpack.ProvidePlugin({
+        "autobind": "autobind-decorator"}), 
+    new webpack.ProvidePlugin({
         "classNames": "classnames"}),
     new ExtractTextPlugin("[name].css"),
     new webpack.DefinePlugin({
@@ -80,7 +82,7 @@ module.exports = {
 }
 
 if (process.env.NODE_ENV !== 'production') {
-  module.exports.plugins.push(new webpack.HotModuleReplacementPlugin());
+  
   var a = ['webpack-dev-server/client?http://localhost:8080','webpack/hot/only-dev-server'];
   if (process.env.NODE_ENV === 'network') {
     a = ['webpack-dev-server/client?http://' + getFirstIpBeggining10() + ':8080','webpack/hot/only-dev-server'];
