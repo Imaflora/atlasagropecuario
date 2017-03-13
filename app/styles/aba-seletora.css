@@ -1,0 +1,149 @@
+.ABA_SELETORA {
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  width: 1920px;
+  height: 1080px;
+  z-index: 50;
+}
+.Shape_2_copy_3 {
+  background-color: rgb(0, 167, 157);
+  position: absolute;
+  left: 307px;
+  top: 387px;
+  width: 178px;
+  height: 3px;
+  z-index: 49;
+}
+.Shape_2_copy_2 {
+  background-color: rgb(44, 166, 60);
+  position: absolute;
+  left: 307px;
+  top: 354px;
+  width: 178px;
+  height: 3px;
+  z-index: 48;
+}
+.Shape_2_copy {
+  background-color: rgb(240, 162, 12);
+  position: absolute;
+  left: 307px;
+  top: 322px;
+  width: 178px;
+  height: 3px;
+  z-index: 47;
+}
+.Shape_2 {
+  background-color: rgb(226, 78, 37);
+  position: absolute;
+  left: 307px;
+  top: 289px;
+  width: 178px;
+  height: 3px;
+  z-index: 46;
+}
+.ICONES_DOWNLOAD___INFO {
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  width: 1920px;
+  height: 1080px;
+  z-index: 44;
+}
+.Áreas_Militares_Terras_Indígenas_UCs_Proteção_I {
+  font-size: 12px;
+  font-family: "Calibri";
+  color: rgb(109, 110, 113);
+  line-height: 2.167;
+  position: absolute;
+  left: 322px;
+  top: 425.098px;
+  z-index: 38;
+}
+.IMÓVEIS_RURAIS_Terras_Públicas_e_Privadas_Terra {
+  font-size: 14px;
+  font-family: "Calibri";
+  color: rgb(109, 110, 113);
+  font-weight: bold;
+  text-transform: uppercase;
+  line-height: 2.286;
+  position: absolute;
+  left: 305px;
+  top: 295.448px;
+  z-index: 37;
+}
+.MALHA_FUNDIÁRIA {
+  font-size: 16px;
+  font-family: "Calibri";
+  color: rgb(255, 255, 255);
+  font-weight: bold;
+  line-height: 1.063;
+  position: absolute;
+  left: 282px;
+  top: 222.496px;
+  z-index: 36;
+}
+.Rectangle_2_copy_3 {
+  border-width: 1px;
+  border-color: rgb(194, 194, 194);
+  border-style: solid;
+  position: absolute;
+  left: 283px;
+  top: 367px;
+  width: 11px;
+  height: 11px;
+  z-index: 35;
+}
+.Rectangle_2_copy_2 {
+  border-width: 1px;
+  border-color: rgb(194, 194, 194);
+  border-style: solid;
+  position: absolute;
+  left: 283px;
+  top: 335px;
+  width: 11px;
+  height: 11px;
+  z-index: 34;
+}
+.Rectangle_2_copy {
+  border-width: 1px;
+  border-color: rgb(194, 194, 194);
+  border-style: solid;
+  position: absolute;
+  left: 283px;
+  top: 303px;
+  width: 11px;
+  height: 11px;
+  z-index: 33;
+}
+.Rectangle_2 {
+  border-width: 1px;
+  border-color: rgb(194, 194, 194);
+  border-style: solid;
+  position: absolute;
+  left: 283px;
+  top: 271px;
+  width: 11px;
+  height: 11px;
+  z-index: 32;
+}
+.Rectangle_3 {
+  background-color: rgb(0, 167, 157);
+  position: absolute;
+  left: 258px;
+  top: 207px;
+  width: 286px;
+  height: 39px;
+  z-index: 30;
+}
+.Rounded_Rectangle_1 {
+  border-radius: 5px;
+  background-color: rgb(255, 255, 255);
+  box-shadow: 0px 3px 2.85px 0.15px rgba(0, 0, 0, 0.3);
+  position: absolute;
+  left: 248px;
+  top: 195px;
+  width: 305px;
+  height: 533px;
+  z-index: 29;
+}
