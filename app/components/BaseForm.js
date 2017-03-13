@@ -56,9 +56,9 @@ export default class BaseForm extends Component {
             <div>
                 <MyModal 
                 handleSubmit={() => {
+                    this.props.handleSubmit(this.state.data);
                     this.setState({data: Object.assign({}, cleanData)}); 
-                    this.props.handleSubmit(this.state.data)}
-                } 
+                }} 
                 show={this.props.show ? this.props.show : this.state.showModal} 
                 onHide={handleHide} 
                 title={this.props.title}>

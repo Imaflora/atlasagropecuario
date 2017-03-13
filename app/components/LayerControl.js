@@ -1,5 +1,5 @@
 import React, { Component, PropTypes } from 'react';
-
+import { Radio } from 'react-bootstrap'
 
 
 class LayerControl extends Component {
@@ -8,47 +8,45 @@ class LayerControl extends Component {
 
     }
 
-    componentWillMount() {
-
-    }
-
-    componentDidMount() {
-
-    }
-
-    componentWillReceiveProps(nextProps) {
-
-    }
-
-    shouldComponentUpdate(nextProps, nextState) {
-
-    }
-
-    componentWillUpdate(nextProps, nextState) {
-
-    }
-
-    componentDidUpdate(prevProps, prevState) {
-
-    }
-
-    componentWillUnmount() {
-
-    }
 
     render() {
+        var selector = (
+            <Radio name="layers" value='asas'/>
+        );
+
         return (
-            <div>
-                <span>{this.props.name}</span>
-                <img
-                    src={require('../img/download.png')}
-                    alt="Download" onClick={this.props.handleClick}
-                    style={{
-                        height: 20,
-                        width: 20,
-                    }}
-                />
-            </div>
+            <tr >
+                <td>
+                    {selector}
+                </td>
+                <td style={{ width: "100%" }}>
+                    <span >{this.props.name}</span>
+                </td>
+                <td>
+                    <img
+                        src={require('../img/metadata.png')}
+                        alt="Metadata" onClick={this.props.handleMetadata}
+                        style={{
+                            height: 20,
+                            width: 20,
+                            textAlign: "right",
+                            marginLeft: 4,
+                        }}
+                    />
+                </td>
+                <td>
+                    <img
+                        src={require('../img/download.png')}
+                        alt="Download" onClick={this.props.handleClick}
+                        style={{
+                            height: 20,
+                            width: 20,
+                            textAlign: "right",
+                            marginLeft: 4,
+                        }}
+                    />
+                </td>
+            </tr>
         );
     }
 }

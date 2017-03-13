@@ -52,6 +52,14 @@ module.exports = {
         loader: ExtractTextPlugin.extract("style-loader", "css-loader"),
         include: path.join(__dirname, 'app/styles')
       },
+      {
+        test: /\.less$/,
+        loader: ExtractTextPlugin.extract('style-loader', 'css-loader!less-loader')
+      },
+      { 
+        test: /\.[ot]tf$/, 
+        loader: 'file??name=fonts/[name].[ext]' 
+      },
   	]
   },
   plugins: [

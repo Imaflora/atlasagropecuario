@@ -1,0 +1,146 @@
+@btn-height: 34px;
+
+html {
+	height: 100%;
+}
+
+body {
+	height: 100%;
+}
+
+div[data-reactroot] {
+	height: 100%;
+}
+
+th {
+	text-align: center;
+}
+
+.modal-dialog {
+	width: 150px;
+	padding-left: 30px;
+}
+
+.body {
+	margin-bottom: 50px;
+	padding: 0;
+}
+
+.body-contents {
+	height: 100%;
+	margin-top: -18px;
+	padding-bottom: 18px;
+}
+
+.footer {
+	background-color: black;
+	position: fixed;
+	bottom: 0;
+	width: 100%;
+	z-index: 1000;
+	text-align: center;
+}
+
+.footer-copyright {
+	table-layout: fixed;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    list-style-type: none;
+    color: #636363;
+	font-family: "Open Sans", Times, serif;
+	font-size: 12px;
+	width: 100%;
+ }
+
+ .footer-copyright>tbody>tr>td {
+ 	padding-left: 20px;
+	padding-right: 20px;
+ }
+
+ .footer-right {
+ 	text-align: right;
+ }
+
+.modal-lg {
+	width: 50%;
+	padding-left: 0px !important;
+}
+
+.outer {
+	overflow: hidden;
+}
+
+.table {
+	text-align: center;
+}
+
+.table-striped {
+	text-align: center;
+}
+
+.map {
+	height: calc(~"100% - " @btn-height);
+	width: 100%;
+	position: fixed;
+	background-color: #CCC;
+}
+
+.align-center {
+	text-align: center;
+}
+
+.align-left {
+	text-align: left;
+}
+
+.align-right {
+	text-align: right;
+}
+
+#app {
+	height: 100%;
+}
+
+#location-selector {
+}
+
+
+@media screen and (max-width: 767px) {
+	.navbar-nav {
+		display: flex;
+		margin-bottom: 25px;
+	}
+	body {
+		margin-bottom: 50px !important;
+	}
+}
+
+.layerControl {
+	margin: 10px;
+	width: 100%;
+}
+
+.malhaFundiaria {
+	font-size: 16px;
+    font-family: Calibri;
+    color: #fff;
+    font-weight: 700;
+    line-height: 1.063;
+    top: 18px;
+    position: relative;
+    text-transform: uppercase;
+	margin-left: 25px;
+}
+
+#malhaRectangle {
+	background-color: rgb(0, 167, 157);
+	margin: 10px;
+	height: 39px;
+}
+
+.collapse-icon {
+	right: 24px;
+	top: 27px;
+    position: absolute;
+    
+}

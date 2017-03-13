@@ -52,12 +52,22 @@ export function hideDownload() {
 	}
 }
 
-export function submitDownload(data, layer) {
-	console.log('handleSubmit');
-	console.log(data);
-	console.log(layer);
+
+export function openMetadata(layer) {
+	return {
+		type: 'OPEN_METADATA',
+		layer: layer
+	}
+}
+
+export function hideMetadata() {
+	return {
+		type: 'HIDE_METADATA'
+	}
+}
+
+export function submitDownload(data) {
 	return {
 		type: 'HIDE_DOWNLOAD'
 	}
 }
-

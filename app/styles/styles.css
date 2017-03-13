@@ -112,3 +112,8 @@ th {
 		margin-bottom: 50px !important;
 	}
 }
+
+.layerControl {
+	margin: 10px;
+	width: 100%;
+}

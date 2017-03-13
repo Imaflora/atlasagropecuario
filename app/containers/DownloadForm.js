@@ -15,7 +15,7 @@ class DownloadForm extends Component {
                 handleSubmit={this.props.submitDownload} 
                 handleHide={this.props.hideDownload} 
                 show={this.props.show} 
-                title="Formulário de download" 
+                title={this.props.title} 
                 buttonText="Download" 
                 textAreaPlaceholder="Finalidade de uso da camada..." 
                 textAreaLabel="Finalidade">
@@ -24,14 +24,12 @@ class DownloadForm extends Component {
     }
 }
 
-DownloadForm.propTypes = {
-  
-};
 
 const mapStateToProps = (state, ownProps) => {
     return {
-        layer: state.metadata.layer,
+        layer: state.download.layer,
         show: state.download.show,
+        title: state.download.layer && state.layers[state.download.layer].name
     }
 }
 
@@ -41,7 +39,7 @@ const mapDispatchToProps = (dispatch, ownProps) => {
             dispatch(actions.hideDownload())
         },
         submitDownload: (data) => {
-            dispatch(actions.submitDownload(data, ownProps.layer))
+            dispatch(actions.submitDownload(data))
         },
     }
 }

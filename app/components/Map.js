@@ -24,7 +24,7 @@ export default class Map extends React.Component {
               }),
               new ol.layer.Tile({
                 source: new ol.source.TileWMS({
-                  url: 'http://geonode/geoserver/geonode/wms?service=WMS',
+                  url: 'http://geonode:8000/geoserver?service=WMS',
                   params: {'LAYERS': 'geonode:land_ownership255', 'TILED': true},
                   serverType: 'geoserver'
                 })

@@ -11,7 +11,10 @@ const mapStateToProps = (state, ownProps) => {
 const mapDispatchToProps = (dispatch, ownProps) => {
     return {
         handleClick: () => {
-            dispatch(actions.openDownloadForm('land_ownership'))
+            dispatch(actions.openDownloadForm(ownProps.value))
+        },
+        handleMetadata: () => {
+            dispatch(actions.openMetadata(ownProps.value))
         }
     }
 }

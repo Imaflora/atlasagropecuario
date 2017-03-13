@@ -23,11 +23,11 @@ class ActionHandler {
         }),
 
       'TRANS_END': () =>
-          ({
-            transition: false,
-            data: state.tempdata ? state.tempdata : state.data,
-            isError: (state.tempdata ? state.tempdata : state.data) && typeof (state.tempdata ? state.tempdata : state.data) === 'string',
-          }),
+        ({
+          transition: false,
+          data: state.tempdata ? state.tempdata : state.data,
+          isError: (state.tempdata ? state.tempdata : state.data) && typeof (state.tempdata ? state.tempdata : state.data) === 'string',
+        }),
 
       'DOWNLOAD_LAYER': ({ layer }) =>
         ({
@@ -40,24 +40,38 @@ class ActionHandler {
       'HIDE_DOWNLOAD': () =>
         ({
           download: { show: false }
-        })
+        }),
+
+      'OPEN_METADATA': ({ layer }) =>
+        ({
+          metadata: {
+            layer: layer,
+            show: true,
+          }
+        }),
+
+      'HIDE_METADATA': () =>
+        ({
+          metadata: { show: false }
+        }),
     };
   }
 
-    modifyState(state, modifyState) {
-      return Object.assign({},
-        state,
-        modifyState
-      )
-    }
-
-    getNewState(state, action) {
-      var modifyStateObject = this.handlers[action.type](action);
-      return this.modifyState(state, modifyStateObject);
-    }
+  modifyState(state, modifyState) {
+    console.log(state.download.layer);
+    return Object.assign({},
+      state,
+      modifyState
+    )
   }
 
-  
+  getNewState(state, action) {
+    var modifyStateObject = this.handlers[action.type](action);
+    return this.modifyState(state, modifyStateObject);
+  }
+}
+
+
 const actionHandler = new ActionHandler();
 
 // Reducer with handlers mapping
@@ -89,9 +103,23 @@ export var store = createStoreWithMiddleware(reducers,
     },
     metadata: {
       layer: '',
+      show: false,
     },
     download: {
       layer: '',
       show: false,
     },
+    layers: {
+      land_ownership255: {
+        name: 'Malha Fundiária',
+        metadata: 'Essa é a malha fundiária',
+      },
+      land_ownership_private: {
+        name: 'Malha Pública e Privada',
+        metadata: 'Essa é a malha pública e privada',
+      }
+    },
+    layerSelector: {
+      show: true
+    }
   });
