@@ -7,7 +7,25 @@ var HtmlWebpackPluginConfig = new HtmlWebpackPlugin({
 	template: __dirname + '/app/index.html',
 	filename: 'index.html',
 	inject: 'body'
-})
+});
+
+var os = require('os')
+
+var getFirstIpBeggining10 = function() {
+  var ifaces = os.networkInterfaces();
+  var result;
+  Object.keys(ifaces).forEach((ifaceName) => {
+    var iface = ifaces[ifaceName];
+    iface.forEach((i) => {
+      if (i.address.startsWith('10.')) {
+        result = i.address;
+        return
+      }
+    });
+    if (result) return
+  });
+  return result
+}
 
 module.exports = {  
 	devtool: process.env.NODE_ENV === 'production' ? 'cheap-module-source-map' : 'eval',
@@ -45,6 +63,8 @@ module.exports = {
     new webpack.ProvidePlugin({
         "axios": "axios"}),
     new webpack.ProvidePlugin({
+        "autobind": "autobind-decorator"}), 
+    new webpack.ProvidePlugin({
         "classNames": "classnames"}),
     new ExtractTextPlugin("[name].css"),
       new ExtractTextPlugin("header.css"),
@@ -63,10 +83,10 @@ module.exports = {
 }
 
 if (process.env.NODE_ENV !== 'production') {
-  module.exports.plugins.push(new webpack.HotModuleReplacementPlugin());
+  
   var a = ['webpack-dev-server/client?http://localhost:8080','webpack/hot/only-dev-server'];
   if (process.env.NODE_ENV === 'network') {
-    a = ['webpack-dev-server/client?http://golfinho:8080','webpack/hot/only-dev-server'];
+    a = ['webpack-dev-server/client?http://' + getFirstIpBeggining10() + ':8080','webpack/hot/only-dev-server'];
   }
   module.exports.entry = a.concat(module.exports.entry);
 }
