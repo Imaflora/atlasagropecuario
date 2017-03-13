@@ -51,3 +51,13 @@
   height: 34px;
   z-index: 53;
 }
+
+.FOOTER_ABERTO {
+  background-image: url("FOOTER_ABERTO.png");
+  position: absolute;
+  left: 0px;
+  top: 589px;
+  width: 1920px;
+  height: 491px;
+  z-index: 61;
+}
