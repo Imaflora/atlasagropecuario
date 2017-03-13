@@ -1,0 +1,46 @@
+.DOWNLOAD {
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  width: 1920px;
+  height: 1080px;
+  z-index: 16;
+}
+.DWLD {
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  width: 1920px;
+  height: 1080px;
+  z-index: 13;
+}
+.DOWNLOAD {
+  font-size: 14px;
+  font-family: "Calibri";
+  color: rgb(254, 254, 254);
+  line-height: 1.214;
+  position: absolute;
+  left: 792px;
+  top: 648.002px;
+  z-index: 12;
+}
+.Shape_1_copy_6 {
+  background-color: rgb(0, 167, 157);
+  position: absolute;
+  left: 779px;
+  top: 640px;
+  width: 98px;
+  height: 34px;
+  z-index: 11;
+}
+.Rounded_Rectangle_1_copy {
+  border-radius: 5px;
+  background-color: rgb(255, 255, 255);
+  box-shadow: 0px 5px 5.58px 0.42px rgba(0, 0, 0, 0.3);
+  position: absolute;
+  left: 682px;
+  top: 348px;
+  width: 459px;
+  height: 380px;
+  z-index: 9;
+}

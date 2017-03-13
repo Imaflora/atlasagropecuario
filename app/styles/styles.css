@@ -30,18 +30,41 @@ th {
 	padding-bottom: 18px;
 }
 
-.footer {
-	background-color: black;
-	position: fixed;
-	bottom: 0;
-	width: 100%;
-	z-index: 1000;
-	text-align: center;
+/*------------------------------------------------------------*/
+/*------------------------- HEADER ---------------------------*/
+
+.HEADER_CINZA {
+    background-color: #525656;
+    width: 100%;
+    /*height: 115px;*/
+    height: 79px;
+    z-index: 103;
+    position: fixed;
 }
 
-.footer-copyright {
-	table-layout: fixed;
-    margin-top: 10px;
+.HEADER_BRANCO {
+    position: inherit;
+    background-color: #fff;
+    /*top: 115px;*/
+    top: 79px;
+    width: 100%;
+    /*height: 36px;*/
+    z-index: 102;
+}
+
+img#atlas_logo {
+    position: fixed;
+    top: 10px;
+    /*top: 36px;*/
+    left: 20%;
+    z-index: 990;
+}
+
+/*------------------------------------------------------------*/
+/*------------------------- FOOTER ---------------------------*/
+
+.footer {
+	margin-top: 10px;
     margin-bottom: 10px;
     list-style-type: none;
     color: #636363;
@@ -49,6 +72,24 @@ th {
 	font-size: 12px;
 	width: 100%;
  }
+
+.footer-close {
+	background-color: rgb(255,255,255);
+	position: fixed;
+	bottom: 0;
+	width: 100%;
+	z-index: 1000;
+	text-align: center;
+}
+
+.footer-open {
+	background-color: none;
+	position: fixed;
+	bottom: 0;
+	width: 100%;
+	z-index: 1000;
+	text-align: center;
+}
 
  .footer-copyright>tbody>tr>td {
  	padding-left: 20px;
@@ -58,6 +99,89 @@ th {
  .footer-right {
  	text-align: right;
  }
+
+.footer-button {
+    position: relative;
+}
+
+.btn {
+    border-radius: 0px !important;
+    height: 34px;
+}
+
+.btn-default {
+    color: rgb(255,255,255);
+    background-color: rgb(0, 167, 157);
+    border-color: rgb(0, 167, 157);
+}
+
+.btn-open {
+    color: rgb(255,255,255);
+    background-color: rgb(0, 167, 157);
+    border-color: rgb(0, 167, 157);
+}
+
+.btn-open:focus {
+    color: rgb(255,255,255);
+    background-color: rgb(0, 167, 157);
+    border-color: rgb(0, 167, 157);
+}
+
+.btn-close {
+    color: rgb(255,255,255);
+    background-color: rgb(178,178,177);
+    border-color: rgb(178,178,177);
+    margin-bottom: 35px;
+}
+
+.btn-close:focus {
+    color: rgb(255,255,255);
+    background-color: rgb(178,178,177);
+    border-color: rgb(178,178,177);
+}
+
+.btn-default:hover {
+    color: rgb(255,255,255);
+    background-color: rgb(88, 88, 87);
+    border-color: rgb(88, 88, 87);
+}
+
+img#footer_arrow {
+    position: absolute;
+    bottom: 40px;
+}
+
+.img-open {
+    padding-left: 45px;
+}
+
+.img-close {
+    padding-left: 53px;
+    bottom: 9px!important;
+}
+
+.content {
+    padding-left: 15%;
+    padding-right: 15%;
+}
+
+.col-xs-12 {
+    margin-bottom: 20px;
+    display: block;
+}
+
+#esalq_logo {
+    margin-left: 10px;
+    margin-right: 50px;
+}
+
+.description p {
+    text-align: justify;
+}
+
+
+
+/*------------------------------------------------------------*/
 
 .modal-lg {
 	width: 50%;
@@ -77,10 +201,14 @@ th {
 }
 
 .map {
-	height: calc(100% - 34px);
-	width: 100%;
-	position: fixed;
-	background-color: #CCC;
+    width: 100%;
+    position: fixed;
+    background-color: #ccc;
+    /*top: 152px;*/
+    top: 116px;
+    /*height: calc(100% - 186px);*/
+    height: calc(100% - 116px);
+    
 }
 
 .align-center {
@@ -112,8 +240,11 @@ th {
 		margin-bottom: 50px !important;
 	}
 }
+<<<<<<< HEAD
 
 .layerControl {
 	margin: 10px;
 	width: 100%;
 }
+=======
+>>>>>>> 122b9c7a68c3de5f040140e69d1c66658b9a814b

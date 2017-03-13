@@ -38,7 +38,7 @@ class FeedbackForm extends Component {
         : null);
 
         return (
-            <BaseForm title="Dê o seu feedback" buttonText="Feedback" textAreaPlaceholder="Área" textAreaLabel="Comentário">
+            <BaseForm title="Dê o seu feedback" buttonText="FEEDBACK" textAreaPlaceholder="Área" textAreaLabel="Comentário">
                 <FieldGroup
                     componentClass="select"
                     type="select"

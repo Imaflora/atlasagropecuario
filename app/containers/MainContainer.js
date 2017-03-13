@@ -12,6 +12,11 @@ export class MainContainer extends React.Component {
 		return (
 			// Main div block with gray background				
 			<div>
+               <div>
+                <img id="atlas_logo" src={require("../img/atlas_logo.png")} alt="Logo do Atlas da Agropecuária Brasielira"/>
+                <div className="HEADER_CINZA"></div>
+                <div className="HEADER_BRANCO"></div>
+               </div>
 			    	<Body />
 			    	<Footer />
 			</div>
