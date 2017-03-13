@@ -112,3 +112,13 @@ th {
 		margin-bottom: 50px !important;
 	}
 }
+
+
+.HEADER_CINZA {
+  background-color: rgb(82,86,86);
+  left: 0px;
+  top: 0px;
+  width: 1920px;
+  height: 115px;
+  z-index: 103;
+}

@@ -12,6 +12,8 @@ export class MainContainer extends React.Component {
 		return (
 			// Main div block with gray background				
 			<div>
+                <div className="HEADER_CINZA"></div>
+                <div></div>
 			    	<Body />
 			    	<Footer />
 			</div>
