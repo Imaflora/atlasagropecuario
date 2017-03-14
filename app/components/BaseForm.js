@@ -39,40 +39,40 @@ export default class BaseForm extends Component {
                 <MyModal show={this.props.show ? this.props.show : this.state.showModal} onHide={() => this.setState({ showModal: false })} title={this.props.title}>
                     <form>
                         <FieldGroup
+                            id="name"
+                            type="text"
+                            label="Nome"
+                            placeholder="Nome"
+                            required
+                        />
+                        <FieldGroup
                             id="email"
                             type="email"
                             label="Endereço de E-mail"
-                            placeholder="exemplo@exemplo.com"
+                            placeholder="E-mail"
                             required={true}
                             validationPattern=".+\@.+\..+"
                             value={this.state.email}
                             handleChange={this.handleChange}
                         />
                         <FieldGroup
-                            id="name"
-                            type="text"
-                            label="Nome"
-                            placeholder="Insira o nome"
-                            required
-                        />
-                        <FieldGroup
                             id="institution"
                             type="text"
                             label="Instituição"
-                            placeholder="Insira a instituição"
+                            placeholder="Instituição"
                             required
                         />
                         <FieldGroup
                             id="dept"
                             type="text"
                             label="Departamento"
-                            placeholder="Insira o departamento"
+                            placeholder="Departamento"
                         />
                         <FieldGroup
                             id="tel"
                             type="tel"
                             label="Telefone para contato"
-                            placeholder="ex. 55(00)90000-0000"
+                            placeholder="Telefone"
                         />
                         {this.props.children}
                         <FieldGroup
@@ -82,6 +82,7 @@ export default class BaseForm extends Component {
                             placeholder={this.props.textAreaPlaceholder}
                             required
                         />
+                        <Button type="submit">Enviar</Button>
                     </form>
                 </MyModal>
                 {btn}
