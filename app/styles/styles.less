@@ -52,12 +52,49 @@ th {
     z-index: 102;
 }
 
-img#atlas_logo {
+#atlas_logo {
     position: fixed;
     top: 10px;
     /*top: 36px;*/
     left: 20%;
-    z-index: 990;
+    z-index: 99999;
+}
+
+#realiz_logo {
+    position: fixed;
+    top: 15px;
+    right: 20%;
+    z-index: 99999;
+}
+
+/*------------------------------------------------------------*/
+/*------------------------- MAP-------------------------------*/
+
+.map {
+    width: 100%;
+    position: fixed;
+    background-color: #ccc;
+    /*top: 152px;*/
+    top: 116px;
+    /*height: calc(100% - 186px);*/
+    height: calc(100% - 116px);
+    
+}
+
+.map button {
+    background-color: rgb(0, 167, 157); 
+}
+
+.map button:hover {
+    background-color: rgb(88, 88, 87); 
+}
+
+.map button:focus {
+    background-color: rgb(0, 167, 157); 
+}
+
+.ol-attribution {
+    margin-bottom: 25px;
 }
 
 /*------------------------------------------------------------*/
@@ -105,6 +142,7 @@ img#atlas_logo {
 }
 
 .btn {
+    font-family: Gotham;
     border-radius: 0px !important;
     height: 34px;
 }
@@ -165,26 +203,68 @@ img#footer_arrow {
     padding-right: 15%;
 }
 
+div#content img {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
 .col-xs-12 {
     margin-bottom: 20px;
     display: block;
 }
 
-#esalq_logo {
-    margin-left: 10px;
-    margin-right: 50px;
+#fapesp_logo {
+    margin-right: 20px;
 }
 
 .description p {
     text-align: justify;
 }
 
+/*------------------------------------------------------------*/
+/*------------------------- FORMS ----------------------------*/
 
+form label{
+    display: none;
+}
+
+input.form-control {
+    width: 320px;
+    height: 30px;
+    border-radius: 0px;
+    background-color: rgb(224,224,224);
+}
+
+select.form-control {
+    width: 125px;
+    height: 30px;
+    border-radius: 0px;
+    background-color: rgb(224,224,224);
+    color: rgb(164,164,164);
+}
+
+#other {
+    color: rgb(164,164,164); 
+}
+
+option {
+    color: rgb(164,164,164);
+}
+
+textarea.form-control {
+    width: 320px;
+    height: 80px;
+    border-radius: 0px;
+    background-color: rgb(224,224,224);
+}
 
 /*------------------------------------------------------------*/
 
 .modal-lg {
-	width: 50%;
+    top: 250px;
+	height: 380px;
+    width: 490px;
+    border-radius: 1px;
 	padding-left: 0px !important;
 }
 
@@ -198,17 +278,6 @@ img#footer_arrow {
 
 .table-striped {
 	text-align: center;
-}
-
-.map {
-    width: 100%;
-    position: fixed;
-    background-color: #ccc;
-    /*top: 152px;*/
-    top: 116px;
-    /*height: calc(100% - 186px);*/
-    height: calc(100% - 116px);
-    
 }
 
 .align-center {
@@ -229,7 +298,6 @@ img#footer_arrow {
 
 #location-selector {
 }
-
 
 @media screen and (max-width: 767px) {
 	.navbar-nav {

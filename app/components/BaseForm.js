@@ -116,7 +116,6 @@ export default class BaseForm extends Component {
                             handleChange={this.handleChange}
                             required
                         />
-                        <Button type="submit">Enviar</Button>
                     </form>
                 </MyModal>
                 {btn}
