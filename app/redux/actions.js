@@ -38,3 +38,36 @@ export function fetchQuery() {
 		});
 	}
 }
+
+export function openDownloadForm(layer) {
+	return {
+		type: 'DOWNLOAD_LAYER',
+		layer: layer
+	}
+}
+
+export function hideDownload() {
+	return {
+		type: 'HIDE_DOWNLOAD'
+	}
+}
+
+
+export function openMetadata(layer) {
+	return {
+		type: 'OPEN_METADATA',
+		layer: layer
+	}
+}
+
+export function hideMetadata() {
+	return {
+		type: 'HIDE_METADATA'
+	}
+}
+
+export function submitDownload(data) {
+	return {
+		type: 'HIDE_DOWNLOAD'
+	}
+}
