@@ -57,7 +57,7 @@ img#atlas_logo {
     top: 10px;
     /*top: 36px;*/
     left: 20%;
-    z-index: 990;
+    z-index: 99999;
 }
 
 /*------------------------------------------------------------*/
@@ -200,6 +200,9 @@ img#footer_arrow {
 	text-align: center;
 }
 
+/*------------------------------------------------------------*/
+/*------------------------- MAP-------------------------------*/
+
 .map {
     width: 100%;
     position: fixed;
@@ -210,6 +213,24 @@ img#footer_arrow {
     height: calc(100% - 116px);
     
 }
+
+.map button {
+    background-color: rgb(0, 167, 157); 
+}
+
+.map button:hover {
+    background-color: rgb(88, 88, 87); 
+}
+
+.map button:focus {
+    background-color: rgb(0, 167, 157); 
+}
+
+.ol-attribution {
+    margin-bottom: 25px;
+}
+
+/*------------------------------------------------------------*/
 
 .align-center {
 	text-align: center;
