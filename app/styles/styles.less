@@ -52,12 +52,52 @@ th {
     z-index: 102;
 }
 
-img#atlas_logo {
+#atlas_logo {
     position: fixed;
     top: 10px;
     /*top: 36px;*/
     left: 20%;
-    z-index: 990;
+    z-index: 99999;
+}
+
+#realiz_logo {
+    position: fixed;
+    top: 15px;
+    left: 60%;
+    z-index: 99999;
+}
+
+
+
+/*------------------------------------------------------------*/
+/*------------------------- MAP-------------------------------*/
+
+.map {
+    width: 100%;
+    position: fixed;
+    background-color: #ccc;
+    /*top: 152px;*/
+    top: 116px;
+    /*height: calc(100% - 186px);*/
+    /*height: calc(100% - 116px);*/
+    height: 100%;
+    
+}
+
+.map button {
+    background-color: rgb(0, 167, 157); 
+}
+
+.map button:hover {
+    background-color: rgb(88, 88, 87); 
+}
+
+.map button:focus {
+    background-color: rgb(0, 167, 157); 
+}
+
+.ol-attribution {
+    margin-bottom: 150px;
 }
 
 /*------------------------------------------------------------*/
@@ -80,6 +120,8 @@ img#atlas_logo {
 	width: 100%;
 	z-index: 1000;
 	text-align: center;
+    overflow-y: scroll;
+    max-height: 380px;
 }
 
 .footer-open {
@@ -105,39 +147,22 @@ img#atlas_logo {
 }
 
 .btn {
+    font-family: Gotham;
     border-radius: 0px !important;
     height: 34px;
 }
 
-.btn-default {
+.btn-default, .btn-open, .btn-open:focus  {
     color: rgb(255,255,255);
     background-color: rgb(0, 167, 157);
     border-color: rgb(0, 167, 157);
 }
 
-.btn-open {
-    color: rgb(255,255,255);
-    background-color: rgb(0, 167, 157);
-    border-color: rgb(0, 167, 157);
-}
-
-.btn-open:focus {
-    color: rgb(255,255,255);
-    background-color: rgb(0, 167, 157);
-    border-color: rgb(0, 167, 157);
-}
-
-.btn-close {
+.btn-close, .btn-close:focus {
     color: rgb(255,255,255);
     background-color: rgb(178,178,177);
     border-color: rgb(178,178,177);
     margin-bottom: 35px;
-}
-
-.btn-close:focus {
-    color: rgb(255,255,255);
-    background-color: rgb(178,178,177);
-    border-color: rgb(178,178,177);
 }
 
 .btn-default:hover {
@@ -161,26 +186,85 @@ img#footer_arrow {
 }
 
 .content {
-    padding-left: 15%;
-    padding-right: 15%;
+    padding-left: 10%;
+    padding-right: 10%;
 }
 
+div#content img {
+    margin: 10px 15px 10px 10px;
+}
 
-#esalq_logo {
-    margin-left: 10px;
-    margin-right: 50px;
+.col-xs-12 {
+    margin-bottom: 10%;
+    padding: 0;
+    display: block;
+}
+
+.col-sm-4, .col-md-4, .col-lg-4 {
+    padding: 0;
+}
+
+#fapesp_logo {
+    margin-right: 20px;
 }
 
 .description p {
+    padding: 0;
     text-align: justify;
 }
 
+/*------------------------------------------------------------*/
+/*------------------------- FORMS ----------------------------*/
 
+form label{
+    display: none;
+}
+
+input.form-control {
+    width: 100%;
+    max-width: 320px;
+    height: 30px;
+    border-radius: 0px;
+    margin: auto;
+    background-color: rgb(224,224,224);
+}
+
+select.form-control {
+    width: 100%;
+    max-width: 125px;
+    height: 30px;
+    border-radius: 0px;
+    margin: auto;
+    background-color: rgb(224,224,224);
+    color: rgb(164,164,164);
+}
+
+#other {
+    color: rgb(164,164,164); 
+}
+
+option {
+    color: rgb(164,164,164);
+}
+
+textarea.form-control {
+    width: 100%;
+    max-width: 320px;
+    height: 80px;
+    border-radius: 0px;
+    margin: auto;
+    background-color: rgb(224,224,224);
+}
 
 /*------------------------------------------------------------*/
 
 .modal-lg {
-	width: 50%;
+    top: 150px;
+	height: 380px;
+    width: 100%;
+    margin: auto;
+    max-width: 490px;
+    border-radius: 1px;
 	padding-left: 0px !important;
 }
 
@@ -194,17 +278,6 @@ img#footer_arrow {
 
 .table-striped {
 	text-align: center;
-}
-
-.map {
-    width: 100%;
-    position: fixed;
-    background-color: #ccc;
-    /*top: 152px;*/
-    top: 116px;
-    /*height: calc(100% - 186px);*/
-    height: calc(100% - 116px);
-    
 }
 
 .align-center {
@@ -225,7 +298,6 @@ img#footer_arrow {
 
 #location-selector {
 }
-
 
 @media screen and (max-width: 767px) {
 	.navbar-nav {
