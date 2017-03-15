@@ -111,12 +111,12 @@ export var store = createStoreWithMiddleware(reducers,
     },
     layers: {
       land_ownership255: {
-        name: 'Malha Fundiária',
-        metadata: 'Essa é a malha fundiária',
+        name: 'Imóveis Rurais',
+        metadata: 'Visualização de todos os imóveis rurais, públicos e privados, identificados a partir da compilação de diversas bases georreferenciadas e disponíveis livremente na internet. Para ter acesso a descrição e a metodologia completa dessa camada clique aqui',
       },
       land_ownership_private: {
-        name: 'Malha Pública e Privada',
-        metadata: 'Essa é a malha pública e privada',
+        name: 'Terras Públicas e Privadas',
+        metadata: 'Visualização das terras públicas e privadas do Brasil, identificadas a partir da compilação de diversas bases georreferenciadas e disponíveis livremente na internet. Para ter acesso a descrição e a metodologia completa dessa camada clique aqui',
       }
     },
     layerSelector: {
