@@ -1,3 +1,4 @@
+import Immutable from "immutable";
 import { createStore, applyMiddleware, combineReducers } from 'redux';
 import thunkMiddleware from 'redux-thunk';
 
@@ -7,6 +8,7 @@ const modifyState = function (state, modifyState) {
 
 class ActionHandler {
   constructor() {
+    this.state=null;
     this.handlers = {
 
       'REC_DATA': ({ data }) =>
@@ -54,11 +56,22 @@ class ActionHandler {
         ({
           metadata: { show: false }
         }),
+
+      'UPDATE_FORM': ({what, value}) => {
+        var newState = {};
+        newState[what] = value;
+        return {
+          user: { ...this.state.user, ...newState }
+        }
+      },
+
+      'RECEIVE_USER': ({ user }) => ({
+          user: user
+        }),
     };
   }
 
   modifyState(state, modifyState) {
-    console.log(state.download.layer);
     return Object.assign({},
       state,
       modifyState
@@ -76,16 +89,14 @@ const actionHandler = new ActionHandler();
 
 // Reducer with handlers mapping
 const reducers = function (state = {}, action) {
+  actionHandler.state = state;
   return actionHandler.handlers.hasOwnProperty(action.type)
     ? actionHandler.getNewState(state, action)
     : state
 }
 
 // Use thunkMiddleware in store to handle function return
-var createStoreWithMiddleware = applyMiddleware(thunkMiddleware)(createStore);
-export var store = createStoreWithMiddleware(reducers,
-  // initial state
-  {
+var state = {
     map: {
       zoom: 4,
       layers: [''],
@@ -121,5 +132,16 @@ export var store = createStoreWithMiddleware(reducers,
     },
     layerSelector: {
       show: true
+    },
+    user: {
+      email: '',
+      nome: '',
+      instituicao: '',
+      departamento: '',
+      telefone: '',
+      textfield: '',
     }
-  });
+  };
+
+var createStoreWithMiddleware = applyMiddleware(thunkMiddleware)(createStore);
+export var store = createStoreWithMiddleware(reducers, state);

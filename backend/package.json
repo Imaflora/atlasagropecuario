@@ -1,0 +1,17 @@
+{
+  "name": "atlas-backend",
+  "version": "1.0.0",
+  "description": "Atlas agropecuario - backend",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "author": "Imaflora",
+  "license": "ISC",
+  "dependencies": {
+    "bluebird": "^3.5.0",
+    "pg-promise": "^5.6.4",
+    "postgraphql": "^3.0.1"
+  }
+}

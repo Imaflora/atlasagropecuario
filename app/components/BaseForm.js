@@ -2,23 +2,25 @@ import { Button, FormGroup, ControlLabel, FormControl } from 'react-bootstrap'
 import React, { Component, PropTypes } from 'react'
 import MyModal from './MyModal'
 import FieldGroup from './FieldGroup'
+import * as actions from '../redux/actions'
+import { connect } from 'react-redux'
 
+var promise;
 
-
-export default class BaseForm extends Component {
+class BaseForm extends Component {
     constructor(props) {
         super(props);
         this.initialState = {
-            
+
         }
         this.state = {
             showModal: false,
             data: {
                 email: '',
-                name: '',
-                institution: '',
-                dept: '',
-                tel: '',
+                nome: '',
+                instituicao: '',
+                departamento: '',
+                telefone: '',
                 textfield: '',
             }
         };
@@ -27,9 +29,17 @@ export default class BaseForm extends Component {
 
     @autobind
     handleChange(e) {
-        var state = {data: this.state.data};
-        state['data'][e.target.id] = e.target.value;
-        this.setState(state);
+        var element = e;
+        if (e.target.id === "email") {
+            clearTimeout(promise);
+            var value = e.target.value;
+            promise = setTimeout(() => {
+                if ($('#email')[0].parentElement.attributes['class'].value.indexOf('has-error') === -1) {
+                    promise = this.props.getUserInfo(value);
+                }
+            }, 1000);
+        }
+        this.props.updateFormValue(e.target.id, e.target.value);
     }
 
 
@@ -39,81 +49,83 @@ export default class BaseForm extends Component {
             : <Button id="botao" onClick={() => this.setState({ showModal: true })}> {this.props.buttonText} </ Button>;
 
 
-        var handleHide = this.props.handleHide 
-            ? this.props.handleHide 
+        var handleHide = this.props.handleHide
+            ? this.props.handleHide
             : handleHide = () => this.setState({ showModal: false });
-        
-        var cleanData = {email: '',
-                name: '',
-                institution: '',
-                dept: '',
-                tel: '',
-                textfield: '',};
+
+        var cleanData = {
+            email: '',
+            nome: '',
+            instituicao: '',
+            departamento: '',
+            telefone: '',
+            textfield: '',
+        };
 
         return (
-            
+
 
             <div>
-                <MyModal 
-                handleSubmit={() => {
-                    this.props.handleSubmit(this.state.data);
-                    this.setState({data: Object.assign({}, cleanData)}); 
-                }} 
-                show={this.props.show ? this.props.show : this.state.showModal} 
-                onHide={handleHide} 
-                title={this.props.title}>
+                <MyModal
+                    handleSubmit={() => {
+                        this.props.handleSubmit(this.props.userData);
+                        this.setState({ data: Object.assign({}, cleanData) });
+                    }}
+                    show={this.props.show ? this.props.show : this.state.showModal}
+                    onHide={handleHide}
+                    title={this.props.title}>
                     <form>
                         <FieldGroup
                             id="email"
                             type="email"
-                            label="Endereço de E-mail"
-                            placeholder="exemplo@exemplo.com"
+                            maxLength={254}
+                            placeholder="E-mail"
                             required={true}
                             validationPattern=".+\@.+\..{2,}"
-                            value={this.state.data.email}
+                            value={this.props.userData.email}
                             handleChange={this.handleChange}
                         />
                         <FieldGroup
-                            id="name"
+                            id="nome"
                             type="text"
-                            label="Nome"
-                            placeholder="Insira o nome"
+                            maxLength={124}
+                            placeholder="Nome"
                             handleChange={this.handleChange}
-                            value={this.state.data.name}
+                            value={this.props.userData.nome}
                             required
                         />
                         <FieldGroup
-                            id="institution"
+                            id="instituicao"
                             type="text"
-                            label="Instituição"
-                            placeholder="Insira a instituição"
-                            value={this.state.data.institution}
+                            maxLength={100}
+                            placeholder="Instituição"
+                            value={this.props.userData.instituicao}
                             handleChange={this.handleChange}
                             required
                         />
                         <FieldGroup
-                            id="dept"
+                            id="departamento"
                             type="text"
-                            label="Departamento"
-                            placeholder="Insira o departamento"
-                            value={this.state.data.dept}
+                            maxLength={50}
+                            placeholder="Departamento"
+                            value={this.props.userData.departamento}
                             handleChange={this.handleChange}
                         />
                         <FieldGroup
-                            id="tel"
-                            type="tel"
-                            label="Telefone para contato"
-                            placeholder="ex. 55(00)90000-0000"
-                            value={this.state.data.tel}
+                            id="telefone"
+                            type="telefone"
+                            maxLength={50}
+                            placeholder="telefone"
+                            value={this.props.userData.telefone}
                             handleChange={this.handleChange}
                         />
                         {this.props.children}
                         <FieldGroup
                             id="textfield"
-                            label={this.props.textAreaLabel}
+                            maxLength={30000}
                             componentClass="textarea"
-                            placeholder={this.props.textAreaPlaceholder}
-                            value={this.state.data.textfield}
+                            placeholder={this.props.textAreaLabel}
+                            value={this.props.userData.textfield}
                             handleChange={this.handleChange}
                             required
                         />
@@ -128,7 +140,26 @@ export default class BaseForm extends Component {
 BaseForm.propTypes = {
     title: PropTypes.string.isRequired,
     textAreaLabel: PropTypes.string.isRequired,
-    textAreaPlaceholder: PropTypes.string.isRequired,
     buttonText: PropTypes.string,
     show: PropTypes.bool,
 };
+
+const mapStateToProps = (state, ownProps) => {
+    return {
+        userData: state.user
+    }
+}
+
+const mapDispatchToProps = (dispatch, ownProps) => {
+    return {
+        getUserInfo: (email) => {
+            dispatch(actions.getUserInfo(email))
+        },
+        updateFormValue: (what, value) => {
+            dispatch(actions.updateFormValue(what, value))
+        },
+    }
+}
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(BaseForm)

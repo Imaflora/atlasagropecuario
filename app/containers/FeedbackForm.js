@@ -2,6 +2,7 @@ import React, { Component, PropTypes } from 'react'
 import BaseForm from '../components/BaseForm'
 import FieldGroup from '../components/FieldGroup'
 import { connect } from 'react-redux'
+import { Col } from 'react-bootstrap'
 
 class FeedbackForm extends Component {
     constructor(props) {
@@ -27,29 +28,36 @@ class FeedbackForm extends Component {
             Object.keys(topics).map(
                 (e, i) => <option key={i} value={e}>{topics[e]}</option>
             );
-
-        var other = (this.state.value === Object.keys(topics).slice(-1)[0] ? 
-            <FieldGroup
+        var other;
+        var subject = "Assunto";
+        if (this.state.value === Object.keys(topics).slice(-1)[0]) {
+            other = (<FieldGroup
                 id="other"
                 type="text"
                 placeholder="Qual o assunto?"
                 required
-            />
-        : null);
+            />);
+            subject = null;
+        }
 
         return (
-            <BaseForm title="Dê o seu feedback" buttonText="FEEDBACK" textAreaPlaceholder="Área" textAreaLabel="Comentário">
+            <BaseForm title="Dê o seu feedback" buttonText="FEEDBACK" textAreaLabel="Comentário">
+                <Col xs={12} md={6}>
                 <FieldGroup
                     componentClass="select"
                     type="select"
                     id="subject"
-                    label="Assunto"
+                    label={subject}
                     handleChange={this.handleChange}
                     value={this.state.value}
+                    anotherChildren={other}
                 >
                     {options}
                 </FieldGroup>
+                </Col>
+                <Col xs={12} md={6}>
                 {other}
+                </Col>
 
             </BaseForm>
         );

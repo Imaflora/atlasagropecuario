@@ -36,7 +36,9 @@ export default class FieldGroup extends Component {
         return (
             <ReactBootstrap.FormGroup controlId={id} validationState={this.getValidationState(validationPattern)}>
                 {labelControl}
-                <ReactBootstrap.FormControl {...props} onChange={handleChange ? handleChange : this.onChange} value={value}>{children}</ReactBootstrap.FormControl>
+                <ReactBootstrap.FormControl {...props} onChange={handleChange ? handleChange : this.onChange} value={value}>
+                    {children}
+                </ReactBootstrap.FormControl>
             </ReactBootstrap.FormGroup>
         );
     }
