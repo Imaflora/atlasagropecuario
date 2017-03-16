@@ -7,7 +7,7 @@ const modifyState = function (state, modifyState) {
 
 class ActionHandler {
   constructor() {
-    this.state=null;
+    this.state = null;
     this.handlers = {
 
       'REC_DATA': ({ data }) =>
@@ -65,8 +65,14 @@ class ActionHandler {
       },
 
       'RECEIVE_USER': ({ user }) => ({
-          user: user
+        user: user
+      }),
+
+      'HIDE_WELCOME': () =>
+        ({
+          welcome: { show: false }
         }),
+
     };
   }
 
@@ -94,55 +100,67 @@ const reducers = function (state = {}, action) {
     : state
 }
 
+var willShowAgain = function () {
+  return !Boolean(localStorage['dontShowAgain'])
+}
+
 // Use thunkMiddleware in store to handle function return
 var state = {
-    map: {
-      zoom: 4,
-      layers: [''],
+  map: {
+    zoom: 4,
+    layers: [''],
+  },
+  data: '',
+  tempdata: '',
+  isError: false,
+  transition: true,
+  loading: false,
+  topics: {
+    comentario: "Comentário",
+    sugestao: "Sugestão",
+    duvida: "Dúvida",
+    outro: "Outro"
+  },
+  metadata: {
+    layer: '',
+    show: false,
+  },
+  download: {
+    layer: '',
+    show: false,
+  },
+  layers: {
+    land_ownership255: {
+      name: 'Imóveis Rurais',
+      metadata: 'Visualização de todos os imóveis rurais, públicos e privados, identificados a partir da compilação de diversas bases georreferenciadas e disponíveis livremente na internet.',
+      link: 'http://www.imaflora.org',
     },
-    data: '',
-    tempdata: '',
-    isError: false,
-    transition: true,
-    loading: false,
-    topics: {
-      comentario: "Comentário",
-      sugestao: "Sugestão",
-      duvida: "Dúvida",
-      outro: "Outro"
-    },
-    metadata: {
-      layer: '',
-      show: false,
-    },
-    download: {
-      layer: '',
-      show: false,
-    },
-    layers: {
-      land_ownership255: {
-        name: 'Imóveis Rurais',
-        metadata: 'Visualização de todos os imóveis rurais, públicos e privados, identificados a partir da compilação de diversas bases georreferenciadas e disponíveis livremente na internet.',
-        link: 'http://www.imaflora.org',
-      },
-      land_ownership_private: {
-        name: 'Terras Públicas e Privadas',
-        metadata: 'Visualização das terras públicas e privadas do Brasil, identificadas a partir da compilação de diversas bases georreferenciadas e disponíveis livremente na internet.',
-        link: 'http://www.imaflora.org',
-      }
-    },
-    layerSelector: {
-      show: true
-    },
-    user: {
-      email: '',
-      nome: '',
-      instituicao: '',
-      departamento: '',
-      telefone: '',
-      textfield: '',
+    land_ownership_private: {
+      name: 'Terras Públicas e Privadas',
+      metadata: 'Visualização das terras públicas e privadas do Brasil, identificadas a partir da compilação de diversas bases georreferenciadas e disponíveis livremente na internet.',
+      link: 'http://www.imaflora.org',
     }
-  };
+  },
+  layerSelector: {
+    show: true
+  },
+  user: {
+    email: '',
+    nome: '',
+    instituicao: '',
+    departamento: '',
+    telefone: '',
+    textfield: '',
+  },
+  welcome: {
+    text: (<div><p>Essa é a plataforma online do Atlas - A geografia da agropecuára Brasileira.</p>
+<p>Apesar de ainda estarmos na fase inicial de desenvolvimento da plataforma gostaríamos de compartilhar um primeiro e importante resultado dessa iniciativa com vocês: a malha fundiária do Brasil.</p>
+<p>Esse dado foi gerado a partir de uma colaboração entre o Imaflora, o GeoLab (Esalq/USP) e o Royal Institute of Technology (KTH-Suécia) e, pela primeira vez, oferece aberta e publicamente para a sociedade uma visão do conjunto das terras públicas e privadas do país.</p>
+<p>Seguiremos aprimorando nossa plataforma a partir de novas funcionalidades e da divulgação de outros dados e informações relevantes. Não deixe de preencher o nosso cadastro e acompanhar as próximas fases do Atlas.</p>
+</div>),
+    show: willShowAgain(),
+  },
+};
 
 var createStoreWithMiddleware = applyMiddleware(thunkMiddleware)(createStore);
 export var store = createStoreWithMiddleware(reducers, state);
