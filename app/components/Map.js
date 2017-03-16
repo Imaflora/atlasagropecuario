@@ -15,9 +15,9 @@ export default class Map extends React.Component {
               new ol.layer.Tile({
                 source: new ol.source.XYZ({
                   attributions: [new ol.Attribution({
-                     html: '© <a href="http://cartodb.com/attributions">CartoDB</a> ' +
-                      '© <a href="http://www.openstreetmap.org/copyright">' +
-                      'OpenStreetMap contributors</a>'
+                     html: '© <a target="_blank" href="http://cartodb.com/attributions">CartoDB</a> ' +
+                      '© <a target="_blank" href="http://www.openstreetmap.org/copyright">' +
+                      'OpenStreetMap</a>' + ' © <a target="_blank" href="http://www.imaflora.org">Imaflora</a> '
                    })],
                   url:'https://cartodb-basemaps-c.global.ssl.fastly.net/light_nolabels/{z}/{x}/{y}.png'
                 })
@@ -32,9 +32,9 @@ export default class Map extends React.Component {
               new ol.layer.Tile({
                 source: new ol.source.XYZ({
                   attributions: [new ol.Attribution({
-                     html: '© <a href="http://cartodb.com/attributions">CartoDB</a> ' +
-                      '© <a href="http://www.openstreetmap.org/copyright">' +
-                      'OpenStreetMap contributors</a>'
+                     html: '© <a target="_blank" href="http://cartodb.com/attributions">CartoDB</a> ' +
+                      '© <a target="_blank" href="http://www.openstreetmap.org/copyright">' +
+                      'OpenStreetMap</a>' + ' © <a target="_blank" href="http://www.imaflora.org">Imaflora</a> '
                    })],
                   url:'https://stamen-tiles-d.a.ssl.fastly.net/toner-hybrid/{z}/{x}/{y}.png'
                 })
