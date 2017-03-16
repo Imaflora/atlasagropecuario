@@ -14,7 +14,7 @@ var config = {
 };
 
 app.use((req, res, next) => {
-  res.header('Access-Control-Allow-Origin', '*');
+  res.header('Access-Control-Allow-Origin', {production: 'imaflora.org', local: 'http://localhost:8080', network: "geonode:8000"}[process.env.NODE_ENV]);
   res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
   next();
 });

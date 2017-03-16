@@ -28,7 +28,7 @@ var getFirstIpBeggining10 = function() {
 }
 
 module.exports = {  
-	devtool: process.env.NODE_ENV === 'production' ? 'cheap-module-source-map' : 'eval',
+	devtool: process.env.NODE_ENV === 'production' ? 'eval' : 'eval',
 	entry: [
     './app/index.js'
   ],
@@ -79,7 +79,7 @@ module.exports = {
       'process.env':{
         'NODE_ENV': process.env.NODE_ENV ? JSON.stringify(process.env.NODE_ENV) : JSON.stringify('DEBUG')
       },
-      'servUrl': JSON.stringify(process.env.NODE_ENV ? 'php/src/Services/' : 'http://apoema.esalq.usp.br/~getlidar/php/src/Services/')
+      'servUrl': JSON.stringify(process.env.NODE_ENV === 'production' ? 'http://geonode.imaflora.org/geoserver?service=WMS' : 'http://geonode:8000/geoserver?service=WMS')
     }),
     new webpack.optimize.UglifyJsPlugin({
       compress:{
@@ -90,7 +90,6 @@ module.exports = {
 }
 
 if (process.env.NODE_ENV !== 'production') {
-  
   var a = ['webpack-dev-server/client?http://localhost:8080','webpack/hot/only-dev-server'];
   if (process.env.NODE_ENV === 'network') {
     a = ['webpack-dev-server/client?http://' + getFirstIpBeggining10() + ':8080','webpack/hot/only-dev-server'];
