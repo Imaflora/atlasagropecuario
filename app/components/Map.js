@@ -10,6 +10,8 @@ export default class Map extends React.Component {
     }
 
     componentDidMount() {
+      console.log('mapMounted');
+      console.log(servUrl);
         var map = new ol.Map({
             layers: [
               new ol.layer.Tile({
@@ -24,7 +26,7 @@ export default class Map extends React.Component {
               }),
               new ol.layer.Tile({
                 source: new ol.source.TileWMS({
-                  url: 'http://geonode:8000/geoserver?service=WMS',
+                  url: servUrl,
                   params: {'LAYERS': 'geonode:land_ownership255', 'TILED': true},
                   serverType: 'geoserver'
                 })

@@ -12,13 +12,14 @@ export default class MyModal extends Component {
 
         return (
             <Modal show={this.props.show} onHide={this.props.onHide} bsSize="large" aria-labelledby="contained-modal-title-lg">
-                <Modal.Header closeButton>
+                <Modal.Header className={this.props.headerClass} closeButton>
                     <Modal.Title id="contained-modal-title-lg">{this.props.title}</Modal.Title>
                 </Modal.Header>
-                <Modal.Body>
+                <Modal.Body className={this.props.bodyClass}>
                     {this.props.children}
                 </Modal.Body>
                 <Modal.Footer>
+                    {this.props.footer}
                     <Button type="submit" onClick={this.props.handleSubmit}>OK</Button>
                     {closeButton}
                 </Modal.Footer>

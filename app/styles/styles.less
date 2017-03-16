@@ -1,3 +1,5 @@
+@blue:  rgb(0, 167, 157);
+
 html {
 	height: 100%;
 }
@@ -160,8 +162,8 @@ th {
 
 .btn-default, .btn-open, .btn-open:focus  {
     color: rgb(255,255,255);
-    background-color: rgb(0, 167, 157);
-    border-color: rgb(0, 167, 157);
+    background-color: @blue;
+    border-color: @blue;
 }
 
 .btn-close, .btn-close:focus {
@@ -340,7 +342,7 @@ textarea.form-control {
 }
 
 #malhaRectangle {
-	background-color: rgb(0, 167, 157);
+	background-color: @blue;
 	margin: 10px;
 	height: 39px;
 }
@@ -354,4 +356,22 @@ textarea.form-control {
 
 .form-control.half {
     width: 40%;
+}
+
+
+/*------------------------------------------------------------*/
+/*------------------------- WELCOME ----------------------------*/
+.welcome-header {
+    background-color: @blue;
+    color: white;
+    font-family: Gotham;
+    text-transform: uppercase;
+}
+
+.welcome-body {
+    font-family: Calibri;
+    font-size: 12pt;
+    margin-left: 10px;
+    margin-right: 10px;
+    text-align: justify;
 }

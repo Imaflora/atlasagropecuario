@@ -5,6 +5,7 @@ import { store } from '../redux/reducers.js'
 import MapContainer from './MapContainer'
 import LayersSelectorContainer from './LayersSelectorContainer'
 import LocationSelectorContainer from './LocationSelectorContainer'
+import Welcome from '../components/Welcome'
 
 class Body extends Component {
 	constructor(props) {
@@ -14,6 +15,7 @@ class Body extends Component {
 	render() {
 		return (
 			<div>
+				<Welcome />
 				<LayersSelectorContainer />
 				<MapContainer />
 			</div>

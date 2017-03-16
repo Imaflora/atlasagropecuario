@@ -68,6 +68,13 @@ export function hideMetadata() {
 	}
 }
 
+
+export function hideWelcome() {
+	return {
+		type: 'HIDE_WELCOME'
+	}
+}
+
 export function submitDownload(email) {
 	return function (dispatch, getState) {
 		var state = getState();
@@ -117,8 +124,6 @@ export function getUserInfo(email) {
 			})
 	}
 }
-
-
 
 export function updateFormValue(what, value) {
 	return {
