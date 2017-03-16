@@ -4,23 +4,21 @@ import FieldGroup from '../components/FieldGroup'
 import { connect } from 'react-redux'
 import * as actions from '../redux/actions'
 
-class Metadata extends Component {
-    constructor(props) {
-        super(props);
-    }
 
-    render() {
-        return (
-            <MyModal
-                show={this.props.show ? this.props.show : false}
-                title={this.props.title}
-                onHide={this.props.hideMetadata}
-                handleSubmit={this.props.hideMetadata}
-                noClose>
-                {this.props.metadata}
-            </MyModal>
-        );
-    }
+const Metadata = props => {
+    console.log(props);
+    return (
+        <MyModal
+            show={props.show ? props.show : false}
+            title={props.title}
+            onHide={props.hideMetadata}
+            handleSubmit={props.hideMetadata}
+            noClose>
+            {props.metadata}
+            <br />
+            <a className="downloadMetadata" href={props.link}>Baixe a descrição completa</a>
+        </MyModal>
+    )
 }
 
 const mapStateToProps = (state, ownProps) => {
@@ -28,7 +26,8 @@ const mapStateToProps = (state, ownProps) => {
         layer: state.metadata.layer,
         show: state.metadata.show,
         title: state.metadata.layer && state.layers[state.metadata.layer].name,
-        metadata: state.metadata.layer && state.layers[state.metadata.layer].metadata
+        metadata: state.metadata.layer && state.layers[state.metadata.layer].metadata,
+        link: state.metadata.layer && state.layers[state.metadata.layer].link,
     }
 }
 

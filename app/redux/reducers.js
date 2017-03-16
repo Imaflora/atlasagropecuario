@@ -122,11 +122,13 @@ var state = {
     layers: {
       land_ownership255: {
         name: 'Imóveis Rurais',
-        metadata: 'Visualização de todos os imóveis rurais, públicos e privados, identificados a partir da compilação de diversas bases georreferenciadas e disponíveis livremente na internet. Para ter acesso a descrição e a metodologia completa dessa camada clique aqui',
+        metadata: 'Visualização de todos os imóveis rurais, públicos e privados, identificados a partir da compilação de diversas bases georreferenciadas e disponíveis livremente na internet.',
+        link: 'http://www.imaflora.org',
       },
       land_ownership_private: {
         name: 'Terras Públicas e Privadas',
-        metadata: 'Visualização das terras públicas e privadas do Brasil, identificadas a partir da compilação de diversas bases georreferenciadas e disponíveis livremente na internet. Para ter acesso a descrição e a metodologia completa dessa camada clique aqui',
+        metadata: 'Visualização das terras públicas e privadas do Brasil, identificadas a partir da compilação de diversas bases georreferenciadas e disponíveis livremente na internet.',
+        link: 'http://www.imaflora.org',
       }
     },
     layerSelector: {
