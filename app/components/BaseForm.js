@@ -76,9 +76,17 @@ class BaseForm extends Component {
                     title={this.props.title}>
                     <form>
                         <FieldGroup
+                            id="name"
+                            type="text"
+                            label="Nome"
+                            placeholder="Nome"
+                            required
+                        />
+                        <FieldGroup
                             id="email"
                             type="email"
                             maxLength={254}
+                            label="Endereço de E-mail"
                             placeholder="E-mail"
                             required={true}
                             validationPattern=".+\@.+\..{2,}"
@@ -101,6 +109,7 @@ class BaseForm extends Component {
                             placeholder="Instituição"
                             value={this.props.userData.instituicao}
                             handleChange={this.handleChange}
+                            value={this.state.data.name}
                             required
                         />
                         <FieldGroup
@@ -118,6 +127,7 @@ class BaseForm extends Component {
                             placeholder="telefone"
                             value={this.props.userData.telefone}
                             handleChange={this.handleChange}
+
                         />
                         {this.props.children}
                         <FieldGroup
