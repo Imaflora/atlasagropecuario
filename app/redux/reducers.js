@@ -116,10 +116,10 @@ var state = {
   transition: true,
   loading: false,
   topics: {
-    comentario: "Comentário",
-    sugestao: "Sugestão",
-    duvida: "Dúvida",
-    outro: "Outro"
+    cm: "Comentário",
+    sg: "Sugestão",
+    dv: "Dúvida",
+    ou: "Outro"
   },
   metadata: {
     layer: '',

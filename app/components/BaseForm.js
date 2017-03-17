@@ -76,13 +76,6 @@ class BaseForm extends Component {
                     title={this.props.title}>
                     <form>
                         <FieldGroup
-                            id="name"
-                            type="text"
-                            label="Nome"
-                            placeholder="Nome"
-                            required
-                        />
-                        <FieldGroup
                             id="email"
                             type="email"
                             maxLength={254}

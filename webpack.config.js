@@ -79,7 +79,7 @@ module.exports = {
       'process.env':{
         'NODE_ENV': process.env.NODE_ENV ? JSON.stringify(process.env.NODE_ENV) : JSON.stringify('DEBUG')
       },
-      'servUrl': JSON.stringify(process.env.NODE_ENV === 'production' ? 'http://geonode.imaflora.org/geoserver?service=WMS' : 'http://geonode:8000/geoserver?service=WMS')
+      'servUrl': JSON.stringify(process.env.NODE_ENV === 'production' ? 'http://geonode.imaflora.org:8000/geoserver?service=WMS' : 'http://geonode:8000/geoserver?service=WMS')
     }),
     new webpack.optimize.UglifyJsPlugin({
       compress:{

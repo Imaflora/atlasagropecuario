@@ -4,7 +4,6 @@ import LayerControlContainer from '../containers/LayerControlContainer'
 import DownloadForm from '../containers/DownloadForm'
 import Metadata from '../containers/Metadata'
 import SideCollapse from './SideCollapse'
-import Dock from './Dock'
 
 
 class LayersSelector extends Component {
