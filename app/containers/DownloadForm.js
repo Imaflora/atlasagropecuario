@@ -17,7 +17,8 @@ class DownloadForm extends Component {
                 show={this.props.show} 
                 title={this.props.title} 
                 buttonText="Download" 
-                textAreaLabel="Finalidade">
+                textAreaLabel="Finalidade"
+            >
             </BaseForm>
         );
     }
