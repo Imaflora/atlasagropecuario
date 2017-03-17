@@ -13,7 +13,7 @@ var config = {
   idleTimeoutMillis: 30000, // how long a client is allowed to remain idle before being closed 
 };
 
-app.use((req, res, next) => {
+app.use(function(req, res, next) {
   res.header('Access-Control-Allow-Origin', {production: 'http://www.imaflora.org/atlasagropecuario/', local: '*', network: "*"}[process.env.NODE_ENV]);
   res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
   next();
@@ -29,4 +29,4 @@ app.options('/*', (req, res, next) => {
 app.use(postgraphql.postgraphql(config, 'feedback', { graphiql: true }));
 
 
-app.listen(8000);
+app.listen(9000);
