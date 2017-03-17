@@ -15,7 +15,7 @@ export default class MyModal extends Component {
                 <Modal.Header className={this.props.headerClass} closeButton>
                     <Modal.Title id="contained-modal-title-lg">{this.props.title}</Modal.Title>
                 </Modal.Header>
-                <Modal.Body className={this.props.bodyClass} style={{maxHeight:window.outerHeight*0.8 - 56 -71}}>
+                <Modal.Body className={this.props.bodyClass} style={{maxHeight:window.innerHeight*0.8 - 56 -71, overflowY:"scroll"}}>
                     {this.props.children}
                 </Modal.Body>
                 <Modal.Footer>

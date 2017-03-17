@@ -7,7 +7,7 @@ class Collapse extends Component {
 
     
     render() {
-        var height = this.props.show ? this.refs.measure.clientHeight + 20 : 0;
+        var height = this.props.show ? window.innerHeight - 136 - 69 : 0;
         return (
             <div style={{maxHeight: height, transition: "ease .5s max-height", overflow: "hidden"}}>
                 <div ref="measure">
