@@ -49,11 +49,11 @@ class ActionHandler {
           feedback: { show: true },
         }),
 
-        'HIDE_FEEDBACK': () =>
-        ({
-          feedback: { show: false },
-          user: {...this.state.user, textfield: "", assunto: 'cm'}
-        }),
+        'HIDE_FEEDBACK': () => {
+          console.log('hide');
+        return {
+          feedback: { show: false }
+        }},
 
       'OPEN_METADATA': ({ layer }) =>
         ({
@@ -146,14 +146,9 @@ var state = {
   },
   layers: {
     land_ownership255: {
-      name: 'Imóveis Rurais',
+      name: 'Malha Fundiária',
       metadata: 'Visualização de todos os imóveis rurais, públicos e privados, identificados a partir da compilação de diversas bases georreferenciadas e disponíveis livremente na internet.',
-      link: 'http://www.imaflora.org',
-    },
-    land_ownership_private: {
-      name: 'Terras Públicas e Privadas',
-      metadata: 'Visualização das terras públicas e privadas do Brasil, identificadas a partir da compilação de diversas bases georreferenciadas e disponíveis livremente na internet.',
-      link: 'http://www.imaflora.org',
+      link: 'https://www.dropbox.com/sh/cvtrj35w6hzehhb/AAA3qEtmgwmQ1lN5bY2e5zYIa?dl=0',
     },
   },
   layerSelector: {

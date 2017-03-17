@@ -75,7 +75,7 @@ class BaseForm extends Component {
                         this.props.handleSubmit();
                         this.setState({ data: Object.assign({}, cleanData) });
                     }}
-                    show={this.props.show ? this.props.show : this.state.showModal}
+                    show={typeof(this.props.show) !== 'undefined' ? this.props.show : this.state.showModal}
                     onHide={handleHide}
                     title={this.props.title}>
                     <form>

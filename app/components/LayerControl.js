@@ -11,7 +11,8 @@ class LayerControl extends Component {
 
     render() {
         var selector = (
-            <Radio name="layers" value='asas'/>
+            //<Radio name="layers" value='asas'/>
+            null
         );
 
         return (
