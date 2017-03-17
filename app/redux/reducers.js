@@ -40,7 +40,19 @@ class ActionHandler {
 
       'HIDE_DOWNLOAD': () =>
         ({
-          download: { show: false }
+          download: { show: false },
+          user: {...this.state.user, textfield: ""}
+        }),
+
+        'SHOW_FEEDBACK': () =>
+        ({
+          feedback: { show: true },
+        }),
+
+        'HIDE_FEEDBACK': () =>
+        ({
+          feedback: { show: false },
+          user: {...this.state.user, textfield: "", assunto: 'cm'}
         }),
 
       'OPEN_METADATA': ({ layer }) =>
@@ -65,7 +77,7 @@ class ActionHandler {
       },
 
       'RECEIVE_USER': ({ user }) => ({
-        user: user
+        user: {...this.state.user, ...user}
       }),
 
       'HIDE_WELCOME': () =>
@@ -129,6 +141,9 @@ var state = {
     layer: '',
     show: false,
   },
+  feedback: {
+    show: false,
+  },
   layers: {
     land_ownership255: {
       name: 'Imóveis Rurais',
@@ -139,7 +154,7 @@ var state = {
       name: 'Terras Públicas e Privadas',
       metadata: 'Visualização das terras públicas e privadas do Brasil, identificadas a partir da compilação de diversas bases georreferenciadas e disponíveis livremente na internet.',
       link: 'http://www.imaflora.org',
-    }
+    },
   },
   layerSelector: {
     show: true
@@ -150,17 +165,19 @@ var state = {
     instituicao: '',
     departamento: '',
     telefone: '',
+    assunto: 'cm',
     textfield: '',
+    outro: '',
   },
   welcome: {
     text: (<div><p>Essa é a plataforma online do Atlas - A geografia da agropecuára Brasileira.</p>
-<p>Apesar de ainda estarmos na fase inicial de desenvolvimento da plataforma gostaríamos de compartilhar um primeiro e importante resultado dessa iniciativa com vocês: a malha fundiária do Brasil.</p>
-<p>Esse dado foi gerado a partir de uma colaboração entre o Imaflora, o GeoLab (Esalq/USP) e o Royal Institute of Technology (KTH-Suécia) e, pela primeira vez, oferece aberta e publicamente para a sociedade uma visão do conjunto das terras públicas e privadas do país.</p>
-<p>Seguiremos aprimorando nossa plataforma a partir de novas funcionalidades e da divulgação de outros dados e informações relevantes. Não deixe de preencher o nosso cadastro e acompanhar as próximas fases do Atlas.</p>
-</div>),
+      <p>Apesar de ainda estarmos na fase inicial de desenvolvimento da plataforma gostaríamos de compartilhar um primeiro e importante resultado dessa iniciativa com vocês: a malha fundiária do Brasil.</p>
+      <p>Esse dado foi gerado a partir de uma colaboração entre o Imaflora, o GeoLab (Esalq/USP) e o Royal Institute of Technology (KTH-Suécia) e, pela primeira vez, oferece aberta e publicamente para a sociedade uma visão do conjunto das terras públicas e privadas do país.</p>
+      <p>Seguiremos aprimorando nossa plataforma a partir de novas funcionalidades e da divulgação de outros dados e informações relevantes. Não deixe de preencher o nosso cadastro e acompanhar as próximas fases do Atlas.</p>
+    </div>),
     show: willShowAgain(),
   },
 };
 
 var createStoreWithMiddleware = applyMiddleware(thunkMiddleware)(createStore);
-export var store = createStoreWithMiddleware(reducers, state);
+export const store = createStoreWithMiddleware(reducers, state);

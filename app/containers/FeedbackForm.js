@@ -3,6 +3,7 @@ import BaseForm from '../components/BaseForm'
 import FieldGroup from '../components/FieldGroup'
 import { connect } from 'react-redux'
 import { Col } from 'react-bootstrap'
+import * as actions from '../redux/actions'
 
 class FeedbackForm extends Component {
     constructor(props) {
@@ -14,13 +15,9 @@ class FeedbackForm extends Component {
     }
 
     @autobind
-    handleChange(e) {
-        console.log(e.target);
-        this.setState({
-            value: e.target.value
-        });
-    }
-
+        handleChange(e) {
+            this.props.updateFormValue(e.target.id, e.target.value);
+        }
 
     render() {
         var topics = this.props.topics;
@@ -30,27 +27,35 @@ class FeedbackForm extends Component {
             );
         var other;
         var subject = "Assunto";
-        if (this.state.value === Object.keys(topics).slice(-1)[0]) {
+        if (this.props.userData.assunto === Object.keys(topics).slice(-1)[0]) {
             other = (<FieldGroup
-                id="other"
+                id="outro"
                 type="text"
                 placeholder="Qual o assunto?"
+                value={this.props.userData.outro}
+                handleChange={this.handleChange}
                 required
             />);
             subject = null;
         }
 
         return (
-            <BaseForm title="Dê o seu feedback" buttonText="FEEDBACK" textAreaLabel="Comentário">
+            <BaseForm 
+                title="Dê o seu feedback"
+                buttonText="FEEDBACK" 
+                textAreaLabel="Comentário" 
+                handleSubmit={this.props.insertFeedback}
+                handleHide={this.props.handleHide}
+                show={this.props.show}
+                noModal>
                 <Col xs={12} md={6}>
                 <FieldGroup
                     componentClass="select"
                     type="select"
-                    id="subject"
+                    id="assunto"
                     label={subject}
                     handleChange={this.handleChange}
-                    value={this.state.value}
-                    anotherChildren={other}
+                    value={this.props.userData.subject}
                 >
                     {options}
                 </FieldGroup>
@@ -70,10 +75,24 @@ FeedbackForm.propTypes = {
 
 const mapStateToProps = (state, ownProps) => {
     return {
-        topics: state.topics
+        topics: state.topics,
+        userData: state.user,
+        show: state.feedback.show,
     }
 }
 
-export default connect(mapStateToProps)(FeedbackForm)
+const mapDispatchToProps = (dispatch, ownProps) => {
+    return {
+        updateFormValue: (what, value) => {
+            dispatch(actions.updateFormValue(what, value))
+        },
+        insertFeedback: () => dispatch(actions.insertFeedback()),
+        handleHide: () => {
+            dispatch(actions.hideFeedback())
+        },
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(FeedbackForm)
 
 

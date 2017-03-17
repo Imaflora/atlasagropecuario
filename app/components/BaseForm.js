@@ -67,8 +67,12 @@ class BaseForm extends Component {
 
             <div>
                 <MyModal
-                    handleSubmit={() => {
-                        this.props.handleSubmit(this.props.userData);
+                    handleSubmit={(e) => {
+                        if ($(e.target).parent().parent().find('.has-error').length > 0) {
+                            console.log('has error');
+                            return;
+                        }
+                        this.props.handleSubmit();
                         this.setState({ data: Object.assign({}, cleanData) });
                     }}
                     show={this.props.show ? this.props.show : this.state.showModal}
@@ -102,7 +106,6 @@ class BaseForm extends Component {
                             placeholder="Instituição"
                             value={this.props.userData.instituicao}
                             handleChange={this.handleChange}
-                            value={this.state.data.name}
                             required
                         />
                         <FieldGroup

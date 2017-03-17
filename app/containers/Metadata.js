@@ -6,7 +6,6 @@ import * as actions from '../redux/actions'
 
 
 const Metadata = props => {
-    console.log(props);
     return (
         <MyModal
             show={props.show ? props.show : false}

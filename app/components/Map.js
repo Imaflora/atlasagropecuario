@@ -10,8 +10,6 @@ export default class Map extends React.Component {
     }
 
     componentDidMount() {
-      console.log('mapMounted');
-      console.log(servUrl);
         var map = new ol.Map({
             layers: [
               new ol.layer.Tile({
