@@ -39,7 +39,6 @@ th {
 .HEADER_CINZA {
     background-color: #525656;
     width: 100%;
-    /*height: 115px;*/
     height: 100px;
     z-index: 103;
     position: fixed;
@@ -57,11 +56,37 @@ th {
 
 #atlas_logo {
     position: fixed;
-    top: 10px;
-    /*top: 36px;*/
+    top: 19px;
     left: 20%;
-    z-index: 999;
+    z-index: 9999;
 }
+
+#atlas_logo_pqn {
+    display: none;
+}
+
+@media screen and (max-width: 620px) {
+    #atlas_logo {
+    top: 19px;
+    z-index: 104;
+    left: 0px;
+    }
+}
+
+@media screen and (max-width: 420px) {
+    #atlas_logo_gde {
+        display: none;
+    }
+    #atlas_logo_pqn {
+        display: block;
+    }
+    #atlas_logo {
+    position: fixed;
+    top: 40px;
+    z-index: 104;
+    }
+}
+
 
 /*------------------------------------------------------------*/
 /*------------------------- MAP-------------------------------*/
@@ -70,12 +95,8 @@ th {
     width: 100%;
     position: fixed;
     background-color: #ccc;
-    /*top: 152px;*/
     top: 116px;
-    /*height: calc(100% - 186px);*/
-    /*height: calc(100% - 116px);*/
     height: 100%;
-    
 }
 
 .map button {
@@ -121,10 +142,10 @@ th {
 	position: fixed;
 	bottom: 0;
 	width: 100%;
-	z-index: 1000;
+	z-index: 9999;
 	text-align: center;
     overflow-y: scroll;
-    height: 86%;
+    height: ~'calc(100% - 136px)';
 }
 
 .footer-open {
@@ -147,6 +168,21 @@ th {
 
 .footer-button {
     position: relative;
+}
+
+@media screen and (max-width: 350px) {
+    .footer-button button {
+        float: none;
+        margin-left: auto;
+        position: relative;
+        left: -66px; 
+        }
+    .img-open,  {
+        left: 27px;  
+    }
+    .img-close {
+        left: 43px;
+    }
 }
 
 .btn {
@@ -188,6 +224,27 @@ img#footer_arrow {
     bottom: 9px!important;
 }
 
+.social {
+    position: absolute;
+    top: 2px;
+    right: -6px;
+}
+
+.social a {
+    margin-right: 15px;
+}
+
+@media screen and (max-width: 620px) {
+    .social {
+    position: absolute;
+    top: 2px;
+    right: 2px;
+}
+    .social a {
+    margin-right: 3px;
+    }
+}
+
 .content {
     padding-left: 10%;
     padding-right: 10%;
@@ -205,10 +262,6 @@ div#content img {
 
 .col-sm-4, .col-md-4, .col-lg-4 {
     padding: 0;
-}
-
-#fapesp_logo {
-    margin-right: 20px;
 }
 
 .description p {
@@ -290,17 +343,6 @@ textarea.form-control {
 #location-selector {
 }
 
-@media screen and (max-width: 767px) {
-	.navbar-nav {
-		display: flex;
-		margin-bottom: 25px;
-	}
-	body {
-		margin-bottom: 50px !important;
-	}
-}
-
-
 .layerControl {
 	margin: 10px;
 	width: 100%;
@@ -340,9 +382,9 @@ textarea.form-control {
     width: 40%;
 }
 
-
 /*------------------------------------------------------------*/
 /*------------------------- WELCOME --------------------------*/
+
 .welcome-header {
     background-color: @blue;
     color: white;
