@@ -148,7 +148,8 @@ var state = {
     land_ownership255: {
       name: 'Malha Fundiária',
       metadata: 'Visualização de todos os imóveis rurais, públicos e privados, identificados a partir da compilação de diversas bases georreferenciadas e disponíveis livremente na internet.',
-      link: 'https://www.dropbox.com/sh/cvtrj35w6hzehhb/AAA3qEtmgwmQ1lN5bY2e5zYIa?dl=0',
+      link: 'https://imaflora365-my.sharepoint.com/personal/vinicius_imaflora_org/_layouts/15/guestaccess.aspx?docid=195e58fe6730a4698b420dc9f50a12f62&authkey=Ab90F1ITu1EAwhKM-dTKlMM',
+      downloadLink: 'https://www.dropbox.com/sh/cvtrj35w6hzehhb/AAA3qEtmgwmQ1lN5bY2e5zYIa?dl=0',
     },
   },
   layerSelector: {
