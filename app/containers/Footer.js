@@ -17,7 +17,7 @@ export default class Footer extends React.Component {
 
 
     render() {
-        var buttonText = this.state.open ? "FECHAR RODAPÉ" : "ABRIR RODAPÉ";
+        var buttonText = this.state.open ? "ESCONDER" : "SOBRE O ATLAS";
         var imgBtn = this.state.open ? require("../img/btn_close.png") : require("../img/btn_open.png")
 
         return (
