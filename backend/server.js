@@ -1,6 +1,7 @@
 var express = require('express');
 var postgraphql = require('postgraphql');
-
+var Ddos = require('ddos');
+var toobusy = require('toobusy-js');
 const app = express();
 
 var config = {
@@ -12,6 +13,16 @@ var config = {
   max: 10, // max number of clients in the pool 
   idleTimeoutMillis: 30000, // how long a client is allowed to remain idle before being closed 
 };
+
+app.use(function(req, res, next) {
+  if (toobusy()) {
+    res.send(503, "I'm busy right now, sorry.");
+  } else {
+    next();
+  }
+});
+
+app.use((new Ddos()).express);
 
 app.use(function(req, res, next) {
   res.header('Access-Control-Allow-Origin', {production: 'http://www.imaflora.org/atlasagropecuario/', local: '*', network: "*"}[process.env.NODE_ENV]);

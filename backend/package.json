@@ -12,8 +12,8 @@
   "author": "Imaflora",
   "license": "ISC",
   "dependencies": {
-    "bluebird": "^3.5.0",
-    "pg-promise": "^5.6.4",
-    "postgraphql": "^3.0.1"
+    "ddos": "^0.1.16",
+    "postgraphql": "^3.0.1",
+    "toobusy-js": "^0.5.1"
   }
 }
