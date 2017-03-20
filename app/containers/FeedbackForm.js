@@ -41,7 +41,7 @@ class FeedbackForm extends Component {
 
         return (
             <BaseForm 
-                title="Dê o seu feedback"
+                title="Deixe o seu comentário, dúvida ou sugestão"
                 buttonText="FEEDBACK" 
                 textAreaLabel="Comentário" 
                 handleSubmit={this.props.insertFeedback}

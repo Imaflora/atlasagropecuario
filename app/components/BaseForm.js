@@ -120,7 +120,7 @@ class BaseForm extends Component {
                             id="telefone"
                             type="telefone"
                             maxLength={50}
-                            placeholder="telefone"
+                            placeholder="Telefone"
                             value={this.props.userData.telefone}
                             handleChange={this.handleChange}
 
