@@ -55,6 +55,18 @@ export function hideDownload() {
 	}
 }
 
+export function showLegend() {
+	return {
+		type: 'SHOW_LEGEND'
+	};
+}
+
+export function hideLegend() {
+	return {
+		type: 'HIDE_LEGEND'
+	};
+}
+
 export function hideFeedback() {
 	return {
 		type: 'HIDE_FEEDBACK'
@@ -155,6 +167,7 @@ function executeDownload() {
 		window.location.href = state.layers[state.download.layer].downloadLink;
 	};
 }
+
 
 function receivedUserInfo(user) {
 	return {

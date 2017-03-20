@@ -142,7 +142,7 @@ th {
 	position: fixed;
 	bottom: 0;
 	width: 100%;
-	z-index: 9999;
+	z-index: 1000;
 	text-align: center;
     overflow-y: scroll;
     height: ~'calc(100% - 136px)';
@@ -400,4 +400,76 @@ textarea.form-control {
     padding-right: 20px;
     overflow-y: scroll;
     text-align: justify;
+}
+
+/*------------------------------------------------------------*/
+/*------------------------- LEGEND --------------------------*/
+
+#legend {
+position: absolute;
+    z-index: 1000;
+    right: 20px;
+    top: 40%;
+    background-color: rgba(255,255,255,0.8);
+    padding: 10px;
+    min-width: 200px;
+}
+
+#legend-title {
+    background-color: @blue;
+    width: 100%;
+    color: white;
+    text-transform: uppercase;
+    font-weight: bold;
+    height: 39px;
+    padding-top: 15px;
+    font-family: Calibri;
+    font-size: 12pt;
+    padding-left: 25px;
+    padding-right: 50px;
+    margin-bottom: 15px;
+}
+
+#legend-table {
+    width: 100%;
+    font-family: Calibri;
+}
+
+#hide-legend {
+    right: 10px;
+    position: absolute;
+    padding-right: 10px;
+    top: 20px;
+}
+
+#legend-table {
+    margin-left: 27px;
+}
+
+
+#legend-shower {
+    background-color: @blue;
+    color: #fff;
+    text-transform: uppercase;
+    height: 40px;
+    padding-top: 15px;
+    position: absolute;
+    top: 40%;
+    right: 0px;
+    height: 150px;
+    width: 33px;
+}
+
+#show-legend {
+    padding-left: 5px;
+}
+
+#legend-vertical {
+    transform: rotate(-90deg);
+    position: absolute;
+    top: 77px;
+    right: -14px;
+    font-family: Calibri;
+    font-size: 12pt;
+    font-weight: bold;
 }

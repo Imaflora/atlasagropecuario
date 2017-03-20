@@ -44,6 +44,16 @@ class ActionHandler {
           user: { ...this.state.user, textfield: "" }
         }),
 
+      'HIDE_LEGEND': () =>
+        ({
+          legend: { show: false }
+        }),
+
+      'SHOW_LEGEND': () =>
+        ({
+          legend: { show: true }
+        }),
+
       'SHOW_FEEDBACK': () =>
         ({
           feedback: { show: true },
@@ -184,6 +194,9 @@ var state = {
       <p>Assim, a iniciativa visa facilitar o acesso à informação, fomentar estudos e fornecer subsídios para o apoio à tomada de decisão e à formulação de políticas públicas e privadas para o setor.</p>
     </div>
   ),
+  legend: {
+    show: true,
+  },
 };
 
 var createStoreWithMiddleware = applyMiddleware(thunkMiddleware)(createStore);
