@@ -25,7 +25,7 @@ export default class Map extends React.Component {
               new ol.layer.Tile({
                 source: new ol.source.TileWMS({
                   url: servUrl,
-                  params: {'LAYERS': 'geonode:land_ownership255', 'TILED': true},
+                  params: {'LAYERS': 'geonode:land_tenure_categories', 'TILED': true},
                   serverType: 'geoserver'
                 })
               }),
@@ -43,7 +43,7 @@ export default class Map extends React.Component {
             target: this.refs.map,
             view: new ol.View({
               projection: 'EPSG:3857',
-              center: [-6007208.067874676, -1647062.4922446532],
+              center: [-5679446.090587838, -2172541.4206502824],
               zoom: this.props.zoom
             })
           }); 
