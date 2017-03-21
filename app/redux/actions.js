@@ -109,8 +109,9 @@ mutation {
     string
   }
 }`
-		axios.post(serverUrl, { query: graphQuery }).then();
-		dispatch(insertDownloadFeedback());
+		axios.post(serverUrl, { query: graphQuery }).then(() => 
+			dispatch(insertDownloadFeedback())
+		);
 		dispatch(executeDownload());
 		dispatch(hideDownload());
 	}
