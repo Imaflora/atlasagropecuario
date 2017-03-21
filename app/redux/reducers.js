@@ -60,9 +60,15 @@ class ActionHandler {
         }),
 
       'HIDE_FEEDBACK': () => {
-        console.log('hide');
         return {
           feedback: { show: false }
+        }
+      },
+
+      'LAYERS_SELECTOR_TOGGLE': () => {
+        console.log('toggle');
+        return {
+          layerSelector: { show: !this.state.layerSelector.show }
         }
       },
 
@@ -128,6 +134,7 @@ var willShowAgain = function () {
 }
 
 // Use thunkMiddleware in store to handle function return
+console.log(window.innerWidth);
 var state = {
   map: {
     zoom: 4,
@@ -158,13 +165,13 @@ var state = {
   layers: {
     land_ownership255: {
       name: 'Malha Fundiária',
-      metadata: 'Visualização de todos os imóveis rurais públicos e privados e outras bases de dados georreferenciadas que compõem o espaço geográfico brasileiro. Nesta visualização as cores não se referem a nenhuma legenda ou categoria fundiária específica, elas apenas são utilizadas para diferenciar um imóvel rural do outro. Em breve disponibilizaremos outras formas de visualização da malha fundiária como, por exemplo, distinguindo as categorias fundiárias utilizadas e os imóveis públicos dos imóveis privados.',
+      metadata: 'Este dado representa uma reclassificação dos imóveis rurais em suas respectivas categorias fundiárias (vide a legenda do mapa). Em breve disponibilizaremos outras opções de visualização e de seleção de camadas.',
       link: 'https://www.dropbox.com/s/a7jj4p1ncov9cjg/Imaflora_AtlasAgropecuario_Documentacao_MalhaFundiaria_vFinal.pdf?dl=1',
       downloadLink: 'https://www.dropbox.com/sh/cvtrj35w6hzehhb/AAA3qEtmgwmQ1lN5bY2e5zYIa?dl=0',
     },
   },
   layerSelector: {
-    show: true
+    show: window.innerWidth > 580
   },
   user: {
     email: '',

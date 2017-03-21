@@ -208,3 +208,9 @@ export function showFeedback() {
 		type: 'SHOW_FEEDBACK',
 	}
 }
+
+export function toggleLayersSelector() {
+	return  {
+		type: 'LAYERS_SELECTOR_TOGGLE'
+	}
+}

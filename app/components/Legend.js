@@ -4,6 +4,60 @@ import LegendItem from './LegendItem'
 
 class Legend extends React.Component {
     render() {
+        var legendValues = [
+            {
+                color: '#00441b',
+                label: 'UCs de Proteção Integral',
+            },
+            {
+                color: '#006d2c',
+                label: 'UCs de Uso Sustentável',
+            },
+            {
+                color: '#238b45',
+                label: 'Terras Indígenas',
+            },
+            {
+                color: '#41ab5d',
+                label: 'Áreas Militares',
+            },
+            {
+                color: '#74c476',
+                label: 'Terras Não Destinadas',
+            },
+            {
+                color: '#023858',
+                label: 'Imóveis Privados INCRA',
+            },
+            {
+                color: '#045a8d',
+                label: 'Imóveis Privados CAR',
+            },
+            {
+                color: '#0570b0',
+                label: 'Imóveis Simulados',
+            },
+            {
+                color: '#3690c0',
+                label: 'Assentamentos',
+            },
+            {
+                color: '#74a9cf',
+                label: 'Quilombolas',
+            },
+            {
+                color: '#252525',
+                label: 'Resíduo',
+            },
+        ];
+
+        var legendItems = legendValues.map((obj, i) => (
+            <tr key={i}>
+                <td><LegendItem color={obj.color} /></td>
+                <td className="legend-label">{obj.label}</td>
+            </tr>
+        ))
+
         var render =
             this.props.show ? (
                 <div id="legend">
@@ -12,51 +66,7 @@ class Legend extends React.Component {
                     </div>
                     <table id="legend-table">
                         <tbody>
-                            <tr>
-                                <td><LegendItem color="#00441b" /></td>
-                                <td>UCs Prot. Integral</td>
-                            </tr>
-                            <tr>
-                                <td><LegendItem color="#006d2c" /></td>
-                                <td>UCs Uso Sustentável</td>
-                            </tr>
-                            <tr>
-                                <td><LegendItem color="#238b45" /></td>
-                                <td>Terras Indígenas</td>
-                            </tr>
-                            <tr>
-                                <td><LegendItem color="#41ab5d" /></td>
-                                <td>Áreas Militares</td>
-                            </tr>
-                            <tr>
-                                <td><LegendItem color="#74c476" /></td>
-                                <td>Terras Não Destinadas</td>
-                            </tr>
-                            <tr>
-                                <td><LegendItem color="#023858" /></td>
-                                <td>Imóveis privados Incra</td>
-                            </tr>
-                            <tr>
-                                <td><LegendItem color="#045a8d" /></td>
-                                <td>Imóveis privados CAR</td>
-                            </tr>
-                            <tr>
-                                <td><LegendItem color="#0570b0" /></td>
-                                <td>Imóveis simulados</td>
-                            </tr>
-                            <tr>
-                                <td><LegendItem color="#3690c0" /></td>
-                                <td>Assentamentos</td>
-                            </tr>
-                            <tr>
-                                <td><LegendItem color="#74a9cf" /></td>
-                                <td>Quilombolas</td>
-                            </tr>
-                            <tr>
-                                <td><LegendItem color="#252525" /></td>
-                                <td>Resíduo</td>
-                            </tr>
-
+                            {legendItems}
                         </tbody></table>
                 </div>
             ) : (
