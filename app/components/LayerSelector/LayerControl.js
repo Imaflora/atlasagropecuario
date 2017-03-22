@@ -22,7 +22,7 @@ class LayerControl extends Component {
                 <td>
                     {selector}
                 </td>
-                <td style={{ width: "100%" }}>
+                <td className="layer-label" style={{ width: "100%" }}>
                     <span >{this.props.name}</span>
                 </td>
                 <td>

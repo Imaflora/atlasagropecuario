@@ -2,7 +2,7 @@ import React, { Component, PropTypes } from 'react'
 import BaseForm from '../components/BaseForm'
 import FieldGroup from '../components/FieldGroup'
 import { connect } from 'react-redux'
-import { Col } from 'react-bootstrap'
+import { Col, Button } from 'react-bootstrap'
 import * as actions from '../redux/actions'
 
 class FeedbackForm extends Component {
@@ -15,9 +15,9 @@ class FeedbackForm extends Component {
     }
 
     @autobind
-        handleChange(e) {
-            this.props.updateFormValue(e.target.id, e.target.value);
-        }
+    handleChange(e) {
+        this.props.updateFormValue(e.target.id, e.target.value);
+    }
 
     render() {
         var topics = this.props.topics;
@@ -39,46 +39,57 @@ class FeedbackForm extends Component {
             subject = null;
         }
 
+        const selectObj = (
+            <FieldGroup
+                componentClass="select"
+                type="select"
+                id="assunto"
+                label={subject}
+                handleChange={this.handleChange}
+                value={this.props.topic}
+            >
+                {options}
+            </FieldGroup>
+        );
+
         return (
-            <div id="feedback-form">
+            < div id="feedback-form" >
                 <div id="feedback-title">Fale Conosco</div>
-                <BaseForm 
+                <BaseForm
                     title="Deixe o seu comentário, dúvida ou sugestão"
-                    buttonText="FEEDBACK" 
-                    textAreaLabel="Comentário" 
-                    handleSubmit={this.props.insertFeedback}
+                    buttonText="FEEDBACK"
+                    textAreaLabel="Comentário"
                     handleHide={this.props.handleHide}
                     show={true}
                     noModal>
-                    <Col xs={12} md={6}>
-                    <FieldGroup
-                        componentClass="select"
-                        type="select"
-                        id="assunto"
-                        label={subject}
-                        handleChange={this.handleChange}
-                        value={this.props.userData.subject}
-                    >
-                        {options}
-                    </FieldGroup>
-                    </Col>
-                    <Col xs={12} md={6}>
-                    {other}
-                    </Col>
+                    {this.props.topic === 'ou' ? (
+                        <div>
+                        <Col xs={12} md={6} style={{padding: 0, paddingRight: 10}}>
+                            {selectObj}
+                        </Col>
+                        <Col xs={12} md={6} style={{padding: 0}}>
+                            {other}
+                        </Col>
+                        </div>
+                    ) : selectObj
+                    }
+                    
                 </BaseForm>
-            </div>
+                <Button id="submit-feedback" type="submit" onClick={this.props.insertFeedback}>Enviar</Button>
+            </div >
         );
     }
 }
 
 FeedbackForm.propTypes = {
-  topics: PropTypes.objectOf(PropTypes.string).isRequired,
+    topics: PropTypes.objectOf(PropTypes.string).isRequired,
 };
 
 const mapStateToProps = (state, ownProps) => {
     return {
         topics: state.topics,
         userData: state.user,
+        topic: state.user.assunto,
         show: state.feedback.show,
     }
 }

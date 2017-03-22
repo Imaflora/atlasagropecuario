@@ -38,11 +38,11 @@ class LayersSelector extends Component {
                         </div>
                         <div>
                             <img src={require('../../img/layers.png')}
-                                onClick={() => this.setState({ isVisible: !this.state.isVisible })}
+                                onClick={this.props.toggleLayersSelector}
                                 style={{ position: "absolute", right: -25, top: 10, textAlign: "right", backgroundColor: "#FFF", width: 25}}
                             />
                         </div>
-                        <table style={{ width: "296px", margin: 10 }}>
+                        <table id="layers-control">
                             <tbody>
                                 {layersControls}
                             </tbody>
