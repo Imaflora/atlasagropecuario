@@ -29,7 +29,7 @@ class LayersSelector extends Component {
             : null;
 
         return (
-            <SideCollapse show={this.props.show} top={this.state.top} width={316}>
+            <SideCollapse show={this.props.show} top={this.state.top} width={260}>
                 <div style={{ position: "absolute", marginRight: 100 }} ref="innerMeasure">
                     <div style={{ position: "absolute", backgroundColor: "#FFF" }}>
                         <div id="malhaRectangle">
