@@ -1,5 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import { Radio } from 'react-bootstrap'
+import { connect } from 'react-redux'
+import * as actions from '../../redux/actions'
 
 
 class LayerControl extends Component {
@@ -25,7 +27,7 @@ class LayerControl extends Component {
                 </td>
                 <td>
                     <img
-                        src={require('../img/metadata.png')}
+                        src={require('../../img/metadata.png')}
                         alt="Metadata" onClick={this.props.handleMetadata}
                         style={{
                             height: 20,
@@ -37,7 +39,7 @@ class LayerControl extends Component {
                 </td>
                 <td>
                     <img
-                        src={require('../img/download.png')}
+                        src={require('../../img/download.png')}
                         alt="Download" onClick={this.props.handleClick}
                         style={{
                             height: 20,
@@ -56,4 +58,21 @@ LayerControl.propTypes = {
     handleClick: PropTypes.func,
 };
 
-export default LayerControl;
+const mapStateToProps = (state, ownProps) => {
+    return {
+        prop: state.prop
+    }
+}
+
+const mapDispatchToProps = (dispatch, ownProps) => {
+    return {
+        handleClick: () => {
+            dispatch(actions.openDownloadForm(ownProps.value))
+        },
+        handleMetadata: () => {
+            dispatch(actions.openMetadata(ownProps.value))
+        }
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(LayerControl)

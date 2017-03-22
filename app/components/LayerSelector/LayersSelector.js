@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import LayerControlContainer from '../containers/LayerControlContainer'
-import DownloadForm from '../containers/DownloadForm'
-import Metadata from '../containers/Metadata'
-import SideCollapse from './SideCollapse'
+import LayerControl from './LayerControl'
+import DownloadForm from '../../containers/DownloadForm'
+import Metadata from '../../containers/Metadata'
+import SideCollapse from '../../components_reusable/SideCollapse'
+
 
 
 class LayersSelector extends Component {
@@ -23,7 +24,7 @@ class LayersSelector extends Component {
         var layers = this.props.layers;
         var layersControls = layers
             ? Object.keys(layers).map((layerKey, i) => (
-                <LayerControlContainer name={layers[layerKey].name} value={layerKey} metadata={layers[layerKey].metadata} key={i}/>
+                <LayerControl name={layers[layerKey].name} value={layerKey} metadata={layers[layerKey].metadata} key={i}/>
             ))
             : null;
 
@@ -32,11 +33,11 @@ class LayersSelector extends Component {
                 <div style={{ position: "absolute", marginRight: 100 }} ref="innerMeasure">
                     <div style={{ position: "absolute", backgroundColor: "#FFF" }}>
                         <div id="malhaRectangle">
-                            <img className="collapse-icon" src={require('../img/collapse-open.png')} alt="abrir"/>
+                            <img className="collapse-icon" src={require('../../img/collapse-open.png')} alt="abrir"/>
                             <div className="malhaFundiaria" style={{ marginRight: 50 }}>Malha Fundiária</div>
                         </div>
                         <div>
-                            <img src={require('../img/layers.png')}
+                            <img src={require('../../img/layers.png')}
                                 onClick={() => this.setState({ isVisible: !this.state.isVisible })}
                                 style={{ position: "absolute", right: -25, top: 10, textAlign: "right", backgroundColor: "#FFF", width: 25}}
                             />
@@ -65,5 +66,6 @@ const mapDispatchToProps = (dispatch, ownProps) => {
     return {
     }
 }
+
 
 export default connect(mapStateToProps, mapDispatchToProps)(LayersSelector)

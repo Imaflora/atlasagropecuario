@@ -3,7 +3,7 @@ import { connect, Provider } from 'react-redux';
 import { asCsvChanged, setQuery } from '../redux/actions'
 import { store } from '../redux/reducers.js'
 import MapContainer from './MapContainer'
-import LayersSelectorContainer from './LayersSelectorContainer'
+import LayersSelector from '../components/LayerSelector/LayersSelector'
 import LocationSelectorContainer from './LocationSelectorContainer'
 import Welcome from '../components/Welcome'
 
@@ -16,7 +16,7 @@ class Body extends Component {
 		return (
 			<div>
 				<Welcome />
-				<LayersSelectorContainer />
+				<LayersSelector />
 				<MapContainer />
 			</div>
 		);
