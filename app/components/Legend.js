@@ -43,11 +43,11 @@ class Legend extends React.Component {
             },
             {
                 color: '#74a9cf',
-                label: 'Quilombolas',
+                label: 'Territórios Comunitários',
             },
             {
                 color: '#252525',
-                label: 'Resíduo',
+                label: 'Malha de Transporte, Corpos d\'água e Áreas Urbanas',
             },
         ];
 

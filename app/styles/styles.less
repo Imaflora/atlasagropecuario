@@ -144,7 +144,6 @@ th {
 	width: 100%;
 	z-index: 110;
 	text-align: center;
-    overflow-y: scroll;
     height: ~'calc(100% - 136px)';
 }
 
@@ -417,6 +416,13 @@ textarea.form-control {
     background-color: rgba(255,255,255,0.8);
     padding: 10px;
     min-width: 200px;
+}
+
+@media screen and (max-height: 600px) {
+    #legend {
+        bottom: 10%;
+        overflow-y: scroll;
+    }
 }
 
 #legend-title {
