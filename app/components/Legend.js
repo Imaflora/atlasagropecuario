@@ -47,7 +47,7 @@ class Legend extends React.Component {
             },
             {
                 color: '#252525',
-                label: 'Malha de transporte, Corpos d\'água e Áreas Urbanas',
+                label: 'Malha de Transporte, Corpos d\'água e Áreas Urbanas',
             },
         ];
 
