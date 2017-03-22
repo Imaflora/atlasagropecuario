@@ -40,31 +40,33 @@ class FeedbackForm extends Component {
         }
 
         return (
-            <BaseForm 
-                title="Deixe o seu comentário, dúvida ou sugestão"
-                buttonText="FEEDBACK" 
-                textAreaLabel="Comentário" 
-                handleSubmit={this.props.insertFeedback}
-                handleHide={this.props.handleHide}
-                show={this.props.show}
-                noModal>
-                <Col xs={12} md={6}>
-                <FieldGroup
-                    componentClass="select"
-                    type="select"
-                    id="assunto"
-                    label={subject}
-                    handleChange={this.handleChange}
-                    value={this.props.userData.subject}
-                >
-                    {options}
-                </FieldGroup>
-                </Col>
-                <Col xs={12} md={6}>
-                {other}
-                </Col>
-
-            </BaseForm>
+            <div id="feedback-form">
+                <div id="feedback-title">Fale Conosco</div>
+                <BaseForm 
+                    title="Deixe o seu comentário, dúvida ou sugestão"
+                    buttonText="FEEDBACK" 
+                    textAreaLabel="Comentário" 
+                    handleSubmit={this.props.insertFeedback}
+                    handleHide={this.props.handleHide}
+                    show={true}
+                    noModal>
+                    <Col xs={12} md={6}>
+                    <FieldGroup
+                        componentClass="select"
+                        type="select"
+                        id="assunto"
+                        label={subject}
+                        handleChange={this.handleChange}
+                        value={this.props.userData.subject}
+                    >
+                        {options}
+                    </FieldGroup>
+                    </Col>
+                    <Col xs={12} md={6}>
+                    {other}
+                    </Col>
+                </BaseForm>
+            </div>
         );
     }
 }

@@ -37,7 +37,7 @@ class Footer extends React.Component {
                     <div>
                         <div className="footer">
                             <div id="content" className="content row">
-                                <div className="col-xs-12 col-sm-4 col-md-4 col-lg-4  align-left">
+                                <div className="col-xs-12 col-sm-4 col-md-4 col-lg-4 footer-column align-left">
                                     <div>REALIZAÇÃO</div>
                                     <img id="imaflora_logo" src={require("../img/imaflora_logo.png")} alt="Logo do Imaflora" />
                                     <img id="geolab_logo" src={require("../img/geolab_logo.png")} alt="Logo do Geolab" />
@@ -51,9 +51,9 @@ class Footer extends React.Component {
                                     <img id="ocf_logo" src={require("../img/ocf_logo.png")} alt="Logotipo do OCF" />
                                     <img id="ipam_logo" src={require("../img/ipam_logo.png")} alt="Logotipo do Ipam" />
                                 </div>
-                                <div className="description col-xs-12 col-sm-4 col-md-4 col-lg-4 align-center">{this.props.footerText}</div>
-                                <div className="col-xs-12 col-sm-4 col-md-4 col-lg-4 align-right footer-right">
-                                    <Button id="botao" onClick={this.props.showFeedback}>FEEDBACK</Button>
+                                <div className="description col-xs-12 col-sm-4 col-md-4 col-lg-4 footer-column align-center">{this.props.footerText}</div>
+                                <div className="col-xs-12 col-sm-4 col-md-4 col-lg-4 footer-column align-right footer-right">
+                                    {/*<Button id="botao" onClick={this.props.showFeedback}>FEEDBACK</Button>*/}
                                     <FeedbackForm/>
                                 </div>
                             </div>

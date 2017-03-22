@@ -62,23 +62,8 @@ class BaseForm extends Component {
             textfield: '',
         };
 
-        return (
-
-
-            <div>
-                <MyModal
-                    handleSubmit={(e) => {
-                        if ($(e.target).parent().parent().find('.has-error').length > 0) {
-                            console.log('has error');
-                            return;
-                        }
-                        this.props.handleSubmit();
-                        this.setState({ data: Object.assign({}, cleanData) });
-                    }}
-                    show={typeof(this.props.show) !== 'undefined' ? this.props.show : this.state.showModal}
-                    onHide={handleHide}
-                    title={this.props.title}>
-                    <form>
+        const formJsx = (
+            <form>
                         <FieldGroup
                             id="email"
                             type="email"
@@ -136,10 +121,27 @@ class BaseForm extends Component {
                             required
                         />
                     </form>
+        );
+
+        const resultObject = this.props.noModal ? formJsx : (<div>
+            <MyModal
+                    handleSubmit={(e) => {
+                        if ($(e.target).parent().parent().find('.has-error').length > 0) {
+                            console.log('has error');
+                            return;
+                        }
+                        this.props.handleSubmit();
+                        this.setState({ data: Object.assign({}, cleanData) });
+                    }}
+                    show={typeof(this.props.show) !== 'undefined' ? this.props.show : this.state.showModal}
+                    onHide={handleHide}
+                    title={this.props.title}>
+                    {formJsx}
                 </MyModal>
                 {btn}
-            </div>
-        );
+            </div>)
+
+        return resultObject;
     }
 }
 
