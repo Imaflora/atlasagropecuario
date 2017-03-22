@@ -43,7 +43,7 @@ class Legend extends React.Component {
             },
             {
                 color: '#74a9cf',
-                label: 'Quilombolas',
+                label: 'Territórios Comunitários',
             },
             {
                 color: '#252525',
