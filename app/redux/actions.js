@@ -1,4 +1,4 @@
-var serverUrl = process.env.NODE_ENV == 'production' ? 'http://geonode.imaflora.org:8000/api/graphql' : 'http://geonode:8000/api/graphql'
+var serverUrl = process.env.NODE_ENV == 'production' ? 'http://geonode.imaflora.org:8000/graphql' : 'http://geonode:8000/api/graphql'
 
 
 export function requestData() {
@@ -55,6 +55,18 @@ export function hideDownload() {
 	}
 }
 
+export function showLegend() {
+	return {
+		type: 'SHOW_LEGEND'
+	};
+}
+
+export function hideLegend() {
+	return {
+		type: 'HIDE_LEGEND'
+	};
+}
+
 export function hideFeedback() {
 	return {
 		type: 'HIDE_FEEDBACK'
@@ -97,8 +109,9 @@ mutation {
     string
   }
 }`
-		axios.post(serverUrl, { query: graphQuery }).then();
-		dispatch(insertDownloadFeedback());
+		axios.post(serverUrl, { query: graphQuery }).then(() => 
+			dispatch(insertDownloadFeedback())
+		);
 		dispatch(executeDownload());
 		dispatch(hideDownload());
 	}
@@ -156,6 +169,7 @@ function executeDownload() {
 	};
 }
 
+
 function receivedUserInfo(user) {
 	return {
 		type: 'RECEIVE_USER',
@@ -192,5 +206,11 @@ export function updateFormValue(what, value) {
 export function showFeedback() {
 	return {
 		type: 'SHOW_FEEDBACK',
+	}
+}
+
+export function toggleLayersSelector() {
+	return  {
+		type: 'LAYERS_SELECTOR_TOGGLE'
 	}
 }

@@ -15,9 +15,9 @@ class DownloadForm extends Component {
                 handleSubmit={this.props.submitDownload} 
                 handleHide={this.props.hideDownload} 
                 show={this.props.show} 
-                title={this.props.title} 
+                title={"Preencha os dados para fazer o download da " + this.props.title}
                 buttonText="Download" 
-                textAreaLabel="Finalidade"
+                textAreaLabel="Finalidade de uso da informação"
             >
             </BaseForm>
         );

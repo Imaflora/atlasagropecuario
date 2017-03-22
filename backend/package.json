@@ -12,6 +12,7 @@
   "author": "Imaflora",
   "license": "ISC",
   "dependencies": {
+    "cross-env": "^3.2.4",
     "ddos": "^0.1.16",
     "postgraphql": "^3.0.1",
     "toobusy-js": "^0.5.1"

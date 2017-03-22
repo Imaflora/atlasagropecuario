@@ -39,7 +39,6 @@ th {
 .HEADER_CINZA {
     background-color: #525656;
     width: 100%;
-    /*height: 115px;*/
     height: 100px;
     z-index: 103;
     position: fixed;
@@ -57,11 +56,37 @@ th {
 
 #atlas_logo {
     position: fixed;
-    top: 10px;
-    /*top: 36px;*/
+    top: 19px;
     left: 20%;
-    z-index: 999;
+    z-index: 104;
 }
+
+#atlas_logo_pqn {
+    display: none;
+}
+
+@media screen and (max-width: 620px) {
+    #atlas_logo {
+    top: 19px;
+    z-index: 104;
+    left: 0px;
+    }
+}
+
+@media screen and (max-width: 420px) {
+    #atlas_logo_gde {
+        display: none;
+    }
+    #atlas_logo_pqn {
+        display: block;
+    }
+    #atlas_logo {
+    position: fixed;
+    top: 40px;
+    z-index: 104;
+    }
+}
+
 
 /*------------------------------------------------------------*/
 /*------------------------- MAP-------------------------------*/
@@ -70,12 +95,8 @@ th {
     width: 100%;
     position: fixed;
     background-color: #ccc;
-    /*top: 152px;*/
     top: 116px;
-    /*height: calc(100% - 186px);*/
-    /*height: calc(100% - 116px);*/
     height: 100%;
-    
 }
 
 .map button {
@@ -99,7 +120,7 @@ th {
     font-size: 9pt;
 }
 
-.ol-zoom {
+.ol-zoom, ol-DeviceOrientation {
     margin-top: 20px;
 }
 
@@ -121,9 +142,10 @@ th {
 	position: fixed;
 	bottom: 0;
 	width: 100%;
-	z-index: 1000;
+	z-index: 110;
 	text-align: center;
     overflow-y: scroll;
+    height: ~'calc(100% - 136px)';
 }
 
 .footer-open {
@@ -131,7 +153,7 @@ th {
 	position: fixed;
 	bottom: 0;
 	width: 100%;
-	z-index: 1000;
+	z-index: 110;
 	text-align: center;
 }
 
@@ -146,6 +168,21 @@ th {
 
 .footer-button {
     position: relative;
+}
+
+@media screen and (max-width: 350px) {
+    .footer-button button {
+        float: none;
+        margin-left: auto;
+        position: relative;
+        left: -66px; 
+        }
+    .img-open,  {
+        left: 27px;  
+    }
+    .img-close {
+        left: 43px;
+    }
 }
 
 .btn {
@@ -187,9 +224,34 @@ img#footer_arrow {
     bottom: 9px!important;
 }
 
+.social {
+    position: absolute;
+    top: 2px;
+    right: -6px;
+}
+
+.social a {
+    margin-right: 15px;
+}
+
+@media screen and (max-width: 620px) {
+    .social {
+    position: absolute;
+    top: 2px;
+    right: 2px;
+}
+    .social a {
+    margin-right: 3px;
+    }
+}
+
 .content {
     padding-left: 10%;
     padding-right: 10%;
+}
+
+div#content {
+    overflow-y: scroll;
 }
 
 div#content img {
@@ -204,10 +266,6 @@ div#content img {
 
 .col-sm-4, .col-md-4, .col-lg-4 {
     padding: 0;
-}
-
-#fapesp_logo {
-    margin-right: 20px;
 }
 
 .description p {
@@ -268,6 +326,7 @@ textarea.form-control {
     max-width: 500px;
     border-radius: 1px;
 	padding-left: 0px !important;
+    z-index: 999;
 }
 
 .align-center {
@@ -288,17 +347,6 @@ textarea.form-control {
 
 #location-selector {
 }
-
-@media screen and (max-width: 767px) {
-	.navbar-nav {
-		display: flex;
-		margin-bottom: 25px;
-	}
-	body {
-		margin-bottom: 50px !important;
-	}
-}
-
 
 .layerControl {
 	margin: 10px;
@@ -339,9 +387,9 @@ textarea.form-control {
     width: 40%;
 }
 
-
 /*------------------------------------------------------------*/
 /*------------------------- WELCOME --------------------------*/
+
 .welcome-header {
     background-color: @blue;
     color: white;
@@ -357,4 +405,78 @@ textarea.form-control {
     padding-right: 20px;
     overflow-y: scroll;
     text-align: justify;
+}
+
+/*------------------------------------------------------------*/
+/*------------------------- LEGEND --------------------------*/
+
+#legend {
+    position: absolute;
+    z-index: 109;
+    right: 20px;
+    top: 40%;
+    background-color: rgba(255,255,255,0.8);
+    padding: 10px;
+    min-width: 200px;
+}
+
+#legend-title {
+    background-color: @blue;
+    width: 100%;
+    color: white;
+    text-transform: uppercase;
+    font-weight: bold;
+    height: 39px;
+    padding-top: 15px;
+    font-family: Calibri;
+    font-size: 12pt;
+    padding-left: 25px;
+    padding-right: 50px;
+    margin-bottom: 15px;
+}
+
+#legend-table {
+    width: 100%;
+    font-family: Calibri;
+}
+
+#hide-legend {
+    right: 10px;
+    position: absolute;
+    padding-right: 10px;
+    top: 20px;
+}
+
+
+#legend-shower {
+    background-color: @blue;
+    color: #fff;
+    text-transform: uppercase;
+    height: 40px;
+    padding-top: 15px;
+    position: absolute;
+    top: 40%;
+    right: 0px;
+    height: 150px;
+    width: 33px;
+}
+
+#show-legend {
+    padding-left: 5px;
+}
+
+#legend-vertical {
+    transform: rotate(-90deg);
+    position: absolute;
+    top: 77px;
+    right: -14px;
+    font-family: Calibri;
+    font-size: 12pt;
+    font-weight: bold;
+}
+
+.legend-item {
+    width: 15px;
+    height: 11px;
+    margin: 5px;
 }

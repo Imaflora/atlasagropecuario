@@ -6,6 +6,7 @@ import MapContainer from './MapContainer'
 import LayersSelector from '../components/LayerSelector/LayersSelector'
 import LocationSelectorContainer from './LocationSelectorContainer'
 import Welcome from '../components/Welcome'
+import Legend from '../components/Legend'
 
 class Body extends Component {
 	constructor(props) {
@@ -18,6 +19,7 @@ class Body extends Component {
 				<Welcome />
 				<LayersSelector />
 				<MapContainer />
+				<Legend />
 			</div>
 		);
 	}

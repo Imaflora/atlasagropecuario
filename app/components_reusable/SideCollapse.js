@@ -6,19 +6,13 @@ export default class SideCollapse extends Component {
         this.state = {show: false, width: 0}
     }
     
-    componentWillUpdate(nextProps, nextState) {
-        if (nextProps.show !== this.props.show) {
-            this.setState({
-                width: nextProps.show ? 0 : this.refs.measure.children[0].children[0].clientWidth
-            });   
-        }
-    }
     
     
     render() {
+        var width = this.props.show ? 0 : this.props.width;
         return (
             <div style={{
-                transform: "translateX(-" + this.state.width + "px)",
+                transform: "translateX(-" + width + "px)",
                 transition: "ease .5s transform", 
                 position: "absolute",
                 zIndex: 1,

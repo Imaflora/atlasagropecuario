@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import * as actions from '../../redux/actions'
 import LayerControl from './LayerControl'
 import DownloadForm from '../../containers/DownloadForm'
 import Metadata from '../../containers/Metadata'
 import SideCollapse from '../../components_reusable/SideCollapse'
-
 
 
 class LayersSelector extends Component {
@@ -29,12 +29,12 @@ class LayersSelector extends Component {
             : null;
 
         return (
-            <SideCollapse show={this.state.isVisible} top={this.state.top}>
+            <SideCollapse show={this.props.show} top={this.state.top} width={316}>
                 <div style={{ position: "absolute", marginRight: 100 }} ref="innerMeasure">
                     <div style={{ position: "absolute", backgroundColor: "#FFF" }}>
                         <div id="malhaRectangle">
                             <img className="collapse-icon" src={require('../../img/collapse-open.png')} alt="abrir"/>
-                            <div className="malhaFundiaria" style={{ marginRight: 50 }}>Malha Fundiária</div>
+                            <div className="malhaFundiaria" style={{ marginRight: 50 }}>Camadas</div>
                         </div>
                         <div>
                             <img src={require('../../img/layers.png')}
@@ -58,14 +58,16 @@ class LayersSelector extends Component {
 
 const mapStateToProps = (state, ownProps) => {
     return {
-        layers: state.layers
+        layers: state.layers,
+        show: state.layerSelector.show,
     }
 }
 
-const mapDispatchToProps = (dispatch, ownProps) => {
-    return {
-    }
-}
+const mapDispatchToProps = (dispatch, ownProps) => ({
+    toggleLayersSelector: () => {
+            dispatch(actions.toggleLayersSelector())
+        }
+})
 
 
 export default connect(mapStateToProps, mapDispatchToProps)(LayersSelector)
