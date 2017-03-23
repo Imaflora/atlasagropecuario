@@ -28,7 +28,7 @@ var getFirstIpBeggining10 = function() {
 }
 
 module.exports = {  
-	devtool: process.env.NODE_ENV === 'production' ? 'eval' : 'eval',
+	devtool: process.env.NODE_ENV === 'production' ? undefined : 'eval',
 	entry: [
     './app/index.js'
   ],
