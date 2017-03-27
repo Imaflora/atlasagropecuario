@@ -67,7 +67,7 @@ export function hideLegend() {
 	};
 }
 
-export function hideFeedback() {
+function hideFeedback() {
 	return {
 		type: 'HIDE_FEEDBACK'
 	}
@@ -94,71 +94,91 @@ export function hideWelcome() {
 	}
 }
 
-export function submitDownload() {
-	return function (dispatch, getState) {
-		var state = getState();
-		var graphQuery = `
+
+function insertOrUpdateUser({email, nome, telefone, instituicao, departamento}) {
+	var graphQuery = `
 mutation {
   insertOrUpdateUser (input: {
-		varEmail: "${state.user.email}"
-		varNome: "${state.user.nome}"
-		varTelefone: "${state.user.telefone}"
-		varInstituicao: "${state.user.instituicao}"
-		varDepartamento: "${state.user.departamento}"
+		varEmail: "${email}"
+		varNome: "${nome}"
+		varTelefone: "${telefone}"
+		varInstituicao: "${instituicao}"
+		varDepartamento: "${departamento}"
   }) {
     string
   }
-}`
-		axios.post(serverUrl, { query: graphQuery }).then(() => 
-			dispatch(insertDownloadFeedback())
+}`;
+	return axios.post(serverUrl, { query: graphQuery })
+}
+
+export function submitDownload() {
+	return function (dispatch, getState) {
+		var state = getState();
+
+		var userEmail = state.user.email;
+		var userText = state.user.textfield;
+		insertOrUpdateUser(state.user).then(() =>
+			dispatch(insertDownloadFeedback(userEmail, userText))
 		);
-		dispatch(executeDownload());
 		dispatch(hideDownload());
+		dispatch(executeDownload());
 	}
 }
 
 
-export function insertDownloadFeedback() {
+export function insertDownloadFeedback(email, text) {
 	return function (dispatch, getState) {
 		var state = getState();
 		var graphQuery = `
 mutation {
   insertDownloadFeedback (input: {
-    varEmail: "${state.user.email}"
-    varTexto: "${state.user.textfield}"
+    varEmail: "${email}"
+    varTexto: "${text}"
   }) {
     string
   }
 }`
 		axios.post(serverUrl, { query: graphQuery }).then();
-		dispatch(executeDownload());
-		dispatch(hideDownload());
+	}
+}
+
+export function submitFeedback() {
+	return function (dispatch, getState) {
+		var state = getState();
+		var email = state.user.email;
+		var assunto = state.user.assunto;
+		var outro = state.user.outro;
+		var text = state.user.textfield;
+
+		insertOrUpdateUser(state.user).then(() => {
+			dispatch(insertFeedback(email, assunto, outro, text));
+		})
+		dispatch(hideFeedback());
 	}
 }
 
 
-export function insertFeedback() {
+export function insertFeedback(email, assunto, outro, text) {
 	return function (dispatch, getState) {
 		var state = getState();
 		var fn = "insertFeedback";
-		var field = `varAssunto: "${state.user.assunto}"`;
-		if (state.user.assunto === 'ou') {
+		var field = `varAssunto: "${assunto}"`;
+		if (assunto === 'ou') {
 			fn = "insertFeedbackOther";
-			field = `varOutro: "${state.user.outro}"`
+			field = `varOutro: "${outro}"`
 		}
 
 		var graphQuery = `
 mutation {
   ${fn} (input: {
-    varEmail: "${state.user.email}"
+    varEmail: "${email}"
     ${field}
-    varTexto: "${state.user.textfield}"
+    varTexto: "${text}"
   }) {
     string
   }
 }`
 		axios.post(serverUrl, { query: graphQuery }).then();
-		dispatch(hideFeedback());
 	}
 }
 
@@ -178,19 +198,23 @@ function receivedUserInfo(user) {
 }
 
 export function getUserInfo(email) {
-	var graphQuery = `{
-		user: usuarioByEmail(email: "${email}") {
-			email
-			nome
-			instituicao
-			departamento
-			telefone
+	var graphQuery = `
+		mutation {
+		getUser (input: {
+			varEmail: "${email}"
+		}) {
+			usuarios {
+				nome
+				instituicao
+				departamento
+				telefone
+			}
 		}
-	}`
+}`
 
 	return function (dispatch) {
 		axios.post(serverUrl, { query: graphQuery }).then(({ data }) => {
-			if (data.data.user) dispatch(receivedUserInfo(data.data.user));
+			if (data.data.getUser) dispatch(receivedUserInfo(data.data.getUser.usuarios[0]));
 		})
 	}
 }
@@ -210,7 +234,7 @@ export function showFeedback() {
 }
 
 export function toggleLayersSelector() {
-	return  {
+	return {
 		type: 'LAYERS_SELECTOR_TOGGLE'
 	}
 }
@@ -235,7 +259,7 @@ export function getInformation(x, y) {
 
 
 function setInfoWindow(value) {
-	return  {
+	return {
 		type: 'SET_INFO_WINDOW',
 		value: value,
 	}

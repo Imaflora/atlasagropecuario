@@ -59,7 +59,6 @@ class FeedbackForm extends Component {
                     title="Deixe o seu comentário, dúvida ou sugestão"
                     buttonText="FEEDBACK"
                     textAreaLabel="Comentário"
-                    handleHide={this.props.handleHide}
                     show={true}
                     noModal>
                     {this.props.topic === 'ou' ? (
@@ -99,10 +98,7 @@ const mapDispatchToProps = (dispatch, ownProps) => {
         updateFormValue: (what, value) => {
             dispatch(actions.updateFormValue(what, value))
         },
-        insertFeedback: () => dispatch(actions.insertFeedback()),
-        handleHide: () => {
-            dispatch(actions.hideFeedback())
-        },
+        insertFeedback: () => dispatch(actions.submitFeedback())
     }
 }
 

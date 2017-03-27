@@ -61,7 +61,8 @@ class ActionHandler {
 
       'HIDE_FEEDBACK': () => {
         return {
-          feedback: { show: false }
+          feedback: { show: false },
+          user: { ...this.state.user, textfield: "", assunto : "cm" }
         }
       },
 
