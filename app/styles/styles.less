@@ -170,6 +170,16 @@ th {
         content: "✖";
       }
 
+#info-window {
+    max-height: 300px;
+    overflow-y: scroll;
+}
+
+#info-window ul {
+    list-style: none;
+    padding: 0px;
+}
+
 /*------------------------------------------------------------*/
 /*------------------------- FOOTER ---------------------------*/
 
@@ -345,10 +355,6 @@ select.form-control {
     padding-right: 20px;
 }
 
-#other {
-    color: rgb(164,164,164); 
-}
-
 option {
     color: rgb(164,164,164);
 }
@@ -360,6 +366,33 @@ textarea.form-control {
     border-radius: 0px;
     margin: auto;
     background-color: rgb(224,224,224);
+}
+
+#feedback-form {
+    max-width: 400px;
+    margin-left: 15%;
+}
+
+#feedback-other-group {
+    max-width: 400px;
+    margin: auto;
+}
+
+#feedback-other {
+    padding: 0px;
+    padding-right: 10px;
+}
+
+@media screen and (max-width: 991px) {
+    #feedback-other {
+        padding: 0px;
+    }
+}
+
+@media screen and (max-width: 767px) {
+    #feedback-form {
+        margin: auto;
+    }
 }
 
 /*------------------------------------------------------------*/
