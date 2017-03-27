@@ -120,8 +120,8 @@ export function submitDownload() {
 		insertOrUpdateUser(state.user).then(() =>
 			dispatch(insertDownloadFeedback(userEmail, userText))
 		);
-		dispatch(hideDownload());
 		dispatch(executeDownload());
+		dispatch(hideDownload());
 	}
 }
 
