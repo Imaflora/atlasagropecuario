@@ -4,6 +4,8 @@ var Ddos = require('ddos');
 var toobusy = require('toobusy-js');
 const app = express();
 
+const schema = 'exposed';
+
 var config = {
   user: 'postgres', //env var: PGUSER 
   database: 'atlas', //env var: PGDATABASE 
@@ -37,7 +39,7 @@ app.options('/*', function(req, res, next) {
   next();
 })
 
-app.use(postgraphql.postgraphql(config, 'feedback', { graphiql: true }));
+app.use(postgraphql.postgraphql(config, schema, { graphiql: true }));
 
 
 app.listen(9000);

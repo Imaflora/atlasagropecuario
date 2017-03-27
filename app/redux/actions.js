@@ -1,4 +1,4 @@
-var serverUrl = process.env.NODE_ENV == 'production' ? 'http://geonode.imaflora.org:8000/graphql' : 'http://geonode:9000/graphql'
+var serverUrl = process.env.NODE_ENV == 'production' ? 'http://geonode.imaflora.org:8000/graphql' : 'http://localhost:9000/graphql'
 
 
 export function requestData() {
@@ -212,5 +212,31 @@ export function showFeedback() {
 export function toggleLayersSelector() {
 	return  {
 		type: 'LAYERS_SELECTOR_TOGGLE'
+	}
+}
+
+export function getInformation(x, y) {
+	var graphQuery = `
+	mutation {
+		getLandData(input: {
+			x: ${x}
+			y: ${y}
+		}) {
+			json
+		}
+	}`
+
+	return function (dispatch) {
+		axios.post(serverUrl, { query: graphQuery }).then(({ data }) => {
+			dispatch(setInfoWindow(JSON.parse(data.data.getLandData.json)));
+		})
+	}
+}
+
+
+function setInfoWindow(value) {
+	return  {
+		type: 'SET_INFO_WINDOW',
+		value: value,
 	}
 }

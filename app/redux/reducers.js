@@ -85,6 +85,13 @@ class ActionHandler {
           metadata: { show: false }
         }),
 
+
+        'SET_INFO_WINDOW': ({value}) => {
+          return {
+            infoWindow: value
+          }
+        },
+
       'UPDATE_FORM': ({ what, value }) => {
         var newState = {};
         newState[what] = value;
@@ -142,6 +149,7 @@ var state = {
   },
   data: '',
   tempdata: '',
+  infoWindow: {},
   isError: false,
   transition: true,
   loading: false,
