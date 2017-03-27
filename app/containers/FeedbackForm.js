@@ -63,8 +63,8 @@ class FeedbackForm extends Component {
                     show={true}
                     noModal>
                     {this.props.topic === 'ou' ? (
-                        <div>
-                        <Col xs={12} md={6} style={{padding: 0, paddingRight: 10}}>
+                        <div id="feedback-other-group">
+                        <Col id="feedback-other" xs={12} md={6}>
                             {selectObj}
                         </Col>
                         <Col xs={12} md={6} style={{padding: 0}}>
