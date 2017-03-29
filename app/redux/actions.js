@@ -1,4 +1,4 @@
-var serverUrl = process.env.NODE_ENV == 'production' ? 'http://geonode.imaflora.org:8000/graphql' : 'http://localhost:9000/graphql'
+var serverUrl = servUrl + '/graphql';
 
 export function requestData() {
 	return {
@@ -250,6 +250,7 @@ export function getInformation(x, y) {
 	}`
 
 	return function (dispatch) {
+		dispatch(mapClick(undefined));
 		axios.post(serverUrl, { query: graphQuery }).then(({ data }) => {
 			var coordinates = [x, y];
 			if (!data.data.getLandData.json) 

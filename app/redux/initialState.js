@@ -1,4 +1,4 @@
-var translateUrl = process.env.NODE_ENV == 'production' ? 'http://geonode.imaflora.org:8000/translation' : 'http://wahoo:9000/translation'
+var translateUrl = servUrl + '/translation';
 
 const willShowAgain = () =>
   !Boolean(localStorage['dontShowAgain']

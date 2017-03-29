@@ -27,7 +27,7 @@ class Map extends React.Component {
         }),
         new ol.layer.Tile({
           source: new ol.source.TileWMS({
-            url: servUrl,
+            url: servUrl + '/geoserver/service=WMS',
             params: { 'LAYERS': 'geonode:land_tenure_categories', 'TILED': true },
             serverType: 'geoserver'
           })

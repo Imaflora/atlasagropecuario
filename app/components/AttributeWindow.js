@@ -19,7 +19,7 @@ class AttributeWindow extends Component {
 
 
   componentDidUpdate(prevProps, prevState) {
-    if (JSON.stringify(prevProps.infoWindow) !== JSON.stringify(this.props.infoWindow)) {
+    if (JSON.stringify(prevProps.infoWindow) !== JSON.stringify(this.props.infoWindow) || this.props.mapClick === undefined) {
       this.props.overlay.setPosition(this.props.mapClick);
     }
   }

@@ -1,4 +1,5 @@
 // In webpack.config.js
+var os = require('os');
 var webpack = require('webpack');
 var path = require('path');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
@@ -79,7 +80,7 @@ module.exports = {
       'process.env':{
         'NODE_ENV': process.env.NODE_ENV ? JSON.stringify(process.env.NODE_ENV) : JSON.stringify('DEBUG')
       },
-      'servUrl': JSON.stringify(process.env.NODE_ENV === 'production' ? 'http://geonode.imaflora.org:8000/geoserver?service=WMS' : 'http://geonode:8000/geoserver?service=WMS')
+      'servUrl': JSON.stringify(process.env.NODE_ENV === 'production' ? 'http://geonode.imaflora.org:8000/' : 'http://geonode:8000/')
     }),
     new webpack.optimize.UglifyJsPlugin({
       compress:{
@@ -92,7 +93,7 @@ module.exports = {
 if (process.env.NODE_ENV !== 'production') {
   var a = ['webpack-dev-server/client?http://localhost:8080','webpack/hot/only-dev-server'];
   if (process.env.NODE_ENV === 'network') {
-    a = ['webpack-dev-server/client?http://' + getFirstIpBeggining10() + ':8080','webpack/hot/only-dev-server'];
+    a = ['webpack-dev-server/client?http://' + os.hostname() + ':8080','webpack/hot/only-dev-server'];
   }
   module.exports.entry = a.concat(module.exports.entry);
 }
