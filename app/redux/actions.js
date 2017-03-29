@@ -1,6 +1,5 @@
 var serverUrl = process.env.NODE_ENV == 'production' ? 'http://geonode.imaflora.org:8000/graphql' : 'http://localhost:9000/graphql'
 
-
 export function requestData() {
 	return {
 		type: 'REQ_DATA'
