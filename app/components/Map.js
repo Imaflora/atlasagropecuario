@@ -46,7 +46,7 @@ class Map extends React.Component {
       target: this.refs.map,
       view: new ol.View({
         projection: 'EPSG:3857',
-        center: [-5679446.090587838, -2172541.4206502824],
+        center: this.props.center,
         zoom: this.props.zoom
       }),
       overlays: [this.props.overlay]
@@ -55,13 +55,18 @@ class Map extends React.Component {
       map: map
     });
 
-    map.on('click', function (evt) {
+    map.on('click', function(evt) {
       var coordinates = evt.coordinate;
-      this.props.overlay.setPosition(coordinates);
       this.props.getInformation(coordinates[0], coordinates[1]);
     }.bind(this));
 
+    map.on('moveend', function() {
+      var view = map.getView();
+      this.props.setMapView(view.getZoom(), view.getCenter());
+    }.bind(this));
+
   }
+  
 
   componentDidUpdate(prevProps, prevState) {
     var view = this.state.map.getView();
@@ -69,10 +74,6 @@ class Map extends React.Component {
   }
 
   render() {
-
-
-
-
     return (
       <div id="map" className="map" ref="map">
       </div>
@@ -83,7 +84,7 @@ class Map extends React.Component {
 
 Map.propTypes = {
   zoom: PropTypes.number,
-  center: PropTypes.number,
+  center: PropTypes.arrayOf(PropTypes.number),
   layers: PropTypes.arrayOf(String),
 };
 
@@ -91,6 +92,10 @@ Map.propTypes = {
 
 const mapStateToProps = (state, ownProps) => {
   return {
+    zoom: state.map.zoom,
+    center: state.map.center,
+    layers: state.map.layers,
+    infoWindow: state.infoWindow,
   }
 }
 
@@ -98,7 +103,10 @@ const mapDispatchToProps = (dispatch, ownProps) => {
   return {
     getInformation: (x, y) => {
       dispatch(actions.getInformation(x, y))
-    }
+    },
+    setMapView: (zoom, center) => {
+      dispatch(actions.setMapView(zoom, center))
+    },
   }
 }
 

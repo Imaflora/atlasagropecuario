@@ -14,19 +14,6 @@ class ActionHandler {
           isError: state.transition ? state.isError : typeof (data) === 'string',
         }),
 
-      'REQ_DATA': (action) =>
-        ({
-          loading: true,
-          tempdata: '',
-        }),
-
-      'TRANS_END': () =>
-        ({
-          transition: false,
-          data: state.tempdata ? state.tempdata : state.data,
-          isError: (state.tempdata ? state.tempdata : state.data) && typeof (state.tempdata ? state.tempdata : state.data) === 'string',
-        }),
-
       'DOWNLOAD_LAYER': ({ layer }) =>
         ({
           download: {
@@ -59,7 +46,7 @@ class ActionHandler {
       'HIDE_FEEDBACK': () => {
         return {
           feedback: { show: false },
-          user: { ...this.state.user, textfield: "", assunto : "cm" }
+          user: { ...this.state.user, textfield: "", assunto: "cm" }
         }
       },
 
@@ -84,11 +71,11 @@ class ActionHandler {
         }),
 
 
-        'SET_INFO_WINDOW': ({value}) => {
-          return {
-            infoWindow: value
-          }
-        },
+      'SET_INFO_WINDOW': ({ value }) => {
+        return {
+          infoWindow: value
+        }
+      },
 
       'UPDATE_FORM': ({ what, value }) => {
         var newState = {};
@@ -107,11 +94,19 @@ class ActionHandler {
           welcome: { show: false }
         }),
 
-        'RECEIVE_TRANSLATION': ( { data } ) => (
-          {
-            translation: data,
-          }
-        )
+      'RECEIVE_TRANSLATION': ({ data }) => (
+        {
+          translation: data,
+        }
+      ),
+
+      'SET_MAP_VIEW': ({ zoom, center }) => ({
+        map: { ...this.state.map, zoom, center }
+      }),
+
+      'MAP_CLICK': ({ coordinates }) => (
+        { map: { ...this.state.map, click: coordinates } }
+      ),
 
     };
   }

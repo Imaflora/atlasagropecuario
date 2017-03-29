@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect, Provider } from 'react-redux';
 import { asCsvChanged, setQuery } from '../redux/actions'
 import { store } from '../redux/reducers.js'
-import MapContainer from './MapContainer'
+import Map from '../components/Map'
 import LayersSelector from '../components/LayerSelector/LayersSelector'
 import LocationSelectorContainer from './LocationSelectorContainer'
 import Welcome from '../components/Welcome'
@@ -33,7 +33,7 @@ class Body extends Component {
 			<div>
 				<Welcome />
 				<LayersSelector />
-				<MapContainer overlay={overlay} />
+				<Map overlay={overlay} />
 				<AttributeWindow overlay={overlay} />
 				<Legend />
 			</div>

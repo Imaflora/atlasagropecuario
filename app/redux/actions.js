@@ -251,8 +251,27 @@ export function getInformation(x, y) {
 
 	return function (dispatch) {
 		axios.post(serverUrl, { query: graphQuery }).then(({ data }) => {
+			var coordinates = [x, y];
+			if (!data.data.getLandData.json) 
+				coordinates = undefined;
+			dispatch(mapClick(coordinates));
 			dispatch(setInfoWindow(JSON.parse(data.data.getLandData.json)));
 		})
+	}
+}
+
+export function setMapView(zoom, center) {
+	return {
+		type: "SET_MAP_VIEW",
+		zoom: zoom,
+		center: center,
+	}
+}
+
+export function setMapClick(click) {
+	return {
+		type: "MAP_CLICK",
+		click: click,
 	}
 }
 
@@ -261,5 +280,12 @@ function setInfoWindow(value) {
 	return {
 		type: 'SET_INFO_WINDOW',
 		value: value,
+	}
+}
+
+function mapClick(coordinates) {
+	return {
+		type: 'MAP_CLICK',
+		coordinates: coordinates,
 	}
 }

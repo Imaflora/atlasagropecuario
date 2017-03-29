@@ -22,10 +22,10 @@ export function initialDispatch() {
 export const state = {
   map: {
     zoom: 4,
+    center: [-5679446.090587838, -2172541.4206502824],
     layers: [''],
+    click: undefined,
   },
-  data: '',
-  tempdata: '',
   infoWindow: {},
   isError: false,
   transition: true,

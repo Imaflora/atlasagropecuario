@@ -9,16 +9,23 @@ class AttributeWindow extends Component {
 
   componentDidMount() {
     this.props.overlay.setElement(document.getElementById('info-window'));
-    this.props.overlay.setPosition(this.props.overlay.getPosition());
     var closer = document.getElementById('popup-closer');
-    closer.onclick = function() {
-        closer.blur();
-        this.props.overlay.setPosition(undefined);
-        return false;
-      }.bind(this);
+    closer.onclick = function () {
+      closer.blur();
+      this.props.overlay.setPosition(undefined);
+      return false;
+    }.bind(this);
+  }
+
+
+  componentDidUpdate(prevProps, prevState) {
+    if (JSON.stringify(prevProps.infoWindow) !== JSON.stringify(this.props.infoWindow)) {
+      this.props.overlay.setPosition(this.props.mapClick);
+    }
   }
   
-  
+
+
 
   render() {
     var dataValues = [];
@@ -44,6 +51,7 @@ const mapStateToProps = (state, ownProps) => {
   return {
     infoWindow: state.infoWindow,
     translation: state.translation,
+    mapClick: state.map.click,
   }
 }
 

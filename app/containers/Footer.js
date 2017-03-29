@@ -18,7 +18,7 @@ class Footer extends React.Component {
 
 
     render() {
-        var buttonText = this.state.open ? "ESCONDER" : "SOBRE O ATLAS";
+        var buttonText = this.state.open ? this.props.translation["hide"] : this.props.translation["about_atlas"];
         var imgBtn = this.state.open ? require("../img/btn_close.png") : require("../img/btn_open.png")
 
         return (
@@ -67,7 +67,8 @@ class Footer extends React.Component {
 
 const mapStateToProps = (state, ownProps) => {
     return {
-        footerText: state.footerText
+        footerText: state.footerText,
+        translation: state.translation
     }
 }
 
