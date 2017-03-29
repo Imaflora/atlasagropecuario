@@ -108,6 +108,11 @@ class ActionHandler {
         { map: { ...this.state.map, click: coordinates } }
       ),
 
+      'LAYER_CHANGE': ({ layer }) => (
+        { map: { ...this.state.map, coverLayer: layer } }
+      ),
+      
+
     };
   }
 

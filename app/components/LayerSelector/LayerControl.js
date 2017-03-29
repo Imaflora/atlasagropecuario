@@ -13,8 +13,7 @@ class LayerControl extends Component {
 
     render() {
         var selector = (
-            //<Radio name="layers" value='asas'/>
-            null
+            <Radio name="layers" value={this.props.value} checked={this.props.selectedLayer == this.props.value} onChange={() => this.props.changeLayer(this.props.value)}/>
         );
 
         return (
@@ -60,7 +59,7 @@ LayerControl.propTypes = {
 
 const mapStateToProps = (state, ownProps) => {
     return {
-        prop: state.prop
+        selectedLayer: state.map.coverLayer
     }
 }
 
@@ -71,7 +70,10 @@ const mapDispatchToProps = (dispatch, ownProps) => {
         },
         handleMetadata: () => {
             dispatch(actions.openMetadata(ownProps.value))
-        }
+        },
+        changeLayer: (value) => {
+            dispatch(actions.changeLayer(value))
+        },
     }
 }
 

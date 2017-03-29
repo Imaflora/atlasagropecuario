@@ -290,3 +290,10 @@ function mapClick(coordinates) {
 		coordinates: coordinates,
 	}
 }
+
+export function changeLayer(value) {
+	return {
+		type: 'LAYER_CHANGE',
+		layer: value,
+	}	
+}

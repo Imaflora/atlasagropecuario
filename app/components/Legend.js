@@ -4,59 +4,14 @@ import LegendItem from './LegendItem'
 
 class Legend extends React.Component {
     render() {
-        var legendValues = [
-            {
-                color: '#00441b',
-                label: 'UCs de Proteção Integral',
-            },
-            {
-                color: '#006d2c',
-                label: 'UCs de Uso Sustentável',
-            },
-            {
-                color: '#238b45',
-                label: 'Terras Indígenas',
-            },
-            {
-                color: '#41ab5d',
-                label: 'Áreas Militares',
-            },
-            {
-                color: '#74c476',
-                label: 'Terras Não Destinadas',
-            },
-            {
-                color: '#023858',
-                label: 'Imóveis Privados INCRA',
-            },
-            {
-                color: '#045a8d',
-                label: 'Imóveis Privados CAR',
-            },
-            {
-                color: '#0570b0',
-                label: 'Imóveis Simulados',
-            },
-            {
-                color: '#3690c0',
-                label: 'Assentamentos',
-            },
-            {
-                color: '#74a9cf',
-                label: 'Territórios Comunitários',
-            },
-            {
-                color: '#252525',
-                label: 'Urbano, Transporte e Água',
-            },
-        ];
+            var legendValues = this.props.layers[this.props.selectedLayer].legend;
 
-        var legendItems = legendValues.map((obj, i) => (
-            <tr key={i}>
-                <td><LegendItem color={obj.color} /></td>
-                <td className="legend-label">{obj.label}</td>
-            </tr>
-        ))
+            var legendItems = legendValues.map((obj, i) => (
+                <tr key={i}>
+                    <td><LegendItem color={obj.color} /></td>
+                    <td className="legend-label">{obj.label}</td>
+                </tr>
+            ));
 
         var render =
             this.props.show ? (
@@ -82,7 +37,9 @@ class Legend extends React.Component {
 
 const mapStateToProps = (state, ownProps) => {
     return {
-        show: state.legend.show
+        show: state.legend.show,
+        layers: state.layers,
+        selectedLayer: state.map.coverLayer,
     }
 }
 const mapDispatchToProps = (dispatch, ownProps) => {

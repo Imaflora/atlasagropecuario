@@ -28,7 +28,7 @@ class Map extends React.Component {
         new ol.layer.Tile({
           source: new ol.source.TileWMS({
             url: servUrl + '/geoserver/service=WMS',
-            params: { 'LAYERS': 'geonode:land_tenure_categories', 'TILED': true },
+            params: { 'LAYERS': 'geonode:' + this.props.coverLayer, 'TILED': true },
             serverType: 'geoserver'
           })
         }),
@@ -71,6 +71,13 @@ class Map extends React.Component {
   componentDidUpdate(prevProps, prevState) {
     var view = this.state.map.getView();
     view.setZoom(this.props.zoom);
+    var source = new ol.source.TileWMS({
+            url: servUrl + '/geoserver/service=WMS',
+            params: { 'LAYERS': 'geonode:' + this.props.coverLayer, 'TILED': true },
+            serverType: 'geoserver'
+          });
+    this.state.map.getLayers().getArray()[1].setSource(source);
+    
   }
 
   render() {
@@ -96,6 +103,7 @@ const mapStateToProps = (state, ownProps) => {
     center: state.map.center,
     layers: state.map.layers,
     infoWindow: state.infoWindow,
+    coverLayer: state.map.coverLayer,
   }
 }
 
