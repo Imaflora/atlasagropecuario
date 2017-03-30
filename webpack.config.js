@@ -58,7 +58,7 @@ module.exports = {
         loader: ExtractTextPlugin.extract('style-loader', 'css-loader!less-loader')
       },
       { 
-        test: /\.[ot]tf$/, 
+        test: /\.([ot]tf|eot|woff2?|svg)$/, 
         loader: 'file??name=fonts/[name].[ext]' 
       },
   	]
@@ -67,6 +67,8 @@ module.exports = {
   	HtmlWebpackPluginConfig,
   	new webpack.ProvidePlugin({
             "React": "react"}),
+    new webpack.ProvidePlugin({
+            "$": "jquery"}),
     new webpack.ProvidePlugin({
         "ReactDOM": "react-dom"}),
     new webpack.ProvidePlugin({
