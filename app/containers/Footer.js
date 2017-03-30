@@ -25,7 +25,9 @@ class Footer extends React.Component {
             <div className={this.state.open ? 'footer-close' : 'footer-open'}>
                 
                 <div className="footer-button">
-                    <img className={this.state.open ? 'img-close' : 'img-open'} id="footer_arrow" src={imgBtn} alt="Icone de rodapé" />
+                    <div id="div-img-footer">
+                        <img className={this.state.open ? 'img-close' : 'img-open'} id="footer_arrow" src={imgBtn} alt="Icone de rodapé" />
+                    </div>
                     <Button className={this.state.open ? 'btn-close' : 'btn-open'} onClick={() => this.setState({ open: !this.state.open })} style={{ float: "none", marginLeft: "auto" }}>{buttonText}</Button>
                 </div>
                 <div className="social">

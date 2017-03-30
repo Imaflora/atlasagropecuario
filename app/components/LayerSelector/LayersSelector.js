@@ -32,14 +32,17 @@ class LayersSelector extends Component {
             <SideCollapse show={this.props.show} top={this.state.top} width={260}>
                 <div style={{ position: "absolute", marginRight: 100 }} ref="innerMeasure">
                     <div style={{ position: "absolute", backgroundColor: "#FFF" }}>
-                        <div id="malhaRectangle">
-                            <img className="collapse-icon" src={require('../../img/collapse-open.png')} alt="abrir" />
+                        <div id="layerRectangle">
+                            <img className="collapse-icon" src={require('../../img/layers_hide_icon.png')} 
+                                alt="abrir" 
+                                onClick={this.props.toggleLayersSelector} 
+                            />
                             <div className="malhaFundiaria" style={{ marginRight: 50 }}>Camadas</div>
                         </div>
                         <div>
-                            <img src={require('../../img/layers.png')}
+                            <img src={require('../../img/layers_side_btn.png')}
                                 onClick={this.props.toggleLayersSelector}
-                                style={{ position: "absolute", right: -25, top: 10, textAlign: "right", backgroundColor: "#FFF", width: 25 }}
+                                style={{ position: "absolute", right: -35, top: 10, textAlign: "right", backgroundColor: "#FFF" }}
                             />
                         </div>
                         <table id="layers-control">
