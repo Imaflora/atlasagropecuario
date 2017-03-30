@@ -1,4 +1,18 @@
-var translateUrl = servUrl + '/translation';
+window.servURL = servUrl;
+
+$.ajaxSetup({
+    async: false
+});
+
+if (JSON.parse(($.ajax({async: false, dataType: "text", url:'//api.ipify.org?format=jsonp&callback=?'})).responseText.replace(/[?();]/g, '')).ip == "201.48.145.89") {
+    window.servURL = window.servURL.replace(/\.imaflora\./, '.intranet.imaflora.');
+}
+    
+$.ajaxSetup({
+    async: true
+});
+
+var translateUrl = window.servURL + 'translation/';
 
 const willShowAgain = () =>
   !Boolean(localStorage['dontShowAgain']
@@ -13,7 +27,7 @@ function receiveTranslation(data) {
 
 export function initialDispatch() {
   return function (dispatch, getState) {
-    axios.get(translateUrl + '/' + navigator.language).then((data) => {
+    axios.get(translateUrl + navigator.language).then((data) => {
       dispatch(receiveTranslation(data.data.data));
     })
   }

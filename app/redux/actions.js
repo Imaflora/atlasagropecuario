@@ -1,4 +1,4 @@
-var serverUrl = servUrl + '/graphql';
+var serverUrl = window.servURL + '/graphql';
 
 export function requestData() {
 	return {
@@ -22,22 +22,6 @@ function inTransition() {
 export function transitionEnd() {
 	return {
 		type: 'TRANS_END',
-	}
-}
-
-export function fetchQuery() {
-	return function (dispatch, getState) {
-		var state = getState();
-		dispatch(requestData());
-		return axios.get(servUrl + 'query.php', {
-			params: { query: state.query }
-		}).then((response) => {
-			dispatch(receiveData(response.data));
-			setTimeout(() => dispatch(inTransition()), 500);
-		}).catch(e => {
-			console.warn('Erro na resposta do servidor');
-			console.warn(e);
-		});
 	}
 }
 
