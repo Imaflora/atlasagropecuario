@@ -132,7 +132,7 @@ export function insertDownloadFeedback(email, text) {
 mutation {
   insertDownloadFeedback (input: {
     varEmail: "${email}"
-    varTexto: "${text}"
+    varTexto: ${JSON.stringify(text)}
   }) {
     string
   }
@@ -172,7 +172,7 @@ mutation {
   ${fn} (input: {
     varEmail: "${email}"
     ${field}
-    varTexto: "${text}"
+    varTexto: ${JSON.stringify(text)}
   }) {
     string
   }
