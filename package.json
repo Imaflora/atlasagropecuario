@@ -9,7 +9,7 @@
     "sync": "git pull | npm install",
     "start": "cross-env NODE_ENV=local webpack-dev-server --hot",
     "network": "cross-env NODE_ENV=network webpack-dev-server --port 8080 --host 0.0.0.0 --hot",
-    "geonode": "cross-env NODE_ENV=geonode webpack -p"
+    "geonode": "cross-env NODE_ENV=production cross-env NODE_SERVER=geonode webpack -p"
   },
   "repository": {
     "type": "git",

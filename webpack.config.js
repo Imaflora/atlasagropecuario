@@ -13,7 +13,7 @@ var HtmlWebpackPluginConfig = new HtmlWebpackPlugin({
 var os = require('os')
 
 module.exports = {
-  devtool: (process.env.NODE_ENV === 'production' || process.env.NODE_ENV === 'geonode') ? undefined : 'eval',
+  devtool: (process.env.NODE_ENV === 'production') ? undefined : 'eval',
   entry: [
     './app/index.js'
   ],
@@ -72,7 +72,7 @@ module.exports = {
       'process.env': {
         'NODE_ENV': process.env.NODE_ENV ? JSON.stringify(process.env.NODE_ENV) : JSON.stringify('DEBUG')
       },
-      'servUrl': JSON.stringify(process.env.NODE_ENV === 'production' 
+      'servUrl': JSON.stringify(process.env.NODE_ENV === 'production' && process.env.NODE_SERVER !== 'geonode' 
         ? 'http://geonode.imaflora.org:8000/' 
         : 'http://geonode:8000/')
     }),
@@ -84,7 +84,7 @@ module.exports = {
   ]
 }
 
-if (process.env.NODE_ENV !== 'production' && process.env.NODE_ENV !== 'geonode') {
+if (process.env.NODE_ENV !== 'production') {
   var a = ['webpack-dev-server/client?http://localhost:8080', 'webpack/hot/only-dev-server'];
   if (process.env.NODE_ENV === 'network') {
     a = ['webpack-dev-server/client?http://' + os.hostname() + ':8080', 'webpack/hot/only-dev-server'];
