@@ -27,7 +27,7 @@ class Map extends React.Component {
         }),
         new ol.layer.Tile({
           source: new ol.source.TileWMS({
-            url: window.servURL + '/geoserver/service=WMS',
+            url: servUrl + '/geoserver/service=WMS',
             params: { 'LAYERS': 'geonode:' + this.props.coverLayer, 'TILED': true },
             serverType: 'geoserver'
           })
@@ -72,7 +72,7 @@ class Map extends React.Component {
     var view = this.state.map.getView();
     view.setZoom(this.props.zoom);
     var source = new ol.source.TileWMS({
-            url: window.servURL + '/geoserver/service=WMS',
+            url: servUrl + '/geoserver/service=WMS',
             params: { 'LAYERS': 'geonode:' + this.props.coverLayer, 'TILED': true },
             serverType: 'geoserver'
           });
