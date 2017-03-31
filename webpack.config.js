@@ -29,7 +29,7 @@ var getFirstIpBeggining10 = function () {
 }
 
 module.exports = {
-  devtool: process.env.NODE_ENV === 'production' ? undefined : 'eval',
+  devtool: (process.env.NODE_ENV === 'production' || process.env.NODE_ENV === 'geonode') ? undefined : 'eval',
   entry: [
     './app/index.js'
   ],
@@ -100,7 +100,7 @@ module.exports = {
   ]
 }
 
-if (process.env.NODE_ENV !== 'production') {
+if (process.env.NODE_ENV !== 'production' && process.env.NODE_ENV !== 'geonode') {
   var a = ['webpack-dev-server/client?http://localhost:8080', 'webpack/hot/only-dev-server'];
   if (process.env.NODE_ENV === 'network') {
     a = ['webpack-dev-server/client?http://' + os.hostname() + ':8080', 'webpack/hot/only-dev-server'];
