@@ -12,22 +12,6 @@ var HtmlWebpackPluginConfig = new HtmlWebpackPlugin({
 
 var os = require('os')
 
-var getFirstIpBeggining10 = function () {
-  var ifaces = os.networkInterfaces();
-  var result;
-  Object.keys(ifaces).forEach((ifaceName) => {
-    var iface = ifaces[ifaceName];
-    iface.forEach((i) => {
-      if (i.address.startsWith('10.')) {
-        result = i.address;
-        return
-      }
-    });
-    if (result) return
-  });
-  return result
-}
-
 module.exports = {
   devtool: (process.env.NODE_ENV === 'production' || process.env.NODE_ENV === 'geonode') ? undefined : 'eval',
   entry: [
