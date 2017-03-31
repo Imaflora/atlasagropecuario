@@ -1,4 +1,4 @@
-var serverUrl = servUrl + '/graphql';
+var serverUrl = servUrl + 'graphql';
 
 export function requestData() {
 	return {
