@@ -29,32 +29,32 @@ class LayersSelector extends Component {
             : null;
 
         return (
-            <SideCollapse show={this.props.show} top={this.state.top} width={260}>
-                <div style={{ position: "absolute", marginRight: 100 }} ref="innerMeasure">
-                    <div style={{ position: "absolute", backgroundColor: "#FFF" }}>
-                        <div id="layerRectangle">
-                            <img className="collapse-icon" src={require('../../img/layers_hide_icon.png')} 
-                                alt="abrir" 
-                                onClick={this.props.toggleLayersSelector} 
-                            />
-                            <div className="malhaFundiaria" style={{ marginRight: 50 }}>Camadas</div>
-                        </div>
-                        <div>
-                            <img src={require('../../img/layers_side_btn.png')}
-                                onClick={this.props.toggleLayersSelector}
-                                style={{ position: "absolute", right: -35, top: 10, textAlign: "right", backgroundColor: "#FFF" }}
-                            />
-                        </div>
-                        <table id="layers-control">
-                            <tbody>
-                                {layersControls}
-                            </tbody>
-                        </table>
-                    </div>
+            <div>
+                <div id="layer-shower" className={this.props.show ? "on" : "off"} onClick={this.props.toggleLayersSelector}  >
+                        <img id="show-layer" src={require('../../img/layers_show_icon.png')} alt="Show layer" />
+                        <div id="layer-vertical">CAMADAS</div>
                 </div>
-                <DownloadForm />
-                <Metadata />
-            </SideCollapse>
+                <SideCollapse show={this.props.show} top={this.state.top} width={260}>
+                    <div style={{ position: "absolute", marginRight: 100 }} ref="innerMeasure">
+                        <div style={{ position: "absolute", backgroundColor: "#FFF" }}>
+                            <div id="layerRectangle">
+                                <img className="collapse-icon" src={require('../../img/layers_hide_icon.png')} 
+                                    alt="abrir" 
+                                    onClick={this.props.toggleLayersSelector} 
+                                />
+                                <div className="malhaFundiaria" style={{ marginRight: 50 }}>Camadas</div>
+                            </div>
+                            <table id="layers-control">
+                                <tbody>
+                                    {layersControls}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <DownloadForm />
+                    <Metadata />
+                </SideCollapse>
+            </div>
         );
     }
 }
