@@ -8,14 +8,31 @@ const Header = () => (
                 </Col>
                 <Col xs={12} className="HEADER_CINZA"></Col>
                 <Col xs={12} className="HEADER_BRANCO">
-                    <div className="btn-group">
-                      <button className="btn btn-default">NOTÍCIAS</button>       
-                      <button className="btn btn-default">BASE DE DADOS</button>
-                      <select className="btn btn-default">
-                        <option value="pt-BR">PORTUGUÊS</option>
-                        <option value="en-US">ENGLISH</option>
-                      </select>
-                    </div>
+                    <nav className="navbar-default">
+                      <div className="container-fluid">
+                        <div className="navbar-header">
+                          <button type="button" className="navbar-toggle collapsed" data-toggle="collapse" data-target="#menu" aria-expanded="false">
+                            <span className="sr-only">Toggle navigation</span>
+                            <span className="icon-bar"></span>
+                            <span className="icon-bar"></span>
+                            <span className="icon-bar"></span>
+                          </button>
+                        </div>
+                        <div className="collapse navbar-collapse" id="menu">
+                          <ul className="nav navbar-nav">
+                            <li><button className="btn btn-default">NOTÍCIAS</button></li>
+                            <li><button className="btn btn-default">PUBLICAÇÕES</button></li>
+                            <li><button className="btn btn-default">BASE DE DADOS</button></li>
+                            <li>
+                                <select className="btn btn-default">
+                                    <option value="pt-BR">PORTUGUÊS</option>
+                                    <option value="en-US">ENGLISH</option>
+                                </select>
+                            </li>
+                          </ul>
+                        </div>
+                      </div>
+                    </nav>   
                 </Col>
             </div>
         );

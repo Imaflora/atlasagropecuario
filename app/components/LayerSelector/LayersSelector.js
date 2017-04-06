@@ -31,14 +31,14 @@ class LayersSelector extends Component {
         return (
             <div>
                 <div id="layer-shower" className={this.props.show ? "on" : "off"} onClick={this.props.toggleLayersSelector}  >
-                        <img id="show-layer" src={require('../../img/layers_show_icon.png')} alt="Show layer" />
+                        <img id="show-layer" src={require('../../img/show_legend.png')} alt="Show layer" />
                         <div id="layer-vertical">CAMADAS</div>
                 </div>
                 <SideCollapse show={this.props.show} top={this.state.top} width={260}>
                     <div style={{ position: "absolute", marginRight: 100 }} ref="innerMeasure">
                         <div style={{ position: "absolute", backgroundColor: "#FFF" }}>
                             <div id="layerRectangle">
-                                <img className="collapse-icon" src={require('../../img/layers_hide_icon.png')} 
+                                <img className="collapse-icon" src={require('../../img/hide_legend.png')} 
                                     alt="abrir" 
                                     onClick={this.props.toggleLayersSelector} 
                                 />

@@ -148,7 +148,7 @@ export const state = {
   },
   footerText: (
     <div>
-      <p>O <i>Atlas - A geografia da agropecuária brasileira</i> é uma iniciativa para gerar e disseminar conhecimento sobre a agropecuária brasileira a partir de uma plataforma online.</p>
+      <p>O <i>Atlas - A geografia da agropecuária brasileira</i> é uma iniciativa para gerar e disseminar conhecimento sobre a agropecuária brasileira a partir de uma plataforma online. Pretende facilitar o entendimento sobre onde, o que, quanto, quem, como e com quais consequências se produz no campo no Brasil.</p>
       <p>Nessa plataforma estarão organizados e disponibilizados dados secundários e originais sobre o setor agropecuário, reunindo informações sobre o uso da terra, a aptidão agrícola, a distribuição, produção e produtividade das culturas em séries históricas, além de outras informações ambientais e sociais relevantes para o desenvolvimento rural e a conservação dos recursos naturais, como o desmatamento e o cumprimento do Código Florestal.</p>
       <p>Assim, a iniciativa visa facilitar o acesso à informação, fomentar estudos e fornecer subsídios para o apoio à tomada de decisão e à formulação de políticas públicas e privadas para o setor.</p>
     </div>
