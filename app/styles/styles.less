@@ -39,9 +39,11 @@ th {
 
 .btn {
     font-family: Calibri, sans-serif;
+    font-weight: bold;
     border-radius: 0px !important;
     height: 34px;
     margin: 0px 1px 0px 1px!important;
+    width: 120px;
 }
 
 .btn-default, .btn-open, .btn-open:focus  {
@@ -148,10 +150,10 @@ th {
 
 .navbar-header {
     position: absolute;
-    right: 5%;
+    right: 15px;
     z-index: 105;
     border: 0px;
-    background-color: @white;
+    background-color: transparent;
 }
 
 .navbar-nav button, .navbar-nav select {
@@ -170,6 +172,7 @@ th {
     .navbar-toggle {
         display: block;
         margin: 0px;
+        background-color: @white;
     }
     .navbar-collapse {
         border-top: 1px solid transparent;
@@ -201,6 +204,7 @@ th {
     .navbar-header {
         float: none;
         top: 40px;
+        right: 6px;
     }
     .navbar-collapse {
         border-top: 0px solid transparent;
@@ -255,12 +259,10 @@ th {
     background-color: white;
     -webkit-filter: drop-shadow(0 1px 4px rgba(0,0,0,0.2));
     filter: drop-shadow(0 1px 4px rgba(0,0,0,0.2));
-    padding: 15px;
-    border-radius: 10px;
+    padding: 10px;
     border: 1px solid #cccccc;
     bottom: 12px;
     left: -50px;
-    min-width: 280px;
   }
 .ol-popup:after, .ol-popup:before {
     top: 100%;
@@ -291,16 +293,43 @@ th {
   }
 .ol-popup-closer:after {
     content: "✖";
+    position: fixed;
   }
+
+#popup-closer {
+    right: 20px;
+}
 
 #info-window {
     max-height: 300px;
+    min-width: 225px;
     overflow-y: scroll;
+    padding: 5px;
 }
 
 #info-window ul {
     list-style: none;
     padding: 0px;
+}
+
+.attr-title {
+    text-transform: uppercase;
+    font-weight: bolder;
+}
+
+.attr-value {
+    text-indent: 10px;
+}
+
+div#info-window.ol-popup:before, div#info-window.ol-popup:after {
+    display: none;
+}
+
+@media screen and (max-width: 350px) {
+    #info-window {
+        min-width: 190px;
+        max-height: 210px;
+    }
 }
 
 /*------------------------------------------------------------*/
@@ -313,7 +342,7 @@ th {
     color: #636363;
 	font-family: Calibri, sans-serif;
 	font-size: 12pt;
-	width: 100%;
+    width: 100%;
  }
 
 .footer-close {
@@ -335,17 +364,18 @@ th {
 	text-align: center;
 }
 
- .footer-copyright>tbody>tr>td {
+.footer-copyright>tbody>tr>td {
  	padding-left: 20px;
 	padding-right: 20px;
  }
 
- .footer-right {
+.footer-right {
  	text-align: right;
  }
 
 .footer-button {
     position: relative;
+    font-weight: bold;
 }
 
 @media screen and (max-width: 350px) {
@@ -363,9 +393,11 @@ th {
 #div-img-footer {
     position: absolute;
     width: 100%;
-    bottom: 40px;
+    bottom: 70px;
     z-index: -1;
 }
+
+
 
 img#footer_arrow {
     position: relative;
@@ -373,8 +405,12 @@ img#footer_arrow {
     margin: auto;
 }
 
+.img-open {
+    bottom: -30px;
+}
+
 .img-close {
-    bottom: -65px!important;
+    bottom: -95px!important;
 }
 
 .social {
