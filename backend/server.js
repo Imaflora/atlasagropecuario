@@ -63,6 +63,7 @@ app.get('/translation/:lcid', (req, res, next) => {
         var results = data.json;
         res.status(200).json({status: 'success', data: results, message: "Worked!"});
     });
+    db.none(`UPDATE exposed.numAccess SET num = num + 1;`).then();
 });
 
 app.listen(9000);
