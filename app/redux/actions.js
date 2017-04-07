@@ -79,19 +79,8 @@ export function hideWelcome() {
 
 
 function insertOrUpdateUser({email, nome, telefone, instituicao, departamento}) {
-	var graphQuery = `
-mutation {
-  insertOrUpdateUser (input: {
-		varEmail: "${email}"
-		varNome: "${nome}"
-		varTelefone: "${telefone}"
-		varInstituicao: "${instituicao}"
-		varDepartamento: "${departamento}"
-  }) {
-    string
-  }
-}`;
-	return axios.post(serverUrl, { query: graphQuery })
+	var serverUrl = process.env.NODE_ENV == 'local' ? 'http://localhost:9000/' : servUrl;
+	return axios.post(serverUrl + 'insertOrUpdateUser', { email, nome, telefone, instituicao, departamento })
 }
 
 export function submitDownload() {
