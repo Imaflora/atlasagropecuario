@@ -1,4 +1,4 @@
-var translateUrl = servUrl + '/translation';
+var translateUrl = servUrl + 'translation/';
 
 const willShowAgain = () =>
   !Boolean(localStorage['dontShowAgain']
@@ -13,7 +13,7 @@ function receiveTranslation(data) {
 
 export function initialDispatch() {
   return function (dispatch, getState) {
-    axios.get(translateUrl + '/' + navigator.language).then((data) => {
+    axios.get(translateUrl + navigator.language).then((data) => {
       dispatch(receiveTranslation(data.data.data));
     })
   }

@@ -1,4 +1,4 @@
-var serverUrl = servUrl + '/graphql';
+var serverUrl = servUrl + 'graphql';
 
 export function requestData() {
 	return {
@@ -22,22 +22,6 @@ function inTransition() {
 export function transitionEnd() {
 	return {
 		type: 'TRANS_END',
-	}
-}
-
-export function fetchQuery() {
-	return function (dispatch, getState) {
-		var state = getState();
-		dispatch(requestData());
-		return axios.get(servUrl + 'query.php', {
-			params: { query: state.query }
-		}).then((response) => {
-			dispatch(receiveData(response.data));
-			setTimeout(() => dispatch(inTransition()), 500);
-		}).catch(e => {
-			console.warn('Erro na resposta do servidor');
-			console.warn(e);
-		});
 	}
 }
 
@@ -132,7 +116,7 @@ export function insertDownloadFeedback(email, text) {
 mutation {
   insertDownloadFeedback (input: {
     varEmail: "${email}"
-    varTexto: "${text}"
+    varTexto: ${JSON.stringify(text)}
   }) {
     string
   }
@@ -172,7 +156,7 @@ mutation {
   ${fn} (input: {
     varEmail: "${email}"
     ${field}
-    varTexto: "${text}"
+    varTexto: ${JSON.stringify(text)}
   }) {
     string
   }
