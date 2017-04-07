@@ -125,6 +125,9 @@ export const state = {
   layerSelector: {
     show: window.innerWidth > 580
   },
+  news: {
+    show: false,  
+  },
   user: {
     email: '',
     nome: '',

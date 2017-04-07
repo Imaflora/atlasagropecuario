@@ -1,6 +1,9 @@
 import { Col } from 'react-bootstrap'
+import * as actions from '../redux/actions'
+import { connect } from 'react-redux'
+import News from '../components/News'
 
-const Header = () => (
+const Header = (props) => (
             <div>
                 <Col id="atlas_logo" xs={12} sm={6}>
                     <img id="atlas_logo_gde" src={require("../img/atlas_logo.png")} alt="Logo do Atlas da Agropecuária Brasielira" />
@@ -20,7 +23,7 @@ const Header = () => (
                         </div>
                         <div className="collapse navbar-collapse" id="menu">
                           <ul className="nav navbar-nav">
-                            <li><button className="btn btn-default">NOTÍCIAS</button></li>
+                            <li><button className="btn btn-default" onClick={props.toggleNews}>NOTÍCIAS</button></li>
                             <li><button className="btn btn-default">PUBLICAÇÕES</button></li>
                             <li><button className="btn btn-default">BASE DE DADOS</button></li>
                             <li>
@@ -34,7 +37,22 @@ const Header = () => (
                       </div>
                     </nav>   
                 </Col>
+                <News show={props.newsVisible} handleHide={props.toggleNews}/>
             </div>
         );
 
-export default Header;
+const mapStateToProps = (state, ownProps) => {
+    return {
+        newsVisible: state.news.show,
+    }
+}
+
+const mapDispatchToProps = (dispatch, ownProps) => {
+    return {
+        toggleNews: () => {
+            dispatch(actions.toggleNews())
+        },
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Header)
