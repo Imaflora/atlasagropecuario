@@ -61,9 +61,9 @@ app.get('/translation/:lcid', (req, res, next) => {
     WHERE sgl_lcid = $1`, req.params.lcid)
     .then((data) => {
         var results = data.json;
+        db.none(`UPDATE exposed.numAccess SET num = num + 1;`).then();
         res.status(200).json({status: 'success', data: results, message: "Worked!"});
     });
-    db.none(`UPDATE exposed.numAccess SET num = num + 1;`).then();
 });
 
 app.listen(9000);
