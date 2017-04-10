@@ -21,8 +21,8 @@ const News = props => {
                 <h1>Clique sobre a noticia para acessar a matéria completa.</h1>
                 <div>
                 <h1>ABR / 2017</h1>
+                <a href="https://www.nexojornal.com.br/grafico/2017/04/07/P%C3%BAblicas-e-privadas-a-divis%C3%A3o-de-terras-no-territ%C3%B3rio-brasileiro" taget="_blank">Públicas e privadas: a divisão de terras no território brasileiro. NEXO</a><br />
                 <a href="http://www.gtps.org.br/tag/imaflora-geolab-atlas-atlas-da-agropecuaria-brasileira-malha-fundiaria-brasil-dados-georreferenciados" target="_blank" >Plataforma on-line revela a malha fundiária do Brasil. GTPS - Grupo de Trabalho da Pecuária Sustentável</a>
-                
                 </div>
                 
                 <div>
