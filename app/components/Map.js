@@ -80,6 +80,11 @@ class Map extends React.Component {
     
   }
 
+  shouldComponentUpdate(nextProps, nextState) {
+    return this.props.coverLayer != nextProps.coverLayer;
+  }'  '
+  
+
   render() {
     return (
       <div id="map" className="map" ref="map">
