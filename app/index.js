@@ -9,6 +9,7 @@ require.context("./fonts/", true, /^\.\/.*\.eot/);
 require('./styles/bootstrap.min.css');
 require('./styles/ol.min.css');
 require('./styles/styles.less');
+require('./styles/bootstrap.min.js');
 
 
 

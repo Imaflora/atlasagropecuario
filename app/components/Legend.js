@@ -14,8 +14,8 @@ class Legend extends React.Component {
             ));
 
         var render =
-            this.props.show ? (
-                <div id="legend">
+            <div>
+                <div id="legend" className={!this.props.show ? "off" : undefined}>
                     <div id="legend-title">Legenda
                     <img id="hide-legend" src={require("../img/hide_legend.png")} alt="Hide legend" onClick={this.props.hideLegend} />
                     </div>
@@ -24,12 +24,11 @@ class Legend extends React.Component {
                             {legendItems}
                         </tbody></table>
                 </div>
-            ) : (
-                    <div id="legend-shower" onClick={this.props.showLegend}>
+                    <div id="legend-shower" className={this.props.show ? "off" : undefined} onClick={this.props.showLegend}>
                         <img id="show-legend" src={require("../img/show_legend.png")} alt="Show legend" />
                         <div id="legend-vertical">LEGENDA</div>
                     </div>
-                );
+                </div>
 
         return render;
     }

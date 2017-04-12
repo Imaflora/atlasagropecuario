@@ -9,9 +9,13 @@ export default class MyModal extends Component {
                 ? null
                 : <Button onClick={this.props.onHide}>Fechar</Button>
         );
+        
+        var submitButton = this.props.handleSubmit 
+        ? (<Button type="submit" onClick={this.props.handleSubmit}>OK</Button>)  
+        : undefined
 
         return (
-            <Modal show={this.props.show} onHide={this.props.onHide} bsSize="large" aria-labelledby="contained-modal-title-lg">
+            <Modal id={this.props.id} show={this.props.show} onHide={this.props.onHide} bsSize="large" aria-labelledby="contained-modal-title-lg">
                 <Modal.Header className={this.props.headerClass} closeButton>
                     <Modal.Title id="contained-modal-title-lg">{this.props.title}</Modal.Title>
                 </Modal.Header>
@@ -20,7 +24,7 @@ export default class MyModal extends Component {
                 </Modal.Body>
                 <Modal.Footer>
                     {this.props.footer}
-                    <Button type="submit" onClick={this.props.handleSubmit}>OK</Button>
+                    {submitButton}
                     {closeButton}
                 </Modal.Footer>
             </Modal>

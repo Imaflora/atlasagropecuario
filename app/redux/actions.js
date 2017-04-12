@@ -77,6 +77,11 @@ export function hideWelcome() {
 	}
 }
 
+export function toggleNews() {
+	return {
+		type: 'TOGGLE_NEWS'
+	}
+}
 
 function insertOrUpdateUser({email, nome, telefone, instituicao, departamento}) {
 	var serverUrl = process.env.NODE_ENV == 'local' ? 'http://localhost:9000/' : servUrl;
