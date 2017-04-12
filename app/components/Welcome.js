@@ -15,8 +15,8 @@ const Welcome = props => {
 
     return (
         <MyModal
-            headerClass="welcome-header"
-            bodyClass="welcome-body"
+            headerId="welcome-header"
+            bodyId="welcome-body"
             show={props.show ? props.show : false}
             title="Bem-vindo"
             handleSubmit={props.hide}

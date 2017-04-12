@@ -36,6 +36,7 @@ class Body extends Component {
 				<Map overlay={overlay} />
 				<AttributeWindow overlay={overlay} />
 				<Legend />
+
 			</div>
 		);
 	}

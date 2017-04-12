@@ -12,10 +12,10 @@ export default class MyModal extends Component {
 
         return (
             <Modal show={this.props.show} onHide={this.props.onHide} bsSize="large" aria-labelledby="contained-modal-title-lg">
-                <Modal.Header className={this.props.headerClass} closeButton>
+                <Modal.Header id={this.props.headerId} closeButton>
                     <Modal.Title id="contained-modal-title-lg">{this.props.title}</Modal.Title>
                 </Modal.Header>
-                <Modal.Body className={this.props.bodyClass} style={{maxHeight:window.innerHeight*0.8 - 56 -71, overflowY:"scroll"}}>
+                <Modal.Body id={this.props.bodyId} style={{maxHeight:window.innerHeight*0.8 - 56 -71, overflowY:"scroll"}}>
                     {this.props.children}
                 </Modal.Body>
                 <Modal.Footer>
