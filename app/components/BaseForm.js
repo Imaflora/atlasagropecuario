@@ -68,7 +68,6 @@ class BaseForm extends Component {
                             id="email"
                             type="email"
                             maxLength={254}
-                            label="Endereço de E-mail"
                             placeholder="E-mail"
                             required={true}
                             validationPattern=".+\@.+\..{2,}"
@@ -79,7 +78,7 @@ class BaseForm extends Component {
                             id="nome"
                             type="text"
                             maxLength={124}
-                            placeholder="Nome"
+                            placeholder={this.props.translation["name"]}
                             handleChange={this.handleChange}
                             value={this.props.userData.nome}
                             required
@@ -88,7 +87,7 @@ class BaseForm extends Component {
                             id="instituicao"
                             type="text"
                             maxLength={100}
-                            placeholder="Instituição"
+                            placeholder={this.props.translation["institution"]}
                             value={this.props.userData.instituicao}
                             handleChange={this.handleChange}
                             required
@@ -97,7 +96,7 @@ class BaseForm extends Component {
                             id="departamento"
                             type="text"
                             maxLength={50}
-                            placeholder="Departamento"
+                            placeholder={this.props.translation["dept"]}
                             value={this.props.userData.departamento}
                             handleChange={this.handleChange}
                         />
@@ -105,7 +104,7 @@ class BaseForm extends Component {
                             id="telefone"
                             type="telefone"
                             maxLength={50}
-                            placeholder="Telefone"
+                            placeholder={this.props.translation["phone"]}
                             value={this.props.userData.telefone}
                             handleChange={this.handleChange}
 
@@ -154,7 +153,8 @@ BaseForm.propTypes = {
 
 const mapStateToProps = (state, ownProps) => {
     return {
-        userData: state.user
+        userData: state.user,
+        translation: state.translation,
     }
 }
 

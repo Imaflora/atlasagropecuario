@@ -25,7 +25,9 @@ class Footer extends React.Component {
             <div className={this.state.open ? 'footer-close' : 'footer-open'}>
                 
                 <div className="footer-button">
-                    <img className={this.state.open ? 'img-close' : 'img-open'} id="footer_arrow" src={imgBtn} alt="Icone de rodapé" />
+                    <div id="div-img-footer">
+                        <img className={this.state.open ? 'img-close' : 'img-open'} id="footer_arrow" src={imgBtn} alt="Icone de rodapé" />
+                    </div>
                     <Button className={this.state.open ? 'btn-close' : 'btn-open'} onClick={() => this.setState({ open: !this.state.open })} style={{ float: "none", marginLeft: "auto" }}>{buttonText}</Button>
                 </div>
                 <div className="social">
@@ -38,20 +40,20 @@ class Footer extends React.Component {
                         <div className="footer">
                             <div id="content" className="content row">
                                 <div className="col-xs-12 col-sm-4 col-md-4 col-lg-4 footer-column align-left">
-                                    <div>REALIZAÇÃO</div>
+                                    <div className="uppercase">{this.props.translation["poweredBy"]}</div>
                                     <img id="imaflora_logo" src={require("../img/imaflora_logo.png")} alt="Logo do Imaflora" />
                                     <img id="geolab_logo" src={require("../img/geolab_logo.png")} alt="Logo do Geolab" />
-                                    <div>PARCEIROS</div>
+                                    <div className="uppercase">{this.props.translation["partners"]}</div>
                                     <img id="kth_logo" src={require("../img/kth_logo.png")} alt="Logo do KTH" />
                                     <img id="sei_logo" src={require("../img/sei_logo.png")} alt="Logo da SEI" />
                                     <img id="trase_logo" src={require("../img/trase_logo.png")} alt="Logo da Trase" />
-                                    <div>APOIO</div>
+                                    <div className="uppercase">{this.props.translation["support"]}</div>
                                     <img id="fapesp_logo" src={require("../img/fapesp_logo.png")} alt="Logotipo da Fapesp" />
                                     <img id="norad_logo" src={require("../img/norad_logo.png")} alt="Logotipo da Norad" />
                                     <img id="ocf_logo" src={require("../img/ocf_logo.png")} alt="Logotipo do OCF" />
                                     <img id="ipam_logo" src={require("../img/ipam_logo.png")} alt="Logotipo do Ipam" />
                                 </div>
-                                <div className="description col-xs-12 col-sm-4 col-md-4 col-lg-4 footer-column align-center">{this.props.footerText}</div>
+                                <div className="description col-xs-12 col-sm-4 col-md-4 col-lg-4 footer-column align-center" dangerouslySetInnerHTML={{__html: this.props.translation['footerText']}}></div>
                                 <div className="col-xs-12 col-sm-4 col-md-4 col-lg-4 footer-column align-right footer-right">
                                     {/*<Button id="botao" onClick={this.props.showFeedback}>FEEDBACK</Button>*/}
                                     <FeedbackForm/>

@@ -88,6 +88,12 @@ class ActionHandler {
       'RECEIVE_USER': ({ user }) => ({
         user: { ...this.state.user, ...user }
       }),
+          
+       'TOGGLE_NEWS': () => {
+        return {
+          news: { show: !this.state.news.show }
+        }
+      },
 
       'HIDE_WELCOME': () =>
         ({
@@ -110,6 +116,10 @@ class ActionHandler {
 
       'LAYER_CHANGE': ({ layer }) => (
         { map: { ...this.state.map, coverLayer: layer } }
+      ),
+
+      'SET_LANGUAGE': ({language}) => (
+        {language: language }
       ),
       
 

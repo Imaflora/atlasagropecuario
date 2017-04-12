@@ -30,7 +30,7 @@ class AttributeWindow extends Component {
   render() {
     var dataValues = [];
     for (var i in this.props.infoWindow) {
-      dataValues.push(<li key={i}>{this.props.translation[i]}: {this.props.infoWindow[i]}</li>);
+      dataValues.push(<li key={i}><div className="attr-title">{this.props.translation[i]}:</div><div className="attr-value"> {this.props.infoWindow[i]}</div></li>);
     }
 
     return (

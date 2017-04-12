@@ -15,9 +15,9 @@ class DownloadForm extends Component {
                 handleSubmit={this.props.submitDownload} 
                 handleHide={this.props.hideDownload} 
                 show={this.props.show} 
-                title={"Preencha os dados para fazer o download da " + this.props.title}
+                title={this.props.translation['modalDownloadTitle'] + this.props.title}
                 buttonText="Download" 
-                textAreaLabel="Finalidade de uso da informação"
+                textAreaLabel={this.props.translation['downloadArea']}
             >
             </BaseForm>
         );
@@ -29,7 +29,8 @@ const mapStateToProps = (state, ownProps) => {
     return {
         layer: state.download.layer,
         show: state.download.show,
-        title: state.download.layer && state.layers[state.download.layer].name
+        title: state.download.layer && state.layers[state.download.layer].name,
+        translation: state.translation,
     }
 }
 

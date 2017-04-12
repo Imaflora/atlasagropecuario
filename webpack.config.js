@@ -55,6 +55,9 @@ module.exports = {
     new webpack.ProvidePlugin({
       "$": "jquery"
     }),
+      new webpack.ProvidePlugin({
+      "jQuery": "jquery"
+    }),
     new webpack.ProvidePlugin({
       "ReactDOM": "react-dom"
     }),
