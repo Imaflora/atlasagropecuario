@@ -29,11 +29,25 @@ class Footer extends React.Component {
                         <img className={this.state.open ? 'img-close' : 'img-open'} id="footer_arrow" src={imgBtn} alt="Icone de rodapé" />
                     </div>
                     <Button className={this.state.open ? 'btn-close' : 'btn-open'} onClick={() => this.setState({ open: !this.state.open })} style={{ float: "none", marginLeft: "auto" }}>{buttonText}</Button>
-                </div>
-                <div className="social">
-                    <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fwww.imaflora.org%2Fatlasagropecuario" target="_blank"><img id="facebook_icon" src={require("../img/facebook_icon.png")} alt="Icone do Facebook"/></a>
-                    <a href="https://twitter.com/intent/tweet?text=Atlas%20Agropecu%C3%A1rio%20-%20http%3A%2F%2Fwww.imaflora.org%2Fatlasagropecuario" target="_blank"><img id="twitter_icon" src={require("../img/twitter_icon.png")} alt="Icone do Twitter"/></a>
-                    <a href="https://www.linkedin.com/shareArticle?mini=true&url=http://www.imaflora.org/atlasagropecuario/&title=Atlas%20Agropecu%C3%A1rio" target="_blank"><img id="linkedin_icon" src={require("../img/linkedin_icon.png")} alt="Icone do LinkedIn"/></a>   
+                    <nav id="share-bar" className="navbar-default">
+                      
+                        <div className={this.state.open ? 'navbar-header share-close' : 'navbar-header share-open'}>
+                          <button id="share-btn" type="button" className="navbar-toggle collapsed" data-toggle="collapse" data-target="#share" aria-expanded="false">
+                            <span className="sr-only">Toggle navigation</span>
+                          </button>
+                        </div>
+                        <div className="container-fluid">
+                        <div className="collapse navbar-collapse" id="share">
+                          <ul className="nav navbar-nav">
+                            <li><a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fwww.imaflora.org%2Fatlasagropecuario" target="_blank"><img id="facebook_icon" src={require("../img/facebook_icon.png")} alt="Icone do Facebook"/></a></li>
+                            <li><a href="https://plus.google.com/share?url=http://www.imaflora.org/atlasagropecuario/" target="_blank"><img id="google_plus_icon" src={require("../img/google_plus_icon.png")} alt="Icone do Google+"/></a></li>
+                            <li><a href="https://twitter.com/intent/tweet?text=Atlas%20Agropecu%C3%A1rio%20-%20http%3A%2F%2Fwww.imaflora.org%2Fatlasagropecuario" target="_blank"><img id="twitter_icon" src={require("../img/twitter_icon.png")} alt="Icone do Twitter"/></a></li>
+                            <li><a href="https://www.linkedin.com/shareArticle?mini=true&url=http://www.imaflora.org/atlasagropecuario/&title=Atlas%20Agropecu%C3%A1rio" target="_blank"><img id="linkedin_icon" src={require("../img/linkedin_icon.png")} alt="Icone do LinkedIn"/></a></li>
+                            <li><a href="https://github.com/Imaflora/atlasagropecuario.git" target="_blank"><img id="github_icon" src={require("../img/github_icon.png")} alt="Icone do GitHub"/></a></li>
+                          </ul>
+                        </div>
+                      </div>
+                    </nav>  
                 </div>   
                 <Collapse show={this.state.open}>
                     <div>
