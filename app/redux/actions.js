@@ -163,7 +163,7 @@ mutation {
 function executeDownload() {
 	return (dispatch, getState) => {
 		var state = getState();
-		window.location.href = state.layers[state.download.layer].downloadLink;
+		window.open(state.translation.layersObj[state.download.layer].downloadLink, '_blank');
 	};
 }
 
