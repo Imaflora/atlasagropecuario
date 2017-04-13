@@ -29,7 +29,7 @@ const Header = (props) => {
                                 <li><button className="btn btn-default uppercase">{props.translation["publications"]}</button></li>
                                 <li><button className="btn btn-default uppercase">{props.translation["database"]}</button></li>
                                 <li>
-                                    <select onChange={(e) => props.changeLanguage(e.target.value)} className="btn btn-default" defaultValue={navigator.language.startsWith('pt') ? pt - BR : 'en-US'}>
+                                    <select onChange={(e) => props.changeLanguage(e.target.value)} className="btn btn-default" defaultValue={navigator.language.startsWith('pt') ? 'pt-BR' : 'en-US'}>
                                         <option value="pt-BR">PORTUGUÊS</option>
                                         <option value="en-US">ENGLISH</option>
                                     </select>
