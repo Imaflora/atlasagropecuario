@@ -21,13 +21,13 @@ class FeedbackForm extends Component {
 
     render() {
         var topics = this.props.topics;
+
         var options =
-            Object.keys(topics).map(
+            topics.map(
                 (e, i) => <option key={i} value={e}>{this.props.translation[e]}</option>
             );
         var other;
-        var subject = "Assunto";
-        if (this.props.userData.assunto === Object.keys(topics).slice(-1)[0]) {
+        if (this.props.userData.assunto === topics.slice(-1)[0]) {
             other = (<FieldGroup
                 id="outro"
                 type="text"
@@ -35,7 +35,6 @@ class FeedbackForm extends Component {
                 handleChange={this.handleChange}
                 required
             />);
-            subject = null;
         }
 
         const selectObj = (
@@ -43,7 +42,6 @@ class FeedbackForm extends Component {
                 componentClass="select"
                 type="select"
                 id="assunto"
-                label={subject}
                 handleChange={this.handleChange}
                 value={this.props.topic}
             >
@@ -80,7 +78,7 @@ class FeedbackForm extends Component {
 }
 
 FeedbackForm.propTypes = {
-    topics: PropTypes.objectOf(PropTypes.string).isRequired,
+    topics: PropTypes.arrayOf(PropTypes.string).isRequired,
 };
 
 const mapStateToProps = (state, ownProps) => {

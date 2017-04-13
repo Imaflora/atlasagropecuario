@@ -1,13 +1,13 @@
 import { Modal, Button } from 'react-bootstrap'
+import {connect} from 'react-redux'
+import React, { Component } from 'react'
 
-import React, { Component } from 'react';
-
-export default class MyModal extends Component {
+class MyModal extends Component {
     render() {
         var closeButton = (
             this.props.noClose
                 ? null
-                : <Button onClick={this.props.onHide}>Fechar</Button>
+                : <Button onClick={this.props.onHide}>{this.props.translation["close"]}</Button>
         );
         
         var submitButton = this.props.handleSubmit 
@@ -31,3 +31,11 @@ export default class MyModal extends Component {
         );
     }
 }
+
+const mapStateToProps = (state, ownProps) => {
+    return {
+        translation: state.translation
+    }
+}
+
+export default connect(mapStateToProps)(MyModal)

@@ -29,7 +29,7 @@ const mapStateToProps = (state, ownProps) => {
     return {
         layer: state.download.layer,
         show: state.download.show,
-        title: state.download.layer && state.layers[state.download.layer].name,
+        title: state.download.layer && state.translation.layersObj && state.translation.layersObj[state.download.layer].name,
         translation: state.translation,
     }
 }

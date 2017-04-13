@@ -3,7 +3,16 @@ import * as actions from '../redux/actions'
 import LegendItem from './LegendItem'
 
 class Legend extends React.Component {
+    shouldComponentUpdate(nextProps, nextState) {
+        return nextProps.layers !== undefined;
+    }
+    
+
     render() {
+        if (this.props.layers === undefined) return <div></div>;
+        console.log (this.props.layers[this.props.selectedLayer]);
+        console.log (this.props.layers);
+        console.log (this.props.selectedLayer);
             var legendValues = this.props.layers[this.props.selectedLayer].legend;
 
             var legendItems = legendValues.map((obj, i) => (
@@ -13,7 +22,7 @@ class Legend extends React.Component {
                 </tr>
             ));
 
-        var render =
+        var render = 
             <div>
                 <div id="legend" className={!this.props.show ? "off" : undefined}>
                     <div id="legend-title">{this.props.translation["legend"]}
@@ -37,7 +46,7 @@ class Legend extends React.Component {
 const mapStateToProps = (state, ownProps) => {
     return {
         show: state.legend.show,
-        layers: state.layers,
+        layers: state.translation.layersObj,
         selectedLayer: state.map.coverLayer,
         translation: state.translation,
     }
