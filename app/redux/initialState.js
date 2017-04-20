@@ -42,6 +42,9 @@ export const state = {
   news: {
     show: false,  
   },
+  publications: {
+    show: false,  
+  },
   user: {
     email: '',
     nome: '',

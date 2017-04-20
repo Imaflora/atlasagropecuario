@@ -84,6 +84,12 @@ export function toggleNews() {
 	}
 }
 
+export function togglePublications() {
+	return {
+		type: 'TOGGLE_PUBLICATIONS'
+	}
+}
+
 function insertOrUpdateUser({ email, nome, telefone, instituicao, departamento }) {
 	var serverUrl = process.env.NODE_ENV == 'local' ? 'http://localhost:9000/' : servUrl;
 	return axios.post(serverUrl + 'insertOrUpdateUser', { email, nome, telefone, instituicao, departamento })

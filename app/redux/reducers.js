@@ -95,6 +95,12 @@ class ActionHandler {
         }
       },
 
+       'TOGGLE_PUBLICATIONS': () => {
+        return {
+          publications: { show: !this.state.publications.show }
+        }
+      },
+
       'HIDE_WELCOME': () =>
         ({
           welcome: { show: false }
