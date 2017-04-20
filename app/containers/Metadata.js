@@ -15,7 +15,7 @@ const Metadata = props => {
             noClose>
             {props.metadata}
             <br />
-            <a className="downloadMetadata" href={props.link}>Baixe a metodologia completa aqui</a>
+            <a className="downloadMetadata" href={props.link}>{props.translation['downloadMetadata']}</a>
         </MyModal>
     )
 }
@@ -24,9 +24,10 @@ const mapStateToProps = (state, ownProps) => {
     return {
         layer: state.metadata.layer,
         show: state.metadata.show,
-        title: state.metadata.layer && state.layers[state.metadata.layer].name,
-        metadata: state.metadata.layer && state.layers[state.metadata.layer].metadata,
-        link: state.metadata.layer && state.layers[state.metadata.layer].link,
+        title: state.metadata.layer && state.translation.layersObj[state.metadata.layer].name,
+        metadata: state.metadata.layer && state.translation.layersObj[state.metadata.layer].metadata,
+        link: state.metadata.layer && state.translation.layersObj[state.metadata.layer].link,
+        translation: state.translation,
     }
 }
 

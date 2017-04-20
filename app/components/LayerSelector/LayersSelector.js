@@ -32,7 +32,7 @@ class LayersSelector extends Component {
             <div>
                 <div id="layer-shower" className={this.props.show ? "on" : "off"} onClick={this.props.toggleLayersSelector}  >
                         <img id="show-layer" src={require('../../img/show_legend.png')} alt="Show layer" />
-                        <div id="layer-vertical">CAMADAS</div>
+                        <div id="layer-vertical" className="uppercase">{this.props.translation["layers"]}</div>
                 </div>
                 <SideCollapse show={this.props.show} top={this.state.top} width={260}>
                     <div style={{ position: "absolute", marginRight: 100 }} ref="innerMeasure">
@@ -42,7 +42,7 @@ class LayersSelector extends Component {
                                     alt="abrir" 
                                     onClick={this.props.toggleLayersSelector} 
                                 />
-                                <div className="malhaFundiaria" style={{ marginRight: 50 }}>Camadas</div>
+                                <div className="malhaFundiaria uppercase" style={{ marginRight: 50 }}>{this.props.translation["layers"]}</div>
                             </div>
                             <table id="layers-control">
                                 <tbody>
@@ -61,8 +61,9 @@ class LayersSelector extends Component {
 
 const mapStateToProps = (state, ownProps) => {
     return {
-        layers: state.layers,
+        layers: state.translation.layersObj,
         show: state.layerSelector.show,
+        translation: state.translation,
     }
 }
 

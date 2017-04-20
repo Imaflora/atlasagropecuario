@@ -21,22 +21,20 @@ class FeedbackForm extends Component {
 
     render() {
         var topics = this.props.topics;
+
         var options =
-            Object.keys(topics).map(
-                (e, i) => <option key={i} value={e}>{topics[e]}</option>
+            topics.map(
+                (e, i) => <option key={i} value={e}>{this.props.translation[e]}</option>
             );
         var other;
-        var subject = "Assunto";
-        if (this.props.userData.assunto === Object.keys(topics).slice(-1)[0]) {
+        if (this.props.userData.assunto === topics.slice(-1)[0]) {
             other = (<FieldGroup
                 id="outro"
                 type="text"
-                placeholder="Qual o assunto?"
                 value={this.props.userData.outro}
                 handleChange={this.handleChange}
                 required
             />);
-            subject = null;
         }
 
         const selectObj = (
@@ -44,7 +42,6 @@ class FeedbackForm extends Component {
                 componentClass="select"
                 type="select"
                 id="assunto"
-                label={subject}
                 handleChange={this.handleChange}
                 value={this.props.topic}
             >
@@ -54,11 +51,11 @@ class FeedbackForm extends Component {
 
         return (
             < div id="feedback-form" >
-                <div id="feedback-title">Fale Conosco</div>
+                <div id="feedback-title">{this.props.translation["contactUs"]}</div>
                 <BaseForm
                     title="Deixe o seu comentário, dúvida ou sugestão"
                     buttonText="FEEDBACK"
-                    textAreaLabel="Comentário"
+                    textAreaLabel={this.props.translation["cm"]}
                     show={true}
                     noModal>
                     {this.props.topic === 'ou' ? (
@@ -74,14 +71,14 @@ class FeedbackForm extends Component {
                     }
                     
                 </BaseForm>
-                <Button id="submit-feedback" type="submit" onClick={this.props.insertFeedback}>Enviar</Button>
+                <Button id="submit-feedback" type="submit" onClick={this.props.insertFeedback}>{this.props.translation["submit"]}</Button>
             </div >
         );
     }
 }
 
 FeedbackForm.propTypes = {
-    topics: PropTypes.objectOf(PropTypes.string).isRequired,
+    topics: PropTypes.arrayOf(PropTypes.string).isRequired,
 };
 
 const mapStateToProps = (state, ownProps) => {
@@ -90,6 +87,7 @@ const mapStateToProps = (state, ownProps) => {
         userData: state.user,
         topic: state.user.assunto,
         show: state.feedback.show,
+        translation: state.translation,
     }
 }
 

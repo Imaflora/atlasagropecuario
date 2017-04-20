@@ -95,6 +95,12 @@ class ActionHandler {
         }
       },
 
+       'TOGGLE_PUBLICATIONS': () => {
+        return {
+          publications: { show: !this.state.publications.show }
+        }
+      },
+
       'HIDE_WELCOME': () =>
         ({
           welcome: { show: false }
@@ -116,6 +122,10 @@ class ActionHandler {
 
       'LAYER_CHANGE': ({ layer }) => (
         { map: { ...this.state.map, coverLayer: layer } }
+      ),
+
+      'SET_LANGUAGE': ({language}) => (
+        {language: language }
       ),
       
 

@@ -86,9 +86,7 @@ app.use(postgraphql.postgraphql(config, schema, { graphiql: true }));
 
 app.get('/translation/:lcid', (req, res, next) => {
   db.one(`
-    SELECT json_object_agg(de, para) json
-    FROM conf.traducao
-    WHERE sgl_lcid = $1`, req.params.lcid)
+    SELECT conf.get_translation($1) json`, req.params.lcid)
     .then((data) => {
       var results = data.json;
       db.none(`UPDATE exposed.numAccess SET num = num + 1;`).then(() => { }).catch((err) => console.log(err));

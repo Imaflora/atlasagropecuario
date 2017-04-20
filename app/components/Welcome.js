@@ -3,7 +3,7 @@ import MyModal from '../components/MyModal'
 import FieldGroup from '../components/FieldGroup'
 import { connect } from 'react-redux'
 import * as actions from '../redux/actions'
-import {Checkbox} from 'react-bootstrap'
+import { Checkbox } from 'react-bootstrap'
 
 
 const Welcome = props => {
@@ -15,17 +15,17 @@ const Welcome = props => {
 
     return (
         <MyModal
-            headerClass="welcome-header"
-            bodyClass="welcome-body"
+            headerId="welcome-header"
+            bodyId="welcome-body"
             show={props.show ? props.show : false}
-            title="Bem-vindo"
+            title={props.translation['welcome']}
             handleSubmit={props.hide}
             onHide={props.hide}
             noClose
-            footer={<Checkbox style={{float:"left"}} onClick={e => showAgain(e.target.checked)}>
-                Não mostrar novamente
+            footer={<Checkbox style={{ float: "left" }} onClick={e => showAgain(e.target.checked)}>
+                {props.translation['dontShowAgain']}
             </Checkbox>}>
-            {props.text}
+            <div dangerouslySetInnerHTML={{ __html: props.translation['welcomeText'] }}></div>
             <br />
         </MyModal>
     )
@@ -35,6 +35,7 @@ const mapStateToProps = (state, ownProps) => {
     return {
         show: state.welcome.show,
         text: state.welcome.text,
+        translation: state.translation
     }
 }
 
@@ -47,5 +48,3 @@ const mapDispatchToProps = (dispatch, ownProps) => {
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Welcome)
-
-

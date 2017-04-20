@@ -1,4 +1,5 @@
 var serverUrl = servUrl + 'graphql';
+var translateUrl = (process.env.NODE_ENV == 'local' ? 'http://localhost:9000/' : servUrl) + 'translation/';
 
 export function requestData() {
 	return {
@@ -83,7 +84,13 @@ export function toggleNews() {
 	}
 }
 
-function insertOrUpdateUser({email, nome, telefone, instituicao, departamento}) {
+export function togglePublications() {
+	return {
+		type: 'TOGGLE_PUBLICATIONS'
+	}
+}
+
+function insertOrUpdateUser({ email, nome, telefone, instituicao, departamento }) {
 	var serverUrl = process.env.NODE_ENV == 'local' ? 'http://localhost:9000/' : servUrl;
 	return axios.post(serverUrl + 'insertOrUpdateUser', { email, nome, telefone, instituicao, departamento })
 }
@@ -162,7 +169,7 @@ mutation {
 function executeDownload() {
 	return (dispatch, getState) => {
 		var state = getState();
-		window.location.href = state.layers[state.download.layer].downloadLink;
+		window.open(state.translation.layersObj[state.download.layer].downloadLink, '_blank');
 	};
 }
 
@@ -231,7 +238,7 @@ export function getInformation(x, y) {
 		dispatch(mapClick(undefined));
 		axios.post(serverUrl, { query: graphQuery }).then(({ data }) => {
 			var coordinates = [x, y];
-			if (!data.data.getLandData.json) 
+			if (!data.data.getLandData.json)
 				coordinates = undefined;
 			dispatch(mapClick(coordinates));
 			dispatch(setInfoWindow(JSON.parse(data.data.getLandData.json)));
@@ -273,5 +280,33 @@ export function changeLayer(value) {
 	return {
 		type: 'LAYER_CHANGE',
 		layer: value,
-	}	
+	}
+}
+
+export function changeLanguage(language) {
+	return function(dispatch) {
+		dispatch(setLanguage(language));
+		axios.get(translateUrl + language).then((data) => {
+			dispatch(receiveTranslation(data.data.data));
+		})
+	}
+}
+
+function setLanguage(language) {
+	return {
+		type: 'SET_LANGUAGE',
+		language: language,
+	}
+}
+
+
+function receiveTranslation(data) {
+	return {
+		type: "RECEIVE_TRANSLATION",
+		data: data,
+	}
+}
+
+function retranslate() {
+	
 }

@@ -65,6 +65,10 @@ th {
     border-color: @darkGrey;
 }
 
+.uppercase {
+    text-transform: uppercase;
+}
+
 /*------------------------------------------------------------*/
 /*------------------------- HEADER ---------------------------*/
 
@@ -146,6 +150,10 @@ th {
     border-color: transparent;
     position: absolute;
     right: 5%;
+}
+
+.navbar-default>div>div>ul>li>a {
+    padding: 0px;
 }
 
 .navbar-header {
@@ -683,14 +691,14 @@ img#show-layer {
 /*------------------------------------------------------------*/
 /*------------------------- WELCOME --------------------------*/
 
-.welcome-header {
+#welcome-header {
     background-color: @blue;
     color: white;
     font-family: Calibri, sans-serif;
     text-transform: uppercase;
 }
 
-.welcome-body {
+#welcome-body {
     font-family: Calibri;
     font-size: 12pt;
     margin-left: 10px;
@@ -701,16 +709,16 @@ img#show-layer {
 }
 
 /*------------------------------------------------------------*/
-/*------------------------- NEWS --------------------------*/
+/*------------------------- NEWS -----------------------------*/
 
-.news-header {
+#news-header, #publications-header {
     background-color: @blue;
     color: white;
     font-family: Calibri, sans-serif;
     text-transform: uppercase;
 }
 
-.news-body {
+#news-body, #publication-body {
     font-family: Calibri;
     font-size: 12pt;
     margin-left: 10px;
@@ -724,9 +732,51 @@ img#show-layer {
     max-width: 720px;
 }
 
-#news-modal h1 {
+#news-modal h1, #publications-modal h1 {
     font-size: 20px;
 }
+
+/*------------------------------------------------------------*/
+/*------------------------- PUBLICATION ----------------------*/
+
+#publications-modal h1 {
+    font-size: 18pt;
+    font-weight: bold;
+}
+
+#publications-modal p {
+    font-family: sans-serif;
+    text-align: justify;
+    text-indent: 1cm;
+}
+
+#publications-modal>.modal-lg {
+    max-width: 720px;
+}
+
+.paper {
+    min-height: 400px;
+    padding: 10px;
+    margin-bottom: 20px;
+    border-bottom: solid 1px;
+    
+}
+
+img.publication {
+    height: 300px;
+    box-shadow: 1px 1px 1px 1px
+}
+
+.float-right {
+    float: right;
+    margin-left: 20px;
+}
+
+.float-left {
+    float: left;
+    margin-right: 20px;
+}
+
 
 /*------------------------------------------------------------*/
 /*------------------------- LEGEND --------------------------*/
