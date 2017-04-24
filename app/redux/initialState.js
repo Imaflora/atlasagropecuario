@@ -61,6 +61,7 @@ export const state = {
   legend: {
     show: true,
   },
+  downloadSource: 'https://www.dropbox.com/sh/cvtrj35w6hzehhb/AAA3qEtmgwmQ1lN5bY2e5zYIa?dl=0', 
   translation: {},
   language: navigator.language,
 };
