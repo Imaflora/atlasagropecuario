@@ -39,6 +39,13 @@ export function hideDownload() {
 	}
 }
 
+export function toggleMessage(text="") {
+	return {
+		type: 'TOGGLE_MESSAGE',
+		text: text
+	}
+}
+
 export function showLegend() {
 	return {
 		type: 'SHOW_LEGEND'
@@ -72,9 +79,9 @@ export function hideMetadata() {
 }
 
 
-export function hideWelcome() {
+export function toggleWelcome() {
 	return {
-		type: 'HIDE_WELCOME'
+		type: 'TOGGLE_WELCOME'
 	}
 }
 
@@ -106,6 +113,7 @@ export function submitDownload() {
 		);
 		dispatch(executeDownload());
 		dispatch(hideDownload());
+		dispatch(toggleMessage(state.translation['thanksDownload']));
 	}
 }
 
@@ -138,6 +146,7 @@ export function submitFeedback() {
 			dispatch(insertFeedback(email, assunto, outro, text));
 		})
 		dispatch(hideFeedback());
+		dispatch(toggleMessage(state.translation['thanksFeedback']));
 	}
 }
 

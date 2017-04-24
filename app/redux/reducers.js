@@ -22,6 +22,11 @@ class ActionHandler {
           }
         }),
 
+        'TOGGLE_MESSAGE': ({ text }) => 
+        ({
+          message: { show: !this.state.message.show, text: text },
+        }),
+
       'HIDE_DOWNLOAD': () =>
         ({
           download: { show: false },
@@ -101,9 +106,9 @@ class ActionHandler {
         }
       },
 
-      'HIDE_WELCOME': () =>
+      'TOGGLE_WELCOME': () =>
         ({
-          welcome: { show: false }
+          welcome: { show: !this.state.welcome.show }
         }),
 
       'RECEIVE_TRANSLATION': ({ data }) => (
