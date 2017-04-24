@@ -15,7 +15,6 @@ const Welcome = props => {
 
     return (
         <MyModal
-            headerId="welcome-header"
             bodyId="welcome-body"
             show={props.show ? props.show : false}
             title={props.translation['welcome']}
@@ -42,7 +41,7 @@ const mapStateToProps = (state, ownProps) => {
 const mapDispatchToProps = (dispatch, ownProps) => {
     return {
         hide: () => {
-            dispatch(actions.hideWelcome())
+            dispatch(actions[ownProps.hideAction]())
         },
     }
 }

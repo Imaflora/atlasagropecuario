@@ -31,7 +31,10 @@ class Body extends Component {
 
 		return (
 			<div>
-				<Welcome />
+				<Welcome 
+					hideAction="hideWelcome"
+					headerId="welcome-header"
+				/>
 				<LayersSelector />
 				<Map overlay={overlay} />
 				<AttributeWindow overlay={overlay} />

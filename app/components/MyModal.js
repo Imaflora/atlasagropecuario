@@ -16,10 +16,10 @@ class MyModal extends Component {
 
         return (
             <Modal id={this.props.id} show={this.props.show} onHide={this.props.onHide} bsSize="large" aria-labelledby="contained-modal-title-lg">
-                <Modal.Header id={this.props.headerId} closeButton>
+                <Modal.Header closeButton>
                     <Modal.Title id="contained-modal-title-lg">{this.props.title}</Modal.Title>
                 </Modal.Header>
-                <Modal.Body id={this.props.bodyId} style={{maxHeight:window.innerHeight*0.8 - 56 -71, overflowY:"scroll"}}>
+                <Modal.Body style={{maxHeight:window.innerHeight*0.8 - 56 -71, overflowY:"scroll"}}>
                     {this.props.children}
                 </Modal.Body>
                 <Modal.Footer>
