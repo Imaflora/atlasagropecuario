@@ -2,7 +2,6 @@ var express = require('express');
 var postgraphql = require('postgraphql');
 var Ddos = require('ddos');
 var toobusy = require('toobusy-js');
-var salesforce = require('./salesforce');
 var mail = require('./mail');
 const app = express();
 var promise = require('bluebird');
@@ -58,10 +57,6 @@ app.post('/insertOrUpdateUser', function (req, res) {
   req.on('data', (data) => {
     req = JSON.parse(data.toString());
     db.oneOrNone("SELECT 1 res FROM feedback.usuario WHERE email=$1", [req.email]).then((data) => {
-      if (!data) {
-        console.log('will insert');
-        salesforce.createUser(req.email, req.nome, req.instituicao, req.departamento, req.telefone);
-      }
       db.oneOrNone(`SELECT exposed.insert_or_update_user(
     $1,
     $2,
