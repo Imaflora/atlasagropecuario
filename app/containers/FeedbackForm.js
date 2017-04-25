@@ -50,7 +50,7 @@ class FeedbackForm extends Component {
         );
 
         return (
-            < div id="feedback-form" >
+            < div id="feedback-form" ref="form">
                 <div id="feedback-title">{this.props.translation["contactUs"]}</div>
                 <BaseForm
                     title="Deixe o seu comentário, dúvida ou sugestão"
@@ -71,7 +71,7 @@ class FeedbackForm extends Component {
                     }
                     
                 </BaseForm>
-                <Button id="submit-feedback" type="submit" onClick={this.props.insertFeedback}>{this.props.translation["submit"]}</Button>
+                <Button id="submit-feedback" type="submit" onClick={() => this.props.insertFeedback(this.refs.form)}>{this.props.translation["submit"]}</Button>
             </div >
         );
     }
@@ -86,7 +86,6 @@ const mapStateToProps = (state, ownProps) => {
         topics: state.topics,
         userData: state.user,
         topic: state.user.assunto,
-        show: state.feedback.show,
         translation: state.translation,
     }
 }
@@ -96,7 +95,7 @@ const mapDispatchToProps = (dispatch, ownProps) => {
         updateFormValue: (what, value) => {
             dispatch(actions.updateFormValue(what, value))
         },
-        insertFeedback: () => dispatch(actions.submitFeedback())
+        insertFeedback: (form) => dispatch(actions.submitFeedback(form))
     }
 }
 

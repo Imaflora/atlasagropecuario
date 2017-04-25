@@ -33,9 +33,6 @@ export const state = {
     layer: '',
     show: false,
   },
-  feedback: {
-    show: false,
-  },
   layerSelector: {
     show: window.innerWidth > 580
   },

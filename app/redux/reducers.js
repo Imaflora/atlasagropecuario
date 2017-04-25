@@ -43,14 +43,8 @@ class ActionHandler {
           legend: { show: true }
         }),
 
-      'SHOW_FEEDBACK': () =>
-        ({
-          feedback: { show: true },
-        }),
-
       'HIDE_FEEDBACK': () => {
         return {
-          feedback: { show: false },
           user: { ...this.state.user, textfield: "", assunto: "cm" }
         }
       },

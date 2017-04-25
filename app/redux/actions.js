@@ -1,5 +1,17 @@
 var serverUrl = servUrl + 'graphql';
 var translateUrl = (process.env.NODE_ENV == 'local' ? 'http://localhost:9000/' : servUrl) + 'translation/';
+var serverUrlApi = process.env.NODE_ENV == 'local' ? 'http://localhost:9000/' : servUrl;
+
+function urlencodeFormData(fd){
+    var s = '';
+    function encode(s){ return encodeURIComponent(s).replace(/%20/g,'+'); }
+    for(var pair of fd.entries()){
+        if(typeof pair[1]=='string'){
+            s += (s?'&':'') + encode(pair[0])+'='+encode(pair[1]);
+        }
+    }
+    return s;
+}
 
 export function requestData() {
 	return {
@@ -98,8 +110,7 @@ export function togglePublications() {
 }
 
 function insertOrUpdateUser({ email, nome, telefone, instituicao, departamento }) {
-	var serverUrl = process.env.NODE_ENV == 'local' ? 'http://localhost:9000/' : servUrl;
-	return axios.post(serverUrl + 'insertOrUpdateUser', { email, nome, telefone, instituicao, departamento })
+	return axios.post(serverUrlApi + 'insertOrUpdateUser', { email, nome, telefone, instituicao, departamento })
 }
 
 export function submitDownload() {
@@ -134,13 +145,17 @@ mutation {
 	}
 }
 
-export function submitFeedback() {
+export function submitFeedback(s) {
+	var formData = new FormData(s.children[1]);
+	var formDataX = urlencodeFormData(formData)
 	return function (dispatch, getState) {
 		var state = getState();
 		var email = state.user.email;
 		var assunto = state.user.assunto;
 		var outro = state.user.outro;
 		var text = state.user.textfield;
+
+		axios.post("https://www.salesforce.com/servlet/servlet.WebToLead?encoding=UTF-8", formDataX, { headers: { 'Content-Type': 'application/x-www-form-urlencoded' }}).then();
 
 		insertOrUpdateUser(state.user).then(() => {
 			dispatch(insertFeedback(email, assunto, outro, text));
@@ -172,6 +187,7 @@ mutation {
   }
 }`
 		axios.post(serverUrl, { query: graphQuery }).then();
+		axios.post(serverUrlApi + 'sendComment', { email: email, name: state.user.nome, comment: text }).then();
 	}
 }
 

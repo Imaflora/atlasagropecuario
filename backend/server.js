@@ -3,6 +3,7 @@ var postgraphql = require('postgraphql');
 var Ddos = require('ddos');
 var toobusy = require('toobusy-js');
 var salesforce = require('./salesforce');
+var mail = require('./mail');
 const app = express();
 var promise = require('bluebird');
 var fs = require('fs');
@@ -78,6 +79,20 @@ app.post('/insertOrUpdateUser', function (req, res) {
   }
   )
 })
+
+app.post('/sendComment', function (req, res) {
+  req.on('data', (data) => {
+    req = JSON.parse(data.toString());
+    mail.sendMail(req.email, req.name, req.comment);
+    res.status(200)
+      .json({
+        status: 'success',
+        message: 'Updated'
+      });
+    return;
+  })
+}
+);
 
 app.use(postgraphql.postgraphql(config, schema, { graphiql: true }));
 
