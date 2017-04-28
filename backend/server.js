@@ -17,7 +17,7 @@ const schema = 'exposed';
 
 var config = {
   user: 'postgres', //env var: PGUSER 
-  database: 'atlas', //env var: PGDATABASE 
+  database: process.env.NODE_ENV == 'production' ? 'atlas' : 'atlas_dev', //env var: PGDATABASE 
   password: process.env.PGPASSWORD, //env var: PGPASSWORD 
   host: process.env.NODE_ENV == 'production' ? 'localhost' : 'geonode', // Server hosting the postgres database 
   port: 5432, //env var: PGPORT 
@@ -53,7 +53,7 @@ app.options('/*', function (req, res, next) {
 })
 
 
-app.post('/insertOrUpdateUser', function (req, res) {
+app.post('/api/insertOrUpdateUser', function (req, res) {
   req.on('data', (data) => {
     req = JSON.parse(data.toString());
     db.oneOrNone("SELECT 1 res FROM feedback.usuario WHERE email=$1", [req.email]).then((data) => {
@@ -75,7 +75,7 @@ app.post('/insertOrUpdateUser', function (req, res) {
   )
 })
 
-app.post('/sendComment', function (req, res) {
+app.post('/api/sendComment', function (req, res) {
   req.on('data', (data) => {
     req = JSON.parse(data.toString());
     mail.sendMail(req.email, req.name, req.comment);
@@ -94,7 +94,7 @@ app.use(postgraphql.postgraphql(config, schema, { graphiql: true }));
 
 
 
-app.get('/translation/:lcid', (req, res, next) => {
+app.get('/api/translation/:lcid', (req, res, next) => {
   db.one(`
     SELECT conf.get_translation($1) json`, req.params.lcid)
     .then((data) => {
@@ -104,4 +104,4 @@ app.get('/translation/:lcid', (req, res, next) => {
     });
 });
 
-app.listen(9000);
+app.listen(process.env.NODE_ENV == 'production' ? 9000 : 9001);
