@@ -13,7 +13,7 @@ class AttributeWindow extends Component {
     closer.onclick = function () {
       closer.blur();
       this.props.overlay.setPosition(undefined);
-      return false;
+      return false; 
     }.bind(this);
   }
 
@@ -22,6 +22,7 @@ class AttributeWindow extends Component {
     if (JSON.stringify(prevProps.infoWindow) !== JSON.stringify(this.props.infoWindow) || this.props.mapClick === undefined) {
       this.props.overlay.setPosition(this.props.mapClick);
     }
+    this.props.overlay.setPosition(this.props.mapClick);
   }
   
 
