@@ -63,7 +63,7 @@ app.post('/api/insertOrUpdateUser', function (req, res) {
     $3,
     $4,
     $5
-)`, [req.email, req.nome, req.instituicao, req.departamento, req.telefone]).then(() => {}).catch((err) => {console.warn(err)});
+)`, [req.email, req.nome, req.instituicao, req.departamento, req.telefone]).then(() => {}).catch((err) => {console.log(err)});
       res.status(200)
         .json({
           status: 'success',
