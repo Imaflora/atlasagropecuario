@@ -56,7 +56,7 @@ app.options('/*', function (req, res, next) {
 app.post('/api/insertOrUpdateUser', function (req, res) {
   req.on('data', (data) => {
     req = JSON.parse(data.toString());
-    console.log(JSON.stringify(data));
+    console.log(JSON.stringify(req));
     db.oneOrNone(`SELECT exposed.insert_or_update_user(
     $1,
     $2,
@@ -76,7 +76,7 @@ app.post('/api/insertOrUpdateUser', function (req, res) {
 app.post('/api/sendComment', function (req, res) {
   req.on('data', (data) => {
     req = JSON.parse(data.toString());
-    mail.sendMail(req.email, req.name, req.comment);
+    //mail.sendMail(req.email, req.name, req.comment);
     res.status(200)
       .json({
         status: 'success',
