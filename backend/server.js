@@ -56,8 +56,8 @@ app.options('/*', function (req, res, next) {
 app.post('/api/insertOrUpdateUser', function (req, res) {
   req.on('data', (data) => {
     req = JSON.parse(data.toString());
-    db.oneOrNone("SELECT 1 res FROM feedback.usuario WHERE email=$1", [req.email]).then((data) => {
-      db.oneOrNone(`SELECT exposed.insert_or_update_user(
+    console.log(JSON.stringify(data));
+    db.oneOrNone(`SELECT exposed.insert_or_update_user(
     $1,
     $2,
     $3,
@@ -71,8 +71,6 @@ app.post('/api/insertOrUpdateUser', function (req, res) {
         });
       return;
     })
-  }
-  )
 })
 
 app.post('/api/sendComment', function (req, res) {
