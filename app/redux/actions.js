@@ -1,6 +1,6 @@
 var serverUrl = servUrl + 'graphql';
 var translateUrl = (process.env.NODE_ENV == 'local' ? 'http://localhost:9001/' : servUrl) + 'api/translation/';
-var serverUrlApi = (process.env.NODE_ENV == 'local' ? 'http://localhost:9001/api/' : servUrl) + 'api/';
+var serverUrlApi = (process.env.NODE_ENV == 'local' ? 'http://localhost:9001/' : servUrl) + 'api/';
 
 function urlencodeFormData(fd){
     var s = '';

@@ -70,20 +70,21 @@ app.post('/api/insertOrUpdateUser', function (req, res) {
             message: 'Updated'
           });
         return;
-      }).catch((err) => { console.log(err) });
-        res.status(404)
+      }).catch((err) => {
+        res.status(500)
           .json({
             status: 'error',
             message: err
-        });
+          });
         return;
+      })
   })
 })
 
 app.post('/api/sendComment', function (req, res) {
   req.on('data', (data) => {
     req = JSON.parse(data.toString());
-    //mail.sendMail(req.email, req.name, req.comment);
+    mail.sendMail(req.email, req.name, req.comment);
     res.status(200)
       .json({
         status: 'success',
@@ -109,4 +110,4 @@ app.get('/api/translation/:lcid', (req, res, next) => {
     });
 });
 
-app.listen(process.env.HOMOLOG !== 't' ? 9000 : 9001);
+app.listen(process.env.HOMOLOG !== 't' && process.env.NODE_ENV !== 'local' ? 9000 : 9001);
