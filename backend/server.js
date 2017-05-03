@@ -102,4 +102,4 @@ app.get('/api/translation/:lcid', (req, res, next) => {
     });
 });
 
-app.listen(process.env.NODE_ENV == 'production' ? 9000 : 9001);
+app.listen(process.env.HOMOLOG !== 't' ? 9000 : 9001);
