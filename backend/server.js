@@ -63,14 +63,21 @@ app.post('/api/insertOrUpdateUser', function (req, res) {
     $3,
     $4,
     $5
-)`, [req.email, req.nome, req.instituicao, req.departamento, req.telefone]).then(() => {}).catch((err) => {console.log(err)});
-      res.status(200)
-        .json({
-          status: 'success',
-          message: 'Updated'
+)`, [req.email, req.nome, req.instituicao, req.departamento, req.telefone]).then(() => {
+        res.status(200)
+          .json({
+            status: 'success',
+            message: 'Updated'
+          });
+        return;
+      }).catch((err) => { console.log(err) });
+        res.status(404)
+          .json({
+            status: 'error',
+            message: err
         });
-      return;
-    })
+        return;
+  })
 })
 
 app.post('/api/sendComment', function (req, res) {
