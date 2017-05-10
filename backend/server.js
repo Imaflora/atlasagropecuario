@@ -6,11 +6,29 @@ var mail = require('./mail');
 const app = express();
 var promise = require('bluebird');
 var fs = require('fs');
+var mysqlDb = require('mysql-promise')();
+mysqlDb.configure({
+  "host": "www.imaflora.org",
+  "user": "imaflora1",
+  "password": "vvUk292!",
+  "database": "ima_site"
+});
+
 
 var options = {
   // Initialization Options
   promiseLib: promise
 };
+
+function handleError(err, res) {
+  console.log(err);
+  res.status(500).json(
+        {
+          status: 'Internal server error',
+          data: err
+        }
+      );
+}
 
 var pgp = require('pg-promise')(options);
 const schema = 'exposed';
@@ -70,14 +88,7 @@ app.post('/api/insertOrUpdateUser', function (req, res) {
             message: 'Updated'
           });
         return;
-      }).catch((err) => {
-        res.status(500)
-          .json({
-            status: 'error',
-            message: err
-          });
-        return;
-      })
+      }).catch((err) => handleError(err, res))
   })
 })
 
@@ -109,5 +120,22 @@ app.get('/api/translation/:lcid', (req, res, next) => {
       res.status(200).json({ status: 'success', data: results, message: "Worked!" });
     });
 });
+
+
+app.get('/api/news', (req, res, next) => {
+mysqlDb.query("SET SESSION group_concat_max_len = 100000;").then(() => {
+    mysqlDb.query('SELECT * FROM ima_site.v_publicacoes_atlas').then((data) => {
+      res.status(200).json(
+        {
+          status: 'success',
+          data: JSON.parse(data[0][0].json)
+        }
+      );
+    })
+    .catch((err) => handleError(err, res));
+  })
+  .catch((err) => handleError(err, res));
+});
+
 
 app.listen(process.env.HOMOLOG !== 't' && process.env.NODE_ENV !== 'local' ? 9000 : 9001);
