@@ -63,14 +63,14 @@ class BaseForm extends Component {
         };
 
         const formJsx = (
-            <form action="https://www.salesforce.com/servlet/servlet.WebToLead?encoding=UTF-8" method="POST">
+            <form action="https://webto.salesforce.com/servlet/servlet.WebToLead?encoding=UTF-8" method="POST">
                 <FormGroup role="form">
                     <input type="hidden" name="oid" value="00DA0000000CDqV" />
                     <input type="hidden" name="retURL" value="#" />
                     <input type="hidden" name="lead_source" value="Atlas_Agropecuario" />
                     <input type="hidden" name="first_name" id="first_name" value={this.props.userData.nome.split(" ")[0]} />
                     <input type="hidden" name="last_name" id="last_name" value={this.props.userData.nome.split(" ").slice(1).join(" ")} />
-                    <input type="hidden" name="debug" value="0" />
+                    <input type="hidden" name="debug" value={process.env.NODE_ENV == 'production' ? 0 : 1} />
                     <input type="hidden" name="debugEmail" value="caio@imaflora.org" />
                 </FormGroup>
                 <FieldGroup
