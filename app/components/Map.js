@@ -13,6 +13,8 @@ class Map extends React.Component {
 
   componentDidMount() {
 
+    var scaleLine = new ol.control.ScaleLine();
+
     var map = new ol.Map({
       layers: [
         new ol.layer.Tile({
@@ -49,7 +51,8 @@ class Map extends React.Component {
         center: this.props.center,
         zoom: this.props.zoom
       }),
-      overlays: [this.props.overlay]
+      overlays: [this.props.overlay],
+      controls: ol.control.defaults().extend([scaleLine]),
     });
     this.setState({
       map: map
