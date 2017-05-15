@@ -22,6 +22,11 @@ class ActionHandler {
           }
         }),
 
+        'TOGGLE_MESSAGE': ({ text }) => 
+        ({
+          message: { show: !this.state.message.show, text: text },
+        }),
+
       'HIDE_DOWNLOAD': () =>
         ({
           download: { show: false },
@@ -38,14 +43,8 @@ class ActionHandler {
           legend: { show: true }
         }),
 
-      'SHOW_FEEDBACK': () =>
-        ({
-          feedback: { show: true },
-        }),
-
       'HIDE_FEEDBACK': () => {
         return {
-          feedback: { show: false },
           user: { ...this.state.user, textfield: "", assunto: "cm" }
         }
       },
@@ -101,9 +100,9 @@ class ActionHandler {
         }
       },
 
-      'HIDE_WELCOME': () =>
+      'TOGGLE_WELCOME': () =>
         ({
-          welcome: { show: false }
+          welcome: { show: !this.state.welcome.show }
         }),
 
       'RECEIVE_TRANSLATION': ({ data }) => (

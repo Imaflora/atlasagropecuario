@@ -15,7 +15,7 @@ class DownloadForm extends Component {
                 handleSubmit={this.props.submitDownload} 
                 handleHide={this.props.hideDownload} 
                 show={this.props.show} 
-                title={this.props.translation['modalDownloadTitle'] + this.props.title}
+                title={this.props.title === undefined ? this.props.translation['downloadDatabase'] : (this.props.translation['modalDownloadTitle'] + this.props.title)}
                 buttonText="Download" 
                 textAreaLabel={this.props.translation['downloadArea']}
             >

@@ -29,7 +29,7 @@ const Header = (props) => {
                             <ul className="nav navbar-nav">
                                 <li><button className="btn btn-default uppercase" onClick={props.toggleNews}>{props.translation["news"]}</button></li>
                                 <li><button className="btn btn-default uppercase" onClick={props.togglePublications}>{props.translation["publications"]}</button></li>
-                                <li><a href="https://www.dropbox.com/sh/cvtrj35w6hzehhb/AAA3qEtmgwmQ1lN5bY2e5zYIa?dl=0" target="_blank" ><button className="btn btn-default uppercase">{props.translation["database"]}</button></a></li>
+                                <li><button className="btn btn-default uppercase" onClick={props.openDownloadForm}>{props.translation["database"]}</button></li>
                                 <li>
                                     <select onChange={(e) => props.changeLanguage(e.target.value)} className="btn btn-default" defaultValue={navigator.language.startsWith('pt') ? 'pt-BR' : 'en-US'}>
                                         <option value="pt-BR">PORTUGUÊS</option>
@@ -66,6 +66,9 @@ const mapDispatchToProps = (dispatch, ownProps) => {
         },
         changeLanguage: (language) => {
             dispatch(actions.changeLanguage(language))
+        },
+        openDownloadForm: () => {
+            dispatch(actions.openDownloadForm(undefined))
         },
     }
 }

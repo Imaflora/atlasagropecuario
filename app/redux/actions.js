@@ -1,5 +1,17 @@
 var serverUrl = servUrl + 'graphql';
-var translateUrl = (process.env.NODE_ENV == 'local' ? 'http://localhost:9000/' : servUrl) + 'translation/';
+var translateUrl = (process.env.NODE_ENV == 'local' ? 'http://localhost:9001/' : servUrl) + 'api/translation/';
+var serverUrlApi = (process.env.NODE_ENV == 'local' ? 'http://localhost:9001/' : servUrl) + 'api/';
+
+function urlencodeFormData(fd){
+    var s = '';
+    function encode(s){ return encodeURIComponent(s).replace(/%20/g,'+'); }
+    for(var pair of fd.entries()){
+        if(typeof pair[1]=='string'){
+            s += (s?'&':'') + encode(pair[0])+'='+encode(pair[1]);
+        }
+    }
+    return s;
+}
 
 export function requestData() {
 	return {
@@ -39,6 +51,13 @@ export function hideDownload() {
 	}
 }
 
+export function toggleMessage(text="") {
+	return {
+		type: 'TOGGLE_MESSAGE',
+		text: text
+	}
+}
+
 export function showLegend() {
 	return {
 		type: 'SHOW_LEGEND'
@@ -72,9 +91,9 @@ export function hideMetadata() {
 }
 
 
-export function hideWelcome() {
+export function toggleWelcome() {
 	return {
-		type: 'HIDE_WELCOME'
+		type: 'TOGGLE_WELCOME'
 	}
 }
 
@@ -91,8 +110,7 @@ export function togglePublications() {
 }
 
 function insertOrUpdateUser({ email, nome, telefone, instituicao, departamento }) {
-	var serverUrl = process.env.NODE_ENV == 'local' ? 'http://localhost:9000/' : servUrl;
-	return axios.post(serverUrl + 'insertOrUpdateUser', { email, nome, telefone, instituicao, departamento })
+	return axios.post(serverUrlApi + 'insertOrUpdateUser', { email, nome, telefone, instituicao, departamento })
 }
 
 export function submitDownload() {
@@ -106,6 +124,7 @@ export function submitDownload() {
 		);
 		dispatch(executeDownload());
 		dispatch(hideDownload());
+		dispatch(toggleMessage(state.translation['thanksDownload']));
 	}
 }
 
@@ -126,7 +145,9 @@ mutation {
 	}
 }
 
-export function submitFeedback() {
+export function submitFeedback(s) {
+	var formData = new FormData(s.children[1]);
+	var formDataX = urlencodeFormData(formData)
 	return function (dispatch, getState) {
 		var state = getState();
 		var email = state.user.email;
@@ -134,10 +155,13 @@ export function submitFeedback() {
 		var outro = state.user.outro;
 		var text = state.user.textfield;
 
+		axios.post("https://www.salesforce.com/servlet/servlet.WebToLead?encoding=UTF-8", formDataX, { headers: { 'Content-Type': 'application/x-www-form-urlencoded' }}).then();
+
 		insertOrUpdateUser(state.user).then(() => {
 			dispatch(insertFeedback(email, assunto, outro, text));
 		})
 		dispatch(hideFeedback());
+		dispatch(toggleMessage(state.translation['thanksFeedback']));
 	}
 }
 
@@ -163,13 +187,14 @@ mutation {
   }
 }`
 		axios.post(serverUrl, { query: graphQuery }).then();
+		axios.post(serverUrlApi + 'sendComment', { email: email, name: state.user.nome, comment: text }).then();
 	}
 }
 
 function executeDownload() {
 	return (dispatch, getState) => {
 		var state = getState();
-		window.open(state.translation.layersObj[state.download.layer].downloadLink, '_blank');
+		window.open(state.download.layer === undefined ? state.downloadSource : state.translation.layersObj[state.download.layer].downloadLink, '_blank');
 	};
 }
 

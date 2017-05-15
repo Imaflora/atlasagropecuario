@@ -260,6 +260,12 @@ th {
     margin-top: 20px;
 }
 
+.ol-scale-line {
+    position: fixed;
+    bottom: 45px;
+    background: rgba(0, 167, 157,.3)
+}
+
 /*------------------------------------------------------------*/
 /*------------------------- INFOWINDOW -----------------------*/
 
@@ -682,6 +688,7 @@ textarea.form-control {
     font-family: Calibri, sans-serif;
     font-size: 12pt;
     font-weight: bold;
+    min-width: 68.813px;
 }
 
 img#show-layer {
@@ -689,36 +696,16 @@ img#show-layer {
 }
 
 /*------------------------------------------------------------*/
-/*------------------------- WELCOME --------------------------*/
-
-#welcome-header {
-    background-color: @blue;
-    color: white;
-    font-family: Calibri, sans-serif;
-    text-transform: uppercase;
-}
-
-#welcome-body {
-    font-family: Calibri;
-    font-size: 12pt;
-    margin-left: 10px;
-    margin-right: 0px;
-    padding-right: 20px;
-    overflow-y: scroll;
-    text-align: justify;
-}
-
-/*------------------------------------------------------------*/
 /*------------------------- NEWS -----------------------------*/
 
-#news-header, #publications-header {
+.modal-header {
     background-color: @blue;
     color: white;
     font-family: Calibri, sans-serif;
     text-transform: uppercase;
 }
 
-#news-body, #publication-body {
+.modal-body {
     font-family: Calibri;
     font-size: 12pt;
     margin-left: 10px;
@@ -853,12 +840,14 @@ img.publication {
     font-family: Calibri, sans-serif;
     font-size: 12pt;
     font-weight: bold;
+    min-width: 62.281px;
 }
 
 .legend-item {
     width: 15px;
     height: 11px;
     margin: 5px;
+    background-size: 100%;
 }
 
 #legend.off {

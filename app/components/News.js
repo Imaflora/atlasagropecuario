@@ -21,6 +21,7 @@ const News = props => {
                 <h5>{props.translation['clickNews']}</h5>
                 <div>
                 <h1>{props.translation['apr']} / 2017</h1>
+                <a href="http://outraspalavras.net/deolhonosruralistas/2017/04/11/com-92-territorio-privado-ms-tem-maior-concentracao-de-terras-particulares-pais/" target="_blank">Com 92% do território privado, MS tem maior concentração de terras particulares do país. De Olho nos Ruralistas</a><br />
                 <a href="https://www.nexojornal.com.br/grafico/2017/04/07/P%C3%BAblicas-e-privadas-a-divis%C3%A3o-de-terras-no-territ%C3%B3rio-brasileiro" target="_blank">Públicas e privadas: a divisão de terras no território brasileiro. NEXO</a><br />
                 <a href="http://www.gtps.org.br/tag/imaflora-geolab-atlas-atlas-da-agropecuaria-brasileira-malha-fundiaria-brasil-dados-georreferenciados" target="_blank" >Plataforma on-line revela a malha fundiária do Brasil. GTPS - Grupo de Trabalho da Pecuária Sustentável</a>
                 </div>

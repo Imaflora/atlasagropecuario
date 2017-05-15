@@ -17,7 +17,7 @@ class Legend extends React.Component {
 
             var legendItems = legendValues.map((obj, i) => (
                 <tr key={i}>
-                    <td><LegendItem color={obj.color} /></td>
+                    <td><LegendItem color={obj.color} img={obj.img}/></td>
                     <td className="legend-label">{obj.label}</td>
                 </tr>
             ));
