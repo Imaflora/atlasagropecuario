@@ -15,6 +15,13 @@ class Map extends React.Component {
 
     var scaleLine = new ol.control.ScaleLine();
 
+    var mousePosition = new ol.control.MousePosition({
+        coordinateFormat: ol.coordinate.createStringXY(2),
+        projection: 'EPSG:4326',
+        target: document.getElementById('coordinates'),
+        undefinedHTML: '&nbsp;'
+      });
+
     var map = new ol.Map({
       layers: [
         new ol.layer.Tile({
@@ -49,15 +56,18 @@ class Map extends React.Component {
       view: new ol.View({
         projection: 'EPSG:3857',
         center: this.props.center,
-        zoom: this.props.zoom
+        zoom: this.props.zoom,
+        maxZoom: 14,
+        minZoom: 4,
+        extent: ol.proj.transformExtent([-180,-90,180,90], 'EPSG:4326', 'EPSG:3857') 
       }),
       overlays: [this.props.overlay],
-      controls: ol.control.defaults().extend([scaleLine]),
+      controls: ol.control.defaults().extend([scaleLine, mousePosition]),
     });
     this.setState({
       map: map
     });
-
+ 
     map.on('click', function(evt) {
       var coordinates = evt.coordinate;
       this.props.getInformation(coordinates[0], coordinates[1]);
@@ -92,7 +102,9 @@ class Map extends React.Component {
 
   render() {
     return (
-      <div id="map" className="map" ref="map">
+      <div>
+        <div id="map" className="map" ref="map"></div>
+        <div id="coordinates"></div>
       </div>
     );
   }
