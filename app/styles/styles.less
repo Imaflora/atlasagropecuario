@@ -299,6 +299,13 @@ th {
     }
 }
 
+@media screen and (max-width: 620px) {
+    .ol-scale-line {
+        left: 0px;
+        bottom: 65px;
+    }
+}
+
 /*------------------------------------------------------------*/
 /*------------------------- INFOWINDOW -----------------------*/
 
@@ -427,15 +434,12 @@ div#info-window.ol-popup:before, div#info-window.ol-popup:after {
 }
 
 @media screen and (max-width: 350px) {
-    .footer-button button {
+    .footer-button {
         float: none;
         margin-left: auto;
         position: relative;
         left: -66px; 
         }
-    .img-open, .img-close  {
-        left: -65px;  
-    }
 }
 
 #div-img-footer {
@@ -519,9 +523,6 @@ img#footer_arrow {
     right: 77px;
     border: none;
     }
-    #share-btn:hover{
-        color: @darkGrey;
-    }  
     
     #share-bar {
     display: block;
@@ -563,7 +564,29 @@ img#footer_arrow {
 
 @media screen and (max-width: 350px) {
     #share-btn {
-        display: block;
+    background-image: url("../img/share_icon.png");
+    background-repeat: no-repeat;
+    background-size: 100%; 
+    height: 34px;
+    width: 34px;
+    border-radius: 11px;
+    margin: 0px;
+    padding: 0px;
+    position: absolute;
+    display: block;
+    bottom: 0px;
+    right: 0px;
+    border: none;
+    }
+    #share.share-open.collapse.in, #share.share-open.collapsing {
+    display: block;
+    right: 0px;
+    bottom: 36px;
+    }
+    #share.share-close.collapse.in, #share.share-close.collapsing{
+    display: block;
+    right: 0px;
+    top: 36px;
     }
 }
 
