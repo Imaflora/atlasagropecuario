@@ -54,6 +54,7 @@ class Footer extends React.Component {
                                     <img id="kth_logo" src={require("../img/kth_logo.png")} alt="Logo do KTH" />
                                     <img id="sei_logo" src={require("../img/sei_logo.png")} alt="Logo da SEI" />
                                     <img id="trase_logo" src={require("../img/trase_logo.png")} alt="Logo da Trase" />
+                                    <img id="escolhas_logo" src={require("../img/escolhas_logo.png")} alt="Logo do Instituto Escolhas"/>
                                     <div className="uppercase">{this.props.translation["support"]}</div>
                                     <img id="fapesp_logo" src={require("../img/fapesp_logo.png")} alt="Logotipo da Fapesp" />
                                     <img id="norad_logo" src={require("../img/norad_logo.png")} alt="Logotipo da Norad" />
