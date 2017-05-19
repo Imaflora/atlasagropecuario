@@ -21,12 +21,11 @@
 				"transform-decorators-legacy"
 			]
 		},
-		"network": {
+		"homolog": {
 			"presets": [
 				"react",
 				"es2015",
-				"stage-0",
-				"react-hmre"
+				"stage-0"
 			],
 			"plugins": [
 				"transform-decorators-legacy"

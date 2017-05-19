@@ -5,11 +5,9 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "production": "cross-env NODE_ENV=production webpack -p",
     "sync": "git pull | npm install",
-    "start": "cross-env NODE_ENV=local webpack-dev-server --hot",
-    "network": "cross-env NODE_ENV=network webpack-dev-server --port 8080 --host 0.0.0.0 --hot",
-    "geonode": "cross-env NODE_ENV=production cross-env NODE_SERVER=geonode webpack -p"
+    "start": "cross-env NODE_ENV=local cross-env NODE_SERVER=geonode webpack-dev-server --hot",
+    "compile": "webpack -p"
   },
   "repository": {
     "type": "git",

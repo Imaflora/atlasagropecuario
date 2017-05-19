@@ -8,7 +8,8 @@ const willShowAgain = () =>
 
 export function initialDispatch() {
   return function (dispatch, getState) {
-    dispatch(actions.changeLanguage(navigator.language));
+    var state = getState();
+    dispatch(actions.changeLanguage(state.language));
   }
 };
 
@@ -30,7 +31,7 @@ export const state = {
     show: false,
   },
   download: {
-    layer: '',
+    layer: undefined,
     show: false,
   },
   layerSelector: {
@@ -60,7 +61,7 @@ export const state = {
   },
   downloadSource: 'https://www.dropbox.com/sh/cvtrj35w6hzehhb/AAA3qEtmgwmQ1lN5bY2e5zYIa?dl=0', 
   translation: {},
-  language: navigator.language,
+  language: (navigator.language.startsWith('pt') ? 'pt-BR' : 'en-US' ),
   message: {
     show: false
   }

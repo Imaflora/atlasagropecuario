@@ -10,9 +10,6 @@ class Legend extends React.Component {
 
     render() {
         if (this.props.layers === undefined) return <div></div>;
-        console.log (this.props.layers[this.props.selectedLayer]);
-        console.log (this.props.layers);
-        console.log (this.props.selectedLayer);
             var legendValues = this.props.layers[this.props.selectedLayer].legend;
 
             var legendItems = legendValues.map((obj, i) => (

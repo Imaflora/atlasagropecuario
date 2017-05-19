@@ -1,16 +1,18 @@
-var serverUrl = servUrl + 'graphql';
-var translateUrl = (process.env.NODE_ENV == 'local' ? 'http://localhost:9001/' : servUrl) + 'api/translation/';
-var serverUrlApi = (process.env.NODE_ENV == 'local' ? 'http://localhost:9001/' : servUrl) + 'api/';
+var serverUrl = (process.env.NODE_ENV == 'local' ? 'http://localhost:9000/' : servUrl);
+var serverUrlGraphql = serverUrl + 'graphql';
+var serverUrlApi = serverUrl + 'api/';
+var translateUrl = serverUrlApi + 'translation/';
 
-function urlencodeFormData(fd){
-    var s = '';
-    function encode(s){ return encodeURIComponent(s).replace(/%20/g,'+'); }
-    for(var pair of fd.entries()){
-        if(typeof pair[1]=='string'){
-            s += (s?'&':'') + encode(pair[0])+'='+encode(pair[1]);
-        }
-    }
-    return s;
+
+function urlencodeFormData(fd) {
+	var s = '';
+	function encode(s) { return encodeURIComponent(s).replace(/%20/g, '+'); }
+	for (var pair of fd.entries()) {
+		if (typeof pair[1] == 'string') {
+			s += (s ? '&' : '') + encode(pair[0]) + '=' + encode(pair[1]);
+		}
+	}
+	return s;
 }
 
 export function requestData() {
@@ -39,9 +41,15 @@ export function transitionEnd() {
 }
 
 export function openDownloadForm(layer) {
-	return {
-		type: 'DOWNLOAD_LAYER',
-		layer: layer
+	if (localStorage.hasOwnProperty('user')) {
+		return function (dispatch) {
+			dispatch(executeDownload());
+		}
+	} else {
+		return {
+			type: 'DOWNLOAD_LAYER',
+			layer: layer
+		};
 	}
 }
 
@@ -51,7 +59,7 @@ export function hideDownload() {
 	}
 }
 
-export function toggleMessage(text="") {
+export function toggleMessage(text = "") {
 	return {
 		type: 'TOGGLE_MESSAGE',
 		text: text
@@ -69,13 +77,6 @@ export function hideLegend() {
 		type: 'HIDE_LEGEND'
 	};
 }
-
-function hideFeedback() {
-	return {
-		type: 'HIDE_FEEDBACK'
-	}
-}
-
 
 export function openMetadata(layer) {
 	return {
@@ -110,7 +111,20 @@ export function togglePublications() {
 }
 
 function insertOrUpdateUser({ email, nome, telefone, instituicao, departamento }) {
-	return axios.post(serverUrlApi + 'insertOrUpdateUser', { email, nome, telefone, instituicao, departamento })
+	var graphQuery = `
+mutation {
+  insertOrUpdateUser (input: {
+		varEmail: "${email}"
+		varNome: "${nome}"
+		varTelefone: "${telefone}"
+		varInstituicao: "${instituicao}"
+		varDepartamento: "${departamento}"
+  }) {
+    string
+  }
+}
+	`;
+	return axios.post(serverUrlGraphql, { query: graphQuery });
 }
 
 export function submitDownload() {
@@ -120,10 +134,11 @@ export function submitDownload() {
 		var userEmail = state.user.email;
 		var userText = state.user.textfield;
 		insertOrUpdateUser(state.user).then(() =>
-			dispatch(insertDownloadFeedback(userEmail, userText))
+			insertDownloadFeedback(userEmail, userText)
 		);
 		dispatch(executeDownload());
 		dispatch(hideDownload());
+		localStorage['user'] = '';
 		dispatch(toggleMessage(state.translation['thanksDownload']));
 	}
 }
@@ -141,7 +156,7 @@ mutation {
     string
   }
 }`
-		axios.post(serverUrl, { query: graphQuery }).then();
+		axios.post(serverUrlGraphql, { query: graphQuery }).then();
 	}
 }
 
@@ -155,12 +170,11 @@ export function submitFeedback(s) {
 		var outro = state.user.outro;
 		var text = state.user.textfield;
 
-		axios.post("https://www.salesforce.com/servlet/servlet.WebToLead?encoding=UTF-8", formDataX, { headers: { 'Content-Type': 'application/x-www-form-urlencoded' }}).then();
+		axios.post("https://webto.salesforce.com/servlet/servlet.WebToLead?encoding=UTF-8", formDataX, { headers: { 'Content-Type': 'application/x-www-form-urlencoded' } }).then();
 
 		insertOrUpdateUser(state.user).then(() => {
 			dispatch(insertFeedback(email, assunto, outro, text));
-		})
-		dispatch(hideFeedback());
+		});
 		dispatch(toggleMessage(state.translation['thanksFeedback']));
 	}
 }
@@ -182,11 +196,11 @@ mutation {
     varEmail: "${email}"
     ${field}
     varTexto: ${JSON.stringify(text)}
-  }) {
+  })  {
     string
   }
 }`
-		axios.post(serverUrl, { query: graphQuery }).then();
+		axios.post(serverUrlGraphql, { query: graphQuery }).then();
 		axios.post(serverUrlApi + 'sendComment', { email: email, name: state.user.nome, comment: text }).then();
 	}
 }
@@ -222,7 +236,7 @@ export function getUserInfo(email) {
 }`
 
 	return function (dispatch) {
-		axios.post(serverUrl, { query: graphQuery }).then(({ data }) => {
+		axios.post(serverUrlGraphql, { query: graphQuery }).then(({ data }) => {
 			if (data.data.getUser) dispatch(receivedUserInfo(data.data.getUser.usuarios[0]));
 		})
 	}
@@ -233,12 +247,6 @@ export function updateFormValue(what, value) {
 		type: 'UPDATE_FORM',
 		what: what,
 		value: value
-	}
-}
-
-export function showFeedback() {
-	return {
-		type: 'SHOW_FEEDBACK',
 	}
 }
 
@@ -261,7 +269,7 @@ export function getInformation(x, y) {
 
 	return function (dispatch) {
 		dispatch(mapClick(undefined));
-		axios.post(serverUrl, { query: graphQuery }).then(({ data }) => {
+		axios.post(serverUrlGraphql, { query: graphQuery }).then(({ data }) => {
 			var coordinates = [x, y];
 			if (!data.data.getLandData.json)
 				coordinates = undefined;
@@ -309,7 +317,7 @@ export function changeLayer(value) {
 }
 
 export function changeLanguage(language) {
-	return function(dispatch) {
+	return function (dispatch) {
 		dispatch(setLanguage(language));
 		axios.get(translateUrl + language).then((data) => {
 			dispatch(receiveTranslation(data.data.data));
@@ -333,5 +341,5 @@ function receiveTranslation(data) {
 }
 
 function retranslate() {
-	
+
 }

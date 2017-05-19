@@ -10,7 +10,7 @@ var mysqlDb = require('mysql-promise')();
 mysqlDb.configure({
   "host": "www.imaflora.org",
   "user": "imaflora1",
-  "password": "vvUk292!",
+  "password": require('./password').mysql,
   "database": "ima_site"
 });
 
@@ -35,13 +35,15 @@ const schema = 'exposed';
 
 var config = {
   user: 'postgres', //env var: PGUSER 
-  database: process.env.NODE_ENV == 'production' ? 'atlas' : 'atlas_dev', //env var: PGDATABASE 
-  password: process.env.PGPASSWORD, //env var: PGPASSWORD 
-  host: process.env.NODE_ENV == 'production' ? 'localhost' : 'geonode', // Server hosting the postgres database 
+  database: process.env.NODE_ENV == 'production' ? 'atlas' : process.env.NODE_ENV == 'homolog' ? 'atlas_homolog' : 'atlas_dev', //env var: PGDATABASE 
+  password: 'password', 
+  host: process.env.NODE_ENV == undefined ? 'geonode' : 'localhost', // Server hosting the postgres database 
   port: 5432, //env var: PGPORT 
   max: 10, // max number of clients in the pool 
   idleTimeoutMillis: 30000, // how long a client is allowed to remain idle before being closed 
 };
+
+console.log(config);
 
 
 var db = pgp(config);
@@ -122,7 +124,7 @@ app.get('/api/translation/:lcid', (req, res, next) => {
 });
 
 
-app.get('/api/news', (req, res, next) => {
+app.get('/api/publications', (req, res, next) => {
 mysqlDb.query("SET SESSION group_concat_max_len = 100000;").then(() => {
     mysqlDb.query('SELECT * FROM ima_site.v_publicacoes_atlas').then((data) => {
       res.status(200).json(
@@ -138,4 +140,20 @@ mysqlDb.query("SET SESSION group_concat_max_len = 100000;").then(() => {
 });
 
 
-app.listen(process.env.HOMOLOG !== 't' && process.env.NODE_ENV !== 'local' ? 9000 : 9001);
+app.get('/api/news', (req, res, next) => {
+mysqlDb.query("SET SESSION group_concat_max_len = 100000;").then(() => {
+    mysqlDb.query('SELECT * FROM ima_site.v_news_atlas').then((data) => {
+      res.status(200).json(
+        {
+          status: 'success',
+          data: JSON.parse(data[0][0].json)
+        }
+      );
+    })
+    .catch((err) => handleError(err, res));
+  })
+  .catch((err) => handleError(err, res));
+});
+
+
+app.listen(9000);

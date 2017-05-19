@@ -5,9 +5,7 @@
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "cross-env NODE_ENV=local node server.js",
-    "network": "cross-env NODE_ENV=network node server.js",
-    "production": "cross-env NODE_ENV=production node server.js"
+    "start": "node server.js"
   },
   "author": "Imaflora",
   "license": "ISC",

@@ -75,9 +75,10 @@ module.exports = {
       'process.env': {
         'NODE_ENV': process.env.NODE_ENV ? JSON.stringify(process.env.NODE_ENV) : JSON.stringify('DEBUG')
       },
-      'servUrl': JSON.stringify(process.env.NODE_ENV === 'production' && process.env.NODE_SERVER !== 'geonode' 
-        ? 'http://geonode.imaflora.org:8000/' 
-        : 'http://geonode:8000/')
+      'servUrl': JSON.stringify(
+        process.env.NODE_ENV === 'production'
+        ? 'http://' + process.env.NODE_SERVER + '.imaflora.org:8000/' 
+        : 'http://' + process.env.NODE_SERVER + ':8000/')
     }),
     new webpack.optimize.UglifyJsPlugin({
       compress: {
@@ -87,10 +88,7 @@ module.exports = {
   ]
 }
 
-if (process.env.NODE_ENV !== 'production') {
+if (process.env.NODE_ENV === 'local') {
   var a = ['webpack-dev-server/client?http://localhost:8080', 'webpack/hot/only-dev-server'];
-  if (process.env.NODE_ENV === 'network') {
-    a = ['webpack-dev-server/client?http://' + os.hostname() + ':8080', 'webpack/hot/only-dev-server'];
-  }
   module.exports.entry = a.concat(module.exports.entry);
 }

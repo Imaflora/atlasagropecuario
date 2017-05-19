@@ -50,7 +50,6 @@ class ActionHandler {
       },
 
       'LAYERS_SELECTOR_TOGGLE': () => {
-        console.log('toggle');
         return {
           layerSelector: { show: !this.state.layerSelector.show }
         }
