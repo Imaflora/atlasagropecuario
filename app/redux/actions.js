@@ -256,25 +256,27 @@ export function toggleLayersSelector() {
 	}
 }
 
-export function getInformation(x, y) {
+export function getInformation(x, y, layer) {
 	var graphQuery = `
-	mutation {
-		getLandData(input: {
-			x: ${x}
-			y: ${y}
-		}) {
-			json
-		}
-	}`
+mutation {
+  getInfowindow(input: {
+    x: ${x},
+    y: ${y},
+    varCamada: "${layer}"
+  }) {
+     json
+  }
+}`
 
 	return function (dispatch) {
 		dispatch(mapClick(undefined));
 		axios.post(serverUrlGraphql, { query: graphQuery }).then(({ data }) => {
+			console.log(data);
 			var coordinates = [x, y];
-			if (!data.data.getLandData.json)
+			if (!data.data.getInfowindow)
 				coordinates = undefined;
 			dispatch(mapClick(coordinates));
-			dispatch(setInfoWindow(JSON.parse(data.data.getLandData.json)));
+			dispatch(setInfoWindow(JSON.parse(data.data.getInfowindow.json)));
 		})
 	}
 }

@@ -5,13 +5,15 @@
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"
+    "start": "node server.js",
+    "compile": "rsync -av --exclude='node_modules' . /srv/www/atlasbackend/"
   },
   "author": "Imaflora",
   "license": "ISC",
   "dependencies": {
     "cross-env": "^3.2.4",
     "ddos": "^0.1.16",
+    "express": "^4.15.3",
     "jsforce": "^1.7.1",
     "mysql-promise": "^4.1.0",
     "nodemailer": "^4.0.1",

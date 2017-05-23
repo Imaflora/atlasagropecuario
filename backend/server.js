@@ -35,7 +35,7 @@ const schema = 'exposed';
 
 var config = {
   user: 'postgres', //env var: PGUSER 
-  database: process.env.NODE_ENV == 'production' ? 'atlas' : process.env.NODE_ENV == 'homolog' ? 'atlas_homolog' : 'atlas_dev', //env var: PGDATABASE 
+  database: 'atlas', //env var: PGDATABASE 
   password: 'password', 
   host: process.env.NODE_ENV == undefined ? 'geonode' : 'localhost', // Server hosting the postgres database 
   port: 5432, //env var: PGPORT 

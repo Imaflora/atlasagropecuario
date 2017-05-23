@@ -70,7 +70,8 @@ class Map extends React.Component {
  
     map.on('click', function(evt) {
       var coordinates = evt.coordinate;
-      this.props.getInformation(coordinates[0], coordinates[1]);
+      console.log(this.props.coverLayer);
+      this.props.getInformation(coordinates[0], coordinates[1], this.props.coverLayer);
     }.bind(this));
 
     map.on('moveend', function() {
@@ -131,8 +132,8 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = (dispatch, ownProps) => {
   return {
-    getInformation: (x, y) => {
-      dispatch(actions.getInformation(x, y))
+    getInformation: (x, y, layer) => {
+      dispatch(actions.getInformation(x, y, layer))
     },
     setMapView: (zoom, center) => {
       dispatch(actions.setMapView(zoom, center))
