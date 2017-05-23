@@ -15,7 +15,7 @@ const Metadata = props => {
             noClose>
             {props.metadata}
             <br />
-            <a className="downloadMetadata" href={props.link}>{props.translation['downloadMetadata']}</a>
+            <a className="downloadMetadata" target="_blank" href={props.link}>{props.translation['downloadMetadata']}</a>
         </MyModal>
     )
 }
