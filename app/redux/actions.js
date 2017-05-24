@@ -319,11 +319,22 @@ export function changeLayer(value) {
 }
 
 export function changeLanguage(language) {
+	var graphQuery = `
+mutation {
+  getTranslation(input: {
+    varLcid: "${language}"
+  }) {
+    json
+  }
+}
+	`;
+
 	return function (dispatch) {
 		dispatch(setLanguage(language));
-		axios.get(translateUrl + language).then((data) => {
-			dispatch(receiveTranslation(data.data.data));
-		})
+		axios.post(serverUrlGraphql, { query: graphQuery })
+			.then(({data}) => {
+				dispatch(receiveTranslation(JSON.parse(data.data.getTranslation.json)));
+			})
 	}
 }
 

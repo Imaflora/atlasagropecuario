@@ -111,17 +111,6 @@ app.use(postgraphql.postgraphql(config, schema, { graphiql: true }));
 
 
 
-app.get('/api/translation/:lcid', (req, res, next) => {
-  db.one(`
-    SELECT conf.get_translation($1) json`, req.params.lcid)
-    .then((data) => {
-      var results = data.json;
-      db.none(`UPDATE exposed.numAccess SET num = num + 1;`).then(() => { }).catch((err) => console.log(err));
-      res.status(200).json({ status: 'success', data: results, message: "Worked!" });
-    });
-});
-
-
 app.get('/api/publications', (req, res, next) => {
 mysqlDb.query("SET SESSION group_concat_max_len = 100000;").then(() => {
     mysqlDb.query('SELECT * FROM ima_site.v_atlas_publicacoes').then((data) => {
