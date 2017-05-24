@@ -155,15 +155,10 @@ const reducers = function (state = {}, action) {
 }
 
 
-const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+const composeEnhancers = process.env.NODE_ENV === 'production' ? compose:  (window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose);
 
 
-var createStoreWithMiddleware;
-if (process.env.NODE_ENV !== 'production') {
-   createStoreWithMiddleware = applyMiddleware(thunkMiddleware)(createStore);
-} else {
-  createStoreWithMiddleware = applyMiddleware(thunkMiddleware, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__())(createStore);
-}
+var createStoreWithMiddleware = applyMiddleware(thunkMiddleware)(createStore);
 export const store = createStoreWithMiddleware(reducers, initialState.state, composeEnhancers());
 
 
