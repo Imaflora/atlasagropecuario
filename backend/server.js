@@ -10,8 +10,7 @@ var mysqlDb = require('mysql-promise')();
 mysqlDb.configure({
   "host": "www.imaflora.org",
   "user": "imaflora1",
-  "password": require('./password').mysql,
-  "database": "ima_site"
+  "password": require('./password').mysql
 });
 
 
@@ -76,7 +75,6 @@ app.options('/*', function (req, res, next) {
 app.post('/api/insertOrUpdateUser', function (req, res) {
   req.on('data', (data) => {
     req = JSON.parse(data.toString());
-    console.log(JSON.stringify(req));
     db.oneOrNone(`SELECT exposed.insert_or_update_user(
     $1,
     $2,
@@ -126,7 +124,7 @@ app.get('/api/translation/:lcid', (req, res, next) => {
 
 app.get('/api/publications', (req, res, next) => {
 mysqlDb.query("SET SESSION group_concat_max_len = 100000;").then(() => {
-    mysqlDb.query('SELECT * FROM ima_site.v_publicacoes_atlas').then((data) => {
+    mysqlDb.query('SELECT * FROM ima_site.v_atlas_publicacoes').then((data) => {
       res.status(200).json(
         {
           status: 'success',
@@ -142,11 +140,19 @@ mysqlDb.query("SET SESSION group_concat_max_len = 100000;").then(() => {
 
 app.get('/api/news', (req, res, next) => {
 mysqlDb.query("SET SESSION group_concat_max_len = 100000;").then(() => {
-    mysqlDb.query('SELECT * FROM ima_site.v_news_atlas').then((data) => {
+    mysqlDb.query('SELECT * FROM ima_site.v_atlas_noticias').then((data) => {
+      var result = JSON.parse(data[0][0].json);
+      console.log(result);
+      for (i in result) {
+        var links = result[i].resumo.match(/http:\/\/[A-Za-z0-9\-\.\_\~\:\/\?#\[\]@!$&\'\(\)\*+]*/);
+        result[i].link = '';
+        if (links)
+          result[i].link = links[0];
+      };
       res.status(200).json(
         {
           status: 'success',
-          data: JSON.parse(data[0][0].json)
+          data: result
         }
       );
     })
