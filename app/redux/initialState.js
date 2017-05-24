@@ -1,7 +1,7 @@
 import * as actions from './actions'
 
 const willShowAgain = () =>
-  !Boolean(localStorage['dontShowAgain']
+  !Boolean(localStorage['dontShowAgain2']
   )
 
 

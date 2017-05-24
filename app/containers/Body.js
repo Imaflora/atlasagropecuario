@@ -13,7 +13,7 @@ import { Checkbox } from 'react-bootstrap'
 
 var showAgain = function (value) {
 	if (localStorage) {
-		localStorage['dontShowAgain'] = value;
+		localStorage['dontShowAgain2'] = value;
 	}
 }
 
