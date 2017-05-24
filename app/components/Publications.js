@@ -17,7 +17,16 @@ const Publications = props => {
             title={props.translation["publications"]}
             onHide={props.handleHide}
             noClose>
-            <div>        
+            <div>
+
+                <div className="paper">
+                    <h1>Sustentabilidade em debate 5 - Números detalhados do novo código florestal e suas implicações para os PRAs</h1>
+                    <img className="publication float-left" src={require("../img/pub_thumb_5.PNG")} alt="publication thumbnail"/>
+                    <p>Dentre as diversas barreiras existentes para a implementação eficiente do Código Florestal no país está a falta de informações confiáveis sobre a localização e a extensão dos déficits ambientais, Idificultando o desenvolvimento de políticas públicas e privadas que possam dar suporte ao processo de regularização ambiental.</p>
+                    <p>Utilizando os dados recém-liberados pelo SFB, o projeto Atlas – A Geografia da Agropecuária Brasileira gerou pela primeira vez uma base fundiária nacional integrada, que possibilitou a realização de cálculos mais precisos sobre os déficits de APPs e RLs no nível de imóvel rural. Acreditamos que esses novos números podem servir de embasamento para o desenvolvimento dos PRAs estaduais, assim como de outras ações e políticas que interagem e sustentam a implementação da Lei 12.651/2012 no país.</p> 
+                    <a className="downloadPublication" href="http://www.imaflora.org/download-form.php?id=642" target="_blank">{props.translation['downloadPublication']}</a>
+                </div>
+
                 <div className="paper">
                     <h1>Perspectiva Imaflora 3 - Uma análise dos avanços e contradições da agricultura</h1>
                     <img className="publication float-right" src={require("../img/pub_thumb_1.PNG")} alt="publication thumbnail"/>
