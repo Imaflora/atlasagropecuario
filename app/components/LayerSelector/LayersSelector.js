@@ -36,7 +36,7 @@ class LayersSelector extends Component {
                 </div>
                 <SideCollapse show={this.props.show} top={this.state.top} width={260}>
                     <div style={{ position: "absolute", marginRight: 100 }} ref="innerMeasure">
-                        <div style={{ position: "absolute", backgroundColor: "#FFF" }}>
+                        <div style={{ position: "absolute", backgroundColor: "#FFF", top: -61 }}>
                             <div id="layerRectangle">
                                 <img className="collapse-icon" src={require('../../img/hide_legend.png')} 
                                     alt="abrir" 
