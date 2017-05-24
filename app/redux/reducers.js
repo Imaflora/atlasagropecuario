@@ -1,5 +1,5 @@
 import * as initialState from './initialState'
-import { createStore, applyMiddleware, combineReducers } from 'redux';
+import { createStore, applyMiddleware, combineReducers, compose } from 'redux';
 import thunkMiddleware from 'redux-thunk';
 
 class ActionHandler {
@@ -154,8 +154,17 @@ const reducers = function (state = {}, action) {
     : state
 }
 
-var createStoreWithMiddleware = applyMiddleware(thunkMiddleware)(createStore);
-export const store = createStoreWithMiddleware(reducers, initialState.state);
+
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+
+
+var createStoreWithMiddleware;
+if (process.env.NODE_ENV !== 'production') {
+   createStoreWithMiddleware = applyMiddleware(thunkMiddleware)(createStore);
+} else {
+  createStoreWithMiddleware = applyMiddleware(thunkMiddleware, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__())(createStore);
+}
+export const store = createStoreWithMiddleware(reducers, initialState.state, composeEnhancers());
 
 
 store.dispatch(initialState.initialDispatch())
