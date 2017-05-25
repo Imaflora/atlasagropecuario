@@ -106,9 +106,22 @@ app.post('/api/sendComment', function (req, res) {
 }
 );
 
+
+app.get('/api/mailNoMore/:email', (req, res, next) => {
+  db.one(`
+    SELECT exposed.mail_no_more($1)`, req.params.email)
+    .then(() => {
+      res.status(200).json(
+        {
+          status: 'Seu e-mail foi removido'
+        }
+      );
+    })
+    .catch((err) => {console.log(err)});
+});
+
+
 app.use(postgraphql.postgraphql(config, schema, { graphiql: true }));
-
-
 
 
 app.get('/api/publications', (req, res, next) => {
