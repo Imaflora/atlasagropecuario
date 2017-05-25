@@ -19,6 +19,14 @@ const News = props => {
             noClose>
             <div>
                 <h5>{props.translation['clickNews']}</h5>
+                
+                <div>
+                    <h1>{props.translation['may']} / 2017</h1>
+                    <ul>
+                        <li><a href="http://sustentabilidade.estadao.com.br/noticias/geral,mudanca-do-codigo-florestal-anistiou-41-milhoes-de-hectares,70001812607" target="_blank" >Mudança do Código Florestal 'anistiou' 41 milhões de hectares. Estadão - Sustentabilidade</a></li>
+                    </ul>
+                </div>
+                
                 <div>
                     <h1>{props.translation['apr']} / 2017</h1>
                     <ul>
