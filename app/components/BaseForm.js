@@ -141,7 +141,7 @@ class BaseForm extends Component {
                         console.log('has error');
                         return;
                     }
-                    this.props.handleSubmit();
+                    this.props.handleSubmit(this.props.submitArgs);
                     this.setState({ data: Object.assign({}, cleanData) });
                 }}
                 show={typeof (this.props.show) !== 'undefined' ? this.props.show : this.state.showModal}

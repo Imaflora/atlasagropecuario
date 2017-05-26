@@ -95,7 +95,7 @@ const mapDispatchToProps = (dispatch, ownProps) => {
         updateFormValue: (what, value) => {
             dispatch(actions.updateFormValue(what, value))
         },
-        insertFeedback: (form) => dispatch(actions.submitFeedback(form))
+        insertFeedback: () => dispatch(actions.submitFeedback(false))
     }
 }
 

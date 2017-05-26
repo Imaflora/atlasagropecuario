@@ -134,7 +134,7 @@ export function submitDownload() {
 		var userEmail = state.user.email;
 		var userText = state.user.textfield;
 		insertOrUpdateUser(state.user).then(() =>
-			dispatch(insertDownloadFeedback(userEmail, userText)) #Do not remove dispatch!!!
+			dispatch(insertDownloadFeedback(userEmail, userText)) // Do not remove dispatch!!!
 		);
 		dispatch(executeDownload());
 		dispatch(hideDownload());
@@ -144,7 +144,7 @@ export function submitDownload() {
 }
 
 
-export function insertDownloadFeedback(email, text) {
+function insertDownloadFeedback(email, text) {
 	return function (dispatch, getState) {
 		var state = getState();
 		var graphQuery = `
@@ -160,25 +160,50 @@ mutation {
 	}
 }
 
-export function submitFeedback(s) {
-	var formData = new FormData(s.children[1]);
-	var formDataX = urlencodeFormData(formData)
+export function submitFeedback(isDownload = false) {
+	return function (dispatch, getState) {
+		var user = getState().user;
+		var dataJson = {
+			oid: "00DA0000000CDqV",
+			retURL: "#",
+			lead_source: "Atlas_Agropecuario",
+			first_name: user.nome.split(" ")[0],
+			last_name: user.nome.split(" ").slice(1).join(" "),
+			debug: process.env.NODE_ENV === 'production' ? 0 : 1,
+			email: user.email,
+			company: user.instituicao,
+			phone: user.telefone
+		}
+		var formData = new FormData();
+
+		for (var key in dataJson) {
+			formData.append(key, dataJson[key]);
+		}
+
+		var formDataX = urlencodeFormData(formData)
+
+		axios.post("https://webto.salesforce.com/servlet/servlet.WebToLead?encoding=UTF-8", formDataX, { headers: { 'Content-Type': 'application/x-www-form-urlencoded' } }).then();
+		if (isDownload)
+			dispatch(submitDownload());
+		else
+			dispatch(handleFeedback());
+	}
+}
+
+
+function handleFeedback() {
 	return function (dispatch, getState) {
 		var state = getState();
 		var email = state.user.email;
 		var assunto = state.user.assunto;
 		var outro = state.user.outro;
 		var text = state.user.textfield;
-
-		axios.post("https://webto.salesforce.com/servlet/servlet.WebToLead?encoding=UTF-8", formDataX, { headers: { 'Content-Type': 'application/x-www-form-urlencoded' } }).then();
-
 		insertOrUpdateUser(state.user).then(() => {
 			dispatch(insertFeedback(email, assunto, outro, text));
 		});
 		dispatch(toggleMessage(state.translation['thanksFeedback']));
 	}
 }
-
 
 export function insertFeedback(email, assunto, outro, text) {
 	return function (dispatch, getState) {
@@ -332,7 +357,7 @@ mutation {
 	return function (dispatch) {
 		dispatch(setLanguage(language));
 		axios.post(serverUrlGraphql, { query: graphQuery })
-			.then(({data}) => {
+			.then(({ data }) => {
 				dispatch(receiveTranslation(JSON.parse(data.data.getTranslation.json)));
 			})
 	}

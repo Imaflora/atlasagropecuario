@@ -11,15 +11,17 @@ class DownloadForm extends Component {
 
     render() {
         return (
-            <BaseForm 
-                handleSubmit={this.props.submitDownload} 
-                handleHide={this.props.hideDownload} 
-                show={this.props.show} 
-                title={this.props.title === undefined ? this.props.translation['downloadDatabase'] : (this.props.translation['modalDownloadTitle'] + this.props.title)}
-                buttonText="Download" 
-                textAreaLabel={this.props.translation['downloadArea']}
-            >
-            </BaseForm>
+            <div id="download-form" ref="form">
+                <BaseForm 
+                    handleSubmit={this.props.submitDownload} 
+                    handleHide={this.props.hideDownload} 
+                    show={this.props.show} 
+                    title={this.props.title === undefined ? this.props.translation['downloadDatabase'] : (this.props.translation['modalDownloadTitle'] + this.props.title)}
+                    buttonText="Download" 
+                    textAreaLabel={this.props.translation['downloadArea']}
+                >
+                </BaseForm>
+            </div>
         );
     }
 }
@@ -31,6 +33,7 @@ const mapStateToProps = (state, ownProps) => {
         show: state.download.show,
         title: state.download.layer && state.translation.layersObj && state.translation.layersObj[state.download.layer].name,
         translation: state.translation,
+        userData: state.user,
     }
 }
 
@@ -39,8 +42,8 @@ const mapDispatchToProps = (dispatch, ownProps) => {
         hideDownload: () => {
             dispatch(actions.hideDownload())
         },
-        submitDownload: (data) => {
-            dispatch(actions.submitDownload(data))
+        submitDownload: (formContainer) => {
+            dispatch(actions.submitFeedback(true))
         },
     }
 }
