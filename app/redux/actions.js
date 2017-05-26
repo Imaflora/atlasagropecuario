@@ -205,7 +205,7 @@ function handleFeedback() {
 	}
 }
 
-export function insertFeedback(email, assunto, outro, text) {
+function insertFeedback(email, assunto, outro, text) {
 	return function (dispatch, getState) {
 		var state = getState();
 		var fn = "insertFeedback";

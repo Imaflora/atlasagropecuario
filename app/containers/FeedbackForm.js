@@ -71,7 +71,7 @@ class FeedbackForm extends Component {
                     }
                     
                 </BaseForm>
-                <Button id="submit-feedback" type="submit" onClick={() => this.props.insertFeedback(this.refs.form)}>{this.props.translation["submit"]}</Button>
+                <Button id="submit-feedback" type="submit" onClick={() => this.props.submitFeedback(this.refs.form)}>{this.props.translation["submit"]}</Button>
             </div >
         );
     }
@@ -95,7 +95,7 @@ const mapDispatchToProps = (dispatch, ownProps) => {
         updateFormValue: (what, value) => {
             dispatch(actions.updateFormValue(what, value))
         },
-        insertFeedback: () => dispatch(actions.submitFeedback(false))
+        submitFeedback: () => dispatch(actions.submitFeedback(false))
     }
 }
 
