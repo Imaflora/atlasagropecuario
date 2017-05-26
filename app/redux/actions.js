@@ -134,7 +134,7 @@ export function submitDownload() {
 		var userEmail = state.user.email;
 		var userText = state.user.textfield;
 		insertOrUpdateUser(state.user).then(() =>
-			dispatch(insertDownloadFeedback(userEmail, userText))
+			dispatch(insertDownloadFeedback(userEmail, userText)) #Do not remove dispatch!!!
 		);
 		dispatch(executeDownload());
 		dispatch(hideDownload());
