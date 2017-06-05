@@ -21,6 +21,14 @@ const News = props => {
                 <h5>{props.translation['clickNews']}</h5>
                 
                 <div>
+                <h1>{props.translation['jun']} / 2017</h1>
+                    <ul>
+                        <li><a href="https://oglobo.globo.com/sociedade/ciencia/meio-ambiente/vegetacao-em-area-dez-vezes-maior-que-rio-deixou-de-ser-protegida-21432244?versao=amp" target="_blank">Vegetação em área dez vezes maior que o Rio deixou de ser protegida. O Globo</a></li><br />
+                        <li><a href="http://www.ihu.unisinos.br/568257-codigo-florestal-anistiou-41-milhoes-de-hectares-entrevista-especial-com-luis-fernando-pinto" target="_blank">Código Florestal anistiou 41 milhões de hectares. Entrevista especial com Luis Fernando Pinto. IHU - Instituto Humanitas Unisinos</a></li>                
+                    </ul>
+                </div>    
+
+                <div>
                     <h1>{props.translation['may']} / 2017</h1>
                     <ul>
                         <li><a href="http://sustentabilidade.estadao.com.br/noticias/geral,mudanca-do-codigo-florestal-anistiou-41-milhoes-de-hectares,70001812607" target="_blank" >Mudança do Código Florestal 'anistiou' 41 milhões de hectares. Estadão - Sustentabilidade</a></li>
