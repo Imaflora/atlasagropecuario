@@ -35,14 +35,14 @@ class LayersSelector extends Component {
                         <div id="layer-vertical" className="uppercase">{this.props.translation["layers"]}</div>
                 </div>
                 <SideCollapse show={this.props.show} top={this.state.top} width={260}>
-                    <div style={{ position: "absolute", marginRight: 100 }} ref="innerMeasure">
-                        <div style={{ position: "absolute", backgroundColor: "#FFF", top: -61 }}>
+                    <div ref="innerMeasure">
+                        <div id="layer">
                             <div id="layerRectangle">
                                 <img className="collapse-icon" src={require('../../img/hide_legend.png')} 
                                     alt="abrir" 
                                     onClick={this.props.toggleLayersSelector} 
                                 />
-                                <div className="malhaFundiaria uppercase" style={{ marginRight: 50 }}>{this.props.translation["layers"]}</div>
+                                <div className="malhaFundiaria uppercase">{this.props.translation["layers"]}</div>
                             </div>
                             <table id="layers-control">
                                 <tbody>

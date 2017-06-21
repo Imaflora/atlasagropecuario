@@ -219,8 +219,8 @@ th {
         border-top: 0px solid transparent;
         box-shadow: inset 0 1px 0 rgba(255,255,255,0.1);
         position: relative;
-        top: 40px;
-        right: 35px;
+        top: 70px;
+        right: -9px;
     }
 }
 
@@ -535,6 +535,7 @@ img#footer_arrow {
     background-color: transparent;
     border: none;
     display: block;
+    z-index: 111;
     }
 
     #share>div {
@@ -552,12 +553,12 @@ img#footer_arrow {
 
     #share.share-open.collapse.in, #share.share-open.collapsing {
     display: block;
-    right: 77px;
+    right: 72px;
     bottom: 36px;
     }
     #share.share-close.collapse.in, #share.share-close.collapsing{
     display: block;
-    right: 77px;
+    right: 72px;
     top: 36px;
     }
 }
@@ -580,12 +581,12 @@ img#footer_arrow {
     }
     #share.share-open.collapse.in, #share.share-open.collapsing {
     display: block;
-    right: 0px;
+    right: -4px;
     bottom: 36px;
     }
     #share.share-close.collapse.in, #share.share-close.collapsing{
     display: block;
-    right: 0px;
+    right: -4px;
     top: 36px;
     }
 }
@@ -626,7 +627,7 @@ input.form-control {
     height: 30px;
     border-radius: 0px;
     margin: auto;
-    background-color: rgb(224,224,224);
+    background-color: white;
 }
 
 select.form-control {
@@ -635,7 +636,7 @@ select.form-control {
     height: 30px;
     border-radius: 0px;
     margin: auto;
-    background-color: rgb(224,224,224);
+    background-color: white;
     padding-right: 20px;
 }
 
@@ -649,7 +650,7 @@ textarea.form-control {
     height: 80px;
     border-radius: 0px;
     margin: auto;
-    background-color: rgb(224,224,224);
+    background-color: white;
 }
 
 #feedback-form {
@@ -728,13 +729,14 @@ textarea.form-control {
 .malhaFundiaria {
 	font-size: 16px;
     font-family: Calibri;
-    color: #fff;
+    color: white;
     font-weight: 700;
     line-height: 1.063;
     top: 18px;
     position: relative;
     text-transform: uppercase;
 	margin-left: 25px;
+    margin-right: 50px;
 }
 
 #layerRectangle {
@@ -755,24 +757,27 @@ textarea.form-control {
     width: 40%;
 }
 
-#layer-side-btn {
-    position: fixed;
-    left: 0px;
-    top: 40%;
-    text-align: right;
-    background-color: #FFF;
-    transition: opacity 0.5s;
-    z-index: 1;
+#layer {
+    position: absolute;
+    background-color: white;
+    top: -61px;
+}
+
+@media screen and (max-height: 600px) {
+    #layer {
+        max-height: 200px;
+        overflow-y: scroll;
+        top: -13px;
+    }
 }
 
 #layer-shower {
     background-color: @blue;
-    color: #fff;
+    color: white;
     text-transform: uppercase;
-    height: 40px;
     padding-top: 15px;
     position: absolute;
-    top: 40%;
+    top: 45%;
     left: 0px;
     height: 150px;
     width: 33px;
@@ -928,12 +933,11 @@ img.publication {
 
 #legend-shower {
     background-color: @blue;
-    color: #fff;
+    color: white;
     text-transform: uppercase;
-    height: 40px;
     padding-top: 15px;
     position: absolute;
-    top: 40%;
+    top: 45%;
     right: 0px;
     height: 150px;
     width: 33px;
