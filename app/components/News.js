@@ -21,9 +21,18 @@ const News = props => {
                 <h5>{props.translation['clickNews']}</h5>
                 
                 <div>
+                <h1>{props.translation['jul']} / 2017</h1>
+                    <ul>
+                        <li><a href="http://diplomatique.org.br/os-devedores-do-codigo-florestal/" target="_blank">Os devedores do Código Florestal. Desmatamento - Le Monde diplomatique Brasil</a></li>                
+                    </ul>
+                </div>
+                
+                <div>
                 <h1>{props.translation['jun']} / 2017</h1>
                     <ul>
+                        <li><a href="http://www1.folha.uol.com.br/colunas/marceloleite/2017/06/1891788-estatisticas-criativas-distorcem-percepcao-sobre-agronegocio-nacional.shtml" target="_blank">Estatísticas 'criativas' distorcem percepção sobre agronegócio nacional. Folha de São Paulo</a></li><br />
                         <li><a href="https://oglobo.globo.com/sociedade/ciencia/meio-ambiente/vegetacao-em-area-dez-vezes-maior-que-rio-deixou-de-ser-protegida-21432244?versao=amp" target="_blank">Vegetação em área dez vezes maior que o Rio deixou de ser protegida. O Globo</a></li><br />
+                        <li><a href="http://revistaamazonia.com.br/grandes-propriedades-respondem-por-59-da-desobediencia-ao-codigo-florestal/" target="_blank">Grandes propriedades respondem por 59% da desobediência ao Código Florestal. Revista Amazônia</a></li><br />
                         <li><a href="http://www.ihu.unisinos.br/568257-codigo-florestal-anistiou-41-milhoes-de-hectares-entrevista-especial-com-luis-fernando-pinto" target="_blank">Código Florestal anistiou 41 milhões de hectares. Entrevista especial com Luis Fernando Pinto. IHU - Instituto Humanitas Unisinos</a></li>                
                     </ul>
                 </div>    
