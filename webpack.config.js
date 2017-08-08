@@ -77,7 +77,7 @@ module.exports = {
       },
       'servUrl': JSON.stringify(
         process.env.NODE_ENV === 'production'
-        ? 'http://' + process.env.NODE_SERVER + '.imaflora.org:8000/' 
+        ? 'http://' + process.env.NODE_SERVER + '.imaflora.org/' 
         : 'http://' + process.env.NODE_SERVER + ':8000/')
     }),
     new webpack.optimize.UglifyJsPlugin({
