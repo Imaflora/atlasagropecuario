@@ -17,8 +17,7 @@ const News = props => {
             title={props.translation["news"]}
             onHide={props.handleHide}
             noClose>
-            <div>
-                <h5>{props.translation['clickNews']}</h5>
+            <div id="news-content">
                 
                 <div>
                 <h1>{props.translation['jul']} / 2017</h1>

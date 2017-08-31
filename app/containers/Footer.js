@@ -48,18 +48,18 @@ class Footer extends React.Component {
                             <div id="content" className="content row">
                                 <div className="col-xs-12 col-sm-4 col-md-4 col-lg-4 footer-column align-left">
                                     <div className="uppercase">{this.props.translation["poweredBy"]}</div>
-                                    <img id="imaflora_logo" src={require("../img/imaflora_logo.png")} alt="Logo do Imaflora" />
-                                    <img id="geolab_logo" src={require("../img/geolab_logo.png")} alt="Logo do Geolab" />
+                                    <a href="http://www.imaflora.org" target="_blank"><img id="imaflora_logo" src={require("../img/imaflora_logo.png")} alt="Logo do Imaflora" /></a>
+                                    <a href="http://www4.esalq.usp.br/" target="_blank"><img id="geolab_logo" src={require("../img/geolab_logo.png")} alt="Logo do Geolab" /></a>
                                     <div className="uppercase">{this.props.translation["partners"]}</div>
-                                    <img id="kth_logo" src={require("../img/kth_logo.png")} alt="Logo do KTH" />
-                                    <img id="sei_logo" src={require("../img/sei_logo.png")} alt="Logo da SEI" />
-                                    <img id="trase_logo" src={require("../img/trase_logo.png")} alt="Logo da Trase" />
-                                    <img id="escolhas_logo" src={require("../img/escolhas_logo.png")} alt="Logo do Instituto Escolhas"/>
+                                    <a href="https://www.kth.se/en" target="_blank"><img id="kth_logo" src={require("../img/kth_logo.png")} alt="Logo do KTH" /></a>
+                                    <a href="https://www.sei-international.org/" target="_blank"><img id="sei_logo" src={require("../img/sei_logo.png")} alt="Logo da SEI" /></a>
+                                    <a href="https://trase.earth/" target="_blank"><img id="trase_logo" src={require("../img/trase_logo.png")} alt="Logo da Trase" /></a>
+                                    <a href="http://escolhas.org/" target="_blank"><img id="escolhas_logo" src={require("../img/escolhas_logo.png")} alt="Logo do Instituto Escolhas"/></a>
                                     <div className="uppercase">{this.props.translation["support"]}</div>
-                                    <img id="fapesp_logo" src={require("../img/fapesp_logo.png")} alt="Logotipo da Fapesp" />
-                                    <img id="norad_logo" src={require("../img/norad_logo.png")} alt="Logotipo da Norad" />
-                                    <img id="ocf_logo" src={require("../img/ocf_logo.png")} alt="Logotipo do OCF" />
-                                    <img id="ipam_logo" src={require("../img/ipam_logo.png")} alt="Logotipo do Ipam" />
+                                    <a href="http://www.fapesp.br/" target="_blank"><img id="fapesp_logo" src={require("../img/fapesp_logo.png")} alt="Logotipo da Fapesp" /></a>
+                                    <a href="https://www.norad.no/en/front/" target="_blank"><img id="norad_logo" src={require("../img/norad_logo.png")} alt="Logotipo da Norad" /></a>
+                                    <a href="http://www.observatorioflorestal.org.br/" target="_blank"><img id="ocf_logo" src={require("../img/ocf_logo.png")} alt="Logotipo do OCF" /></a>
+                                    <a href="http://ipam.org.br/" target="_blank"><img id="ipam_logo" src={require("../img/ipam_logo.png")} alt="Logotipo do Ipam" /></a>
                                 </div>
                                 <div className="description col-xs-12 col-sm-4 col-md-4 col-lg-4 footer-column align-center" dangerouslySetInnerHTML={{__html: this.props.translation['footerText']}}></div>
                                 <div className="col-xs-12 col-sm-4 col-md-4 col-lg-4 footer-column align-right footer-right">
