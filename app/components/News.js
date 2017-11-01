@@ -21,6 +21,13 @@ const News = props => {
                 <h5>{props.translation['clickNews']}</h5>
                 
                 <div>
+                <h1>{props.translation['oct']} / 2017</h1>
+                    <ul>
+                        <li><a href="http://www1.folha.uol.com.br/mercado/2017/10/1931697-eliminar-desmatamento-retiraria-06-do-pib-ate-o-ano-2030.shtml" target="_blank">Eliminar desmatamento retiraria 0,6% do PIB até o ano 2030 - Folha de São Paulo</a></li>                
+                    </ul>
+                </div>
+                               
+                <div>
                 <h1>{props.translation['jul']} / 2017</h1>
                     <ul>
                         <li><a href="http://diplomatique.org.br/os-devedores-do-codigo-florestal/" target="_blank">Os devedores do Código Florestal. Desmatamento - Le Monde diplomatique Brasil</a></li>                
