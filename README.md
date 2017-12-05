@@ -18,22 +18,22 @@ Para efetuar a utilização desse método é necessário baixar o repositório n
 
 Instale as bibliotecas via NPM
 
-'''
+```
 $ npm install
-'''
+```
 
 ## Iniciar o ambiente de desenvolvimento
 
-Inicie o NPM na pasta *../app*
+Inicie o NPM na pasta *../atlasagropecuario*
 
-'''
-$ ../app/npm start
-'''
+```
+$ ../atlasagropecuario/npm start
+```
 
 Inicie o NPM na pasta *../backend*
 
-'''
-$ ../backend/npm start
-'''
+```
+$ ../atlasagropecuario/backend/npm start
+```
 
 Acesse pelo navegador com o endereço local. Ex: http://localhost:8080/
