@@ -18,7 +18,7 @@ export const state = {
     zoom: 4,
     center: [-5679446.090587838, -2172541.4206502824],
     layers: [''],
-    coverLayer: 'v_forest_act',
+    coverLayer: 'carbon_map',
     click: undefined,
   },
   infoWindow: {},
