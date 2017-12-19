@@ -21,14 +21,14 @@ const Publications = props => {
 
                 <div className="paper">
                     <h1>Who owns the Brazilian carbon?</h1>
-                    <img className="publication float-left" src={require("../img/pub_thumb_6.PNG")} alt="publication thumbnail"/>
+                    <img className="publication float-left" src={require("../img/pub_thumb_6.png")} alt="publication thumbnail"/>
                     <p>O estudo “Who owns the Brazilian Carbon?” foi liderado pelo pesquisador Flavio Freitas da universidade KTH – Royal Institute of Technology da Suécia e publicado pela revista científica Global Change Biology. Foi desenvolvido em colaboração com o Professor Gerd Sparovek (GeoLab da USP/ESALQ), pesquisadores do Imaflora e da Chalmers University of Technology da Suécia. Usando uma malha fundiária que reúne as terras públicas e uma aproximação dos imóveis privados do país, o estudo quantificou e alocou o carbono estocado na biomassa da vegetação nativa e nas terras de uso agropecuário de todos os biomas brasileiros, ao nível de imóvel rural, permitindo identificar quem são os donos dos estoques de carbono do Brasil.</p> 
                     <a className="downloadPublication" href="http://onlinelibrary.wiley.com/doi/10.1111/gcb.14011/full" target="_blank">{props.translation['downloadPublication']}</a>
                 </div>
 
                 <div className="paper">
                     <h1>A new high-resolution nationwide aboveground carbon map for Brazil</h1>
-                    <img className="publication float-right" src={require("../img/pub_thumb_7.PNG")} alt="publication thumbnail"/>
+                    <img className="publication float-right" src={require("../img/pub_thumb_7.png")} alt="publication thumbnail"/>
                     <p>O mapa de carbono acima do solo foi criado com base em dados de mapas existentes e um mapa atualizado de uso e cobertura da terra do Brasil. Como resultado, o mapa reflete o uso atual e as mudanças no uso e cobertura da terra, possui alta precisão e resolução (50m) e uma abrangência nacional. Acreditamos que este mapa pode ser uma alternativa útil para estudos científicos e iniciativas políticas relacionadas com a conservação dos estoques existentes de carbono, especialmente em escalas locais onde é necessário maior precisão. O mapa também foi construído em uma colaboração de Gerd Sparovek, Flavio Freitas e pesquisadores do INPE, da Suécia e do Imaflora.</p>
                     <a className="downloadPublication" href="http://onlinelibrary.wiley.com/doi/10.1002/geo2.45/abstract;jsessionid=92F411CA8D4B86D0C0FC80AF371C28DA.f02t04" target="_blank">{props.translation['downloadPublication']}</a>
                 </div>

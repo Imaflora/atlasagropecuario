@@ -10,30 +10,34 @@ Este é o repositório do site do Atlas da Agropecuária Brasileira
 
 ## password.js
 
-Para efetuar a utilização desse método é necessário baixar o repositório no local e criar um arquivo "password.js" na pasta backend:
+Para efetuar a utilização desse método é necessário baixar o repositório no local e criar um arquivo "password.js" na pasta *../backend*:
 
 > ../backend/password.js
 
 ## Instalação das dependências
 
-Instale as bibliotecas via NPM
+Instale as bibliotecas na pasta da aplicação e na pasta do backend via NPM
 
 ```
-$ npm install
+$ /atlasagropecuario/npm install
+```
+
+```
+$ /atlasagropecuario/backend/npm install
 ```
 
 ## Iniciar o ambiente de desenvolvimento
 
-Inicie o NPM na pasta *../atlasagropecuario*
+Inicie o NPM na pasta */atlasagropecuario*
 
 ```
-$ ../atlasagropecuario/npm start
+$ /atlasagropecuario/npm start
 ```
 
 Inicie o NPM na pasta *../backend*
 
 ```
-$ ../atlasagropecuario/backend/npm start
+$ /atlasagropecuario/backend/npm start
 ```
 
 Acesse pelo navegador com o endereço local. Ex: http://localhost:8080/
