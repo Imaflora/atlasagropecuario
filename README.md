@@ -14,7 +14,7 @@ Este é o repositório do site do Atlas da Agropecuária Brasileira
  ## Servidor de requisições (./backend/)
  O servidor de requisições foi desenvolvido em NodeJS e utiliza como padrão o [GraphQL](graphql.org). A implementação utilizada do GraphQL é o [PostgraphQL](https://github.com/postgraphql/postgraphql). Essa biblioteca indexa automaticamente as tabelas e *views* que estão no esquema **exposed** do banco de dados, bem como as funções que residem nele. 
  
- As funções são acessadas pela palavra chave *mutation*, mesmo podendo se referir a funções que apenas efetuam a leitura dos dados, isso é um padrão da biblioteca. É possível acessar a interface interativa para construir as consultas GraphQL por meio de localhost:\[porta\]/iquery
+ As funções são acessadas pela palavra chave *mutation*, mesmo podendo se referir a funções que apenas efetuam a leitura dos dados, isso é um padrão da biblioteca. É possível acessar a interface interativa para construir as consultas GraphQL por meio de localhost:\[porta\]/graphiql
 
 Existe ainda outro serviço para acessar as notícias e publicações que residem em outro banco de dados MySQL de domínio do setor de comunicação do Imaflora.
 
